@@ -9,19 +9,19 @@ func _ready():
 
 func get_sprite(type):
 	var children = get_children()
-	if type == ItemType.RECYCLING:
+	if type == "RECYCLING":
 		var clothes_children = children[0].get_children()
 		return clothes_children[randi() % clothes_children.size()]
-	elif type == ItemType.TRASH:
+	elif type == "TRASH":
 		var trash_children = children[1].get_children()
 		return trash_children[randi() % trash_children.size()]
-	elif type == ItemType.PAPER:
+	elif type == "PAPER":
 		var paper_children = children[2].get_children()
 		return paper_children[randi() % paper_children.size()]
-	elif type == ItemType.ELECTRONICS:
+	elif type == "ELECTRONICS":
 		var electronics_children = children[3].get_children()
 		return electronics_children[randi() % electronics_children.size()]
-	elif type == ItemType.CLOTHES:
+	elif type == "CLOTHES":
 		var clothes_children = children[3].get_children()
 		return clothes_children[randi() % clothes_children.size()]
 	else:
