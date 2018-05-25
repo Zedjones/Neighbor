@@ -10,7 +10,7 @@ extents = Vector2( 10.4666, 9.18541 )
 
 [node name="CurrentItem" type="Area2D"]
 
-position = Vector2( 528, 458 )
+position = Vector2( 528, 541 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -26,7 +26,7 @@ SPEED = 5
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 1.04047, -0.225937 )
-scale = Vector2( 5, 5 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 25, 185, 23, 17 )

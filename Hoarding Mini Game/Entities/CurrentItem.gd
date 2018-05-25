@@ -29,7 +29,5 @@ func start_moving_towards(target):
 	self.target = target
 
 func _on_CurrentItem_area_entered(body):
-	print(body)
-	print(target)
 	if target == body:
 		hide()
