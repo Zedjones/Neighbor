@@ -83,22 +83,22 @@ box_pos = Vector2( 0, 0 )
 
 [node name="Electronics" parent="Boxes" index="1" instance=ExtResource( 5 )]
 
-editor/display_folded = true
-position = Vector2( 528.857, 131.595 )
+position = Vector2( 528.857, 140.595 )
 box_pos = Vector2( 1, 0 )
 
 [node name="Sprite" parent="Boxes/Electronics" index="1"]
 
+position = Vector2( 0, -1.2 )
 region_rect = Rect2( 233, 31, 32, 33 )
 
 [node name="Paper" parent="Boxes" index="2" instance=ExtResource( 5 )]
 
-editor/display_folded = true
-position = Vector2( 848.935, 142.154 )
+position = Vector2( 848.935, 143.154 )
 box_pos = Vector2( 2, 0 )
 
 [node name="Sprite" parent="Boxes/Paper" index="1"]
 
+position = Vector2( 0, 1.6 )
 region_rect = Rect2( 233, 65, 32, 33 )
 
 [node name="Clothes" parent="Boxes" index="3" instance=ExtResource( 5 )]
