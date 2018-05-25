@@ -5,8 +5,10 @@ extends Node
 # var b = "textvar"
 
 export(NodePath) var boxes_path
+export(int) var current_items 
 var boxes_dict = {}
 var current_target
+var current_item
 const boxes_size = Vector2(3, 2)
 
 func mod(x, m):
@@ -19,6 +21,7 @@ func _ready():
 	for box in boxes.get_children():
 		boxes_dict[box.box_pos] = box
 	current_target = boxes_dict[Vector2(0, 0)]
+	current_item = $"CurrentItem"
 
 func _process(delta):
 	var diff = Vector2(0, 0)
@@ -41,6 +44,11 @@ func _process(delta):
 			new_pos.x += 1
 		elif diff.y == 1 or diff.y == -1:
 			new_pos.y -= 1
-	print(new_pos)
 	current_target = boxes_dict[new_pos]
 	$"Selection".position = current_target.position
+	if Input.is_action_just_pressed("ui_select"):
+		current_item.start_moving_towards(current_target)
+		var scene = load("res://Hoarding Mini Game/Entities/CurrentItem.tscn")
+		current_item = scene.instance()
+		current_item.sprites_list = NodePath("../Sprites")
+		add_child(current_item)

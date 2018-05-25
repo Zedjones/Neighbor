@@ -7,6 +7,8 @@ extends Area2D
 enum ItemType {TRASH, RECYCLING, ELECTRONICS, PAPER, CLOTHES}
 var type = ItemType.TRASH
 export(NodePath) var sprites_list
+export(int) var SPEED
+var target
 
 
 func _ready():
@@ -18,7 +20,16 @@ func _ready():
 	$"Sprite".region_rect = new_sprite.region_rect
 	print(type)
 	
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	if target != null:
+		var move_vect = (target.position - position).normalized()
+		position += (move_vect * SPEED)
+
+func start_moving_towards(target):
+	self.target = target
+
+func _on_CurrentItem_area_entered(body):
+	print(body)
+	print(target)
+	if target == body:
+		hide()

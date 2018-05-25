@@ -10,6 +10,7 @@
 
 script = ExtResource( 1 )
 boxes_path = NodePath("Boxes")
+current_items = 30
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
@@ -31,14 +32,15 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CurrentItem" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 506.553, 449.235 )
-scale = Vector2( 5, 5 )
+position = Vector2( 528.284, 458.073 )
+scale = Vector2( 1.30529, 1.30917 )
 sprites_list = NodePath("../Sprites")
 
 [node name="Boxes" type="Node" parent="." index="3"]
 
 [node name="Trash" parent="Boxes" index="0" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 171.714, 140.397 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 box_pos = Vector2( 0, 0 )
@@ -83,7 +85,33 @@ box_pos = Vector2( 2, 1 )
 
 region_rect = Rect2( 233, 100, 32, 30 )
 
-[node name="Sprites" type="Node" parent="." index="4"]
+[node name="Anchors" type="Node" parent="." index="4"]
+
+[node name="TrashAnchor" type="Node2D" parent="Anchors" index="0"]
+
+position = Vector2( 168.2, -51.5649 )
+
+[node name="ElectronicsAnchor" type="Node2D" parent="Anchors" index="1"]
+
+position = Vector2( 526.699, -56.4759 )
+
+[node name="PaperAnchor" type="Node2D" parent="Anchors" index="2"]
+
+position = Vector2( 850.821, -56.4759 )
+
+[node name="ClothesAnchor" type="Node2D" parent="Anchors" index="3"]
+
+position = Vector2( 165.744, 664.206 )
+
+[node name="BananaAnchor" type="Node2D" parent="Anchors" index="4"]
+
+position = Vector2( 523.016, 667.889 )
+
+[node name="RecyclingAnchor" type="Node2D" parent="Anchors" index="5"]
+
+position = Vector2( 855.732, 676.483 )
+
+[node name="Sprites" type="Node" parent="." index="5"]
 
 script = ExtResource( 5 )
 
@@ -177,6 +205,7 @@ region_rect = Rect2( 14, 151, 15, 23 )
 _sections_unfolded = [ "Region" ]
 
 
+[editable path="Boxes/Trash"]
 [editable path="Boxes/Electronics"]
 [editable path="Boxes/Paper"]
 [editable path="Boxes/Clothes"]
