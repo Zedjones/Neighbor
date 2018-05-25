@@ -1,0 +1,46 @@
+extends Node
+
+# class member variables go here, for example:
+# var a = 2
+# var b = "textvar"
+
+export(NodePath) var boxes_path
+var boxes_dict = {}
+var current_target
+const boxes_size = Vector2(3, 2)
+
+func mod(x, m):
+	return (x % m + m) % m
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	var boxes = get_node(boxes_path)
+	for box in boxes.get_children():
+		boxes_dict[box.box_pos] = box
+	current_target = boxes_dict[Vector2(0, 0)]
+
+func _process(delta):
+	var diff = Vector2(0, 0)
+	var new_pos = Vector2(0, 0)
+	var curr_pos = current_target.box_pos
+	if Input.is_action_just_pressed("ui_right"):
+		diff.x += 1
+	if Input.is_action_just_pressed("ui_left"):
+		diff.x -= 1
+	if Input.is_action_just_pressed("ui_down"):
+		diff.y += 1
+	if Input.is_action_just_pressed("ui_up"):
+		diff.y -= 1
+	new_pos.x = mod(int(curr_pos.x + diff.x), int(boxes_size.x))
+	new_pos.y = mod(int(curr_pos.y + diff.y), int(boxes_size.y))
+	if new_pos.x == 1 and new_pos.y == 1:
+		if diff.x == -1:
+			new_pos.x -= 1
+		elif diff.x == 1:
+			new_pos.x += 1
+		elif diff.y == 1 or diff.y == -1:
+			new_pos.y -= 1
+	print(new_pos)
+	current_target = boxes_dict[new_pos]
+	$"Selection".position = current_target.position

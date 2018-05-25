@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.0225, 7.68286 )
+extents = Vector2( 10.1745, 8.07349 )
 
 [node name="SortBox" type="Area2D"]
 
@@ -26,13 +26,12 @@ box_pos = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -0.148954, -2.15539 )
-scale = Vector2( 1.59253, 1.61037 )
+position = Vector2( -0.148954, 0.316549 )
+scale = Vector2( 1.59253, 1.84671 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-position = Vector2( -0.196228, -1.02307 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 233, 0, 32, 30 )

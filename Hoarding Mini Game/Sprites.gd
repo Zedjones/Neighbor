@@ -22,7 +22,7 @@ func get_sprite(type):
 		var electronics_children = children[3].get_children()
 		return electronics_children[randi() % electronics_children.size()]
 	elif type == "CLOTHES":
-		var clothes_children = children[3].get_children()
+		var clothes_children = children[4].get_children()
 		return clothes_children[randi() % clothes_children.size()]
 	else:
 		return "Error"
