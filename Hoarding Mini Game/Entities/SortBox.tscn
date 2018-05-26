@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Hoarding Mini Game/Entities/SortBox.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/HoarderAssets.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.1745, 8.07349 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 12.3684, 13.2076 )
 
 [node name="SortBox" type="Area2D"]
 
@@ -36,5 +41,23 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 233, 0, 32, 30 )
 _sections_unfolded = [ "Animation", "Offset", "Pause", "Region", "Transform", "Z Index" ]
+
+[node name="Center" type="Area2D" parent="." index="2"]
+
+position = Vector2( -0.776966, -0.58436 )
+scale = Vector2( 0.046079, 0.0457888 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center" index="0"]
+
+position = Vector2( -0.203645, -0.237259 )
+scale = Vector2( 2.57985, 2.42215 )
+shape = SubResource( 2 )
 
 

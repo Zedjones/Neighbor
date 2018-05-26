@@ -6,12 +6,15 @@ extends Area2D
 
 export(NodePath) var anchors
 export(NodePath) var boxes
+export(int) var SPEED
 var items_to_steal = 10
 var times_to_steal = []
 var anchor_dict = {}
 var times_dict = {}
 var total_time = 30
-var moving = false 
+var moving = false
+var moving_back = false
+var curr_anchor
 var curr_target
 
 func _ready():
@@ -21,7 +24,8 @@ func _ready():
 	var items_to_add = items_to_steal	
 	while(items_to_add != 0):
 		var random_time = randi() % total_time
-		if not times_to_steal.has(random_time):
+		if not times_to_steal.has(random_time) and not times_to_steal.has(random_time - 1) \
+		and not times_to_steal.has(random_time + 1):
 			times_to_steal.append(random_time)
 			items_to_add -= 1
 	print(times_to_steal)
@@ -41,13 +45,31 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 	var time = int($"../GameTimer".time_left)
-	print(time)
-	if moving:
-		print(curr_target)
-		moving = false
+	if moving and $"HoldTimer".is_stopped():
+		#get the center of the target
+		if overlaps_area(curr_target.get_child(2)):
+			$"HoldTimer".start()
+		else:
+			var move_vect = (curr_target.position - position).normalized()
+			position += (move_vect * SPEED)
+	elif moving_back:
+		#print(curr_anchor)
+		var distance = curr_anchor.position - position
+		if abs(distance.x) < 1 and abs(distance.y) < 1:
+			moving_back = false
+		var move_vect = distance.normalized()
+		position += (move_vect * SPEED)
 	elif times_to_steal.has(time):
-		var anchor = times_dict[time]
-		position = anchor.position
-		curr_target = anchor_dict[anchor]
-		times_to_steal.remove(time)
+		curr_anchor = times_dict[time]
+		position = curr_anchor.position
+		if position.y < 0:
+			$"Sprite".flip_v = true
+		else:
+			$"Sprite".flip_v = false
+		curr_target = anchor_dict[curr_anchor]
+		times_to_steal.remove(times_to_steal.find(time))
 		moving = true
+
+func _on_HoldTimer_timeout():
+	moving = false
+	moving_back = true

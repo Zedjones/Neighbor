@@ -3,8 +3,8 @@
 [ext_resource path="res://Hoarding Mini Game/HoarderManager.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/HoarderAssets.png" type="Texture" id=2]
 [ext_resource path="res://Hoarding Mini Game/Entities/CurrentItem.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Hoarding Mini Game/HoarderHand.gd" type="Script" id=4]
-[ext_resource path="res://Hoarding Mini Game/Entities/SortBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hoarding Mini Game/Entities/SortBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hoarding Mini Game/HoarderHand.gd" type="Script" id=5]
 [ext_resource path="res://Hoarding Mini Game/Sprites.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -48,7 +48,57 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 528.284, 541.073 )
 sprites_list = NodePath("../Sprites")
 
-[node name="HoarderHand" type="Area2D" parent="." index="4"]
+[node name="Boxes" type="Node" parent="." index="4"]
+
+[node name="Trash" parent="Boxes" index="0" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 171.714, 140.397 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+box_pos = Vector2( 0, 0 )
+
+[node name="Electronics" parent="Boxes" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 528.857, 140.595 )
+box_pos = Vector2( 1, 0 )
+
+[node name="Sprite" parent="Boxes/Electronics" index="1"]
+
+position = Vector2( 0, -1.2 )
+region_rect = Rect2( 233, 31, 32, 33 )
+
+[node name="Paper" parent="Boxes" index="2" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 848.935, 143.154 )
+box_pos = Vector2( 2, 0 )
+
+[node name="Sprite" parent="Boxes/Paper" index="1"]
+
+position = Vector2( 0, 1.6 )
+region_rect = Rect2( 233, 65, 32, 33 )
+
+[node name="Clothes" parent="Boxes" index="3" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 167.339, 447.44 )
+box_pos = Vector2( 0, 1 )
+
+[node name="Sprite" parent="Boxes/Clothes" index="1"]
+
+region_rect = Rect2( 233, 132, 32, 30 )
+
+[node name="Recycling" parent="Boxes" index="4" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 854.781, 438.48 )
+box_pos = Vector2( 2, 1 )
+
+[node name="Sprite" parent="Boxes/Recycling" index="1"]
+
+region_rect = Rect2( 233, 100, 32, 30 )
+
+[node name="HoarderHand" type="Area2D" parent="." index="5"]
 
 position = Vector2( 161.5, 812.885 )
 input_pickable = true
@@ -58,12 +108,14 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 4 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 anchors = NodePath("../Anchors")
 boxes = NodePath("../Boxes")
+SPEED = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoarderHand" index="0"]
 
@@ -77,76 +129,34 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 151, 12, 22 )
-_sections_unfolded = [ "Region", "Transform" ]
+_sections_unfolded = [ "Transform" ]
 
-[node name="Boxes" type="Node" parent="." index="5"]
+[node name="HoldTimer" type="Timer" parent="HoarderHand" index="2"]
 
-[node name="Trash" parent="Boxes" index="0" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( 171.714, 140.397 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-box_pos = Vector2( 0, 0 )
-
-[node name="Electronics" parent="Boxes" index="1" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( 528.857, 140.595 )
-box_pos = Vector2( 1, 0 )
-
-[node name="Sprite" parent="Boxes/Electronics" index="1"]
-
-position = Vector2( 0, -1.2 )
-region_rect = Rect2( 233, 31, 32, 33 )
-
-[node name="Paper" parent="Boxes" index="2" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( 848.935, 143.154 )
-box_pos = Vector2( 2, 0 )
-
-[node name="Sprite" parent="Boxes/Paper" index="1"]
-
-position = Vector2( 0, 1.6 )
-region_rect = Rect2( 233, 65, 32, 33 )
-
-[node name="Clothes" parent="Boxes" index="3" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( 167.339, 447.44 )
-box_pos = Vector2( 0, 1 )
-
-[node name="Sprite" parent="Boxes/Clothes" index="1"]
-
-region_rect = Rect2( 233, 132, 32, 30 )
-
-[node name="Recycling" parent="Boxes" index="4" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( 854.781, 438.48 )
-box_pos = Vector2( 2, 1 )
-
-[node name="Sprite" parent="Boxes/Recycling" index="1"]
-
-region_rect = Rect2( 233, 100, 32, 30 )
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
 
 [node name="Anchors" type="Node" parent="." index="6"]
 
 [node name="TrashAnchor" type="Node2D" parent="Anchors" index="0"]
 
-position = Vector2( 168.2, -51.5649 )
+position = Vector2( 168.2, -137.565 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="ElectronicsAnchor" type="Node2D" parent="Anchors" index="1"]
 
-position = Vector2( 526.699, -56.4759 )
+position = Vector2( 526.699, -131.476 )
 
 [node name="PaperAnchor" type="Node2D" parent="Anchors" index="2"]
 
-position = Vector2( 850.821, -56.4759 )
+position = Vector2( 850.821, -143.476 )
 
 [node name="ClothesAnchor" type="Node2D" parent="Anchors" index="3"]
 
 position = Vector2( 165.744, 664.206 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="RecyclingAnchor" type="Node2D" parent="Anchors" index="4"]
 
@@ -244,6 +254,8 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 14, 151, 15, 23 )
 _sections_unfolded = [ "Region" ]
+
+[connection signal="timeout" from="HoarderHand/HoldTimer" to="HoarderHand" method="_on_HoldTimer_timeout"]
 
 
 [editable path="Boxes/Trash"]
