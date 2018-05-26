@@ -10,7 +10,7 @@ source_file="res://Art_Assets/CharacterSpritesGREY.png"
 source_md5="193dfe7d5c1c70c00f7c255263f4e43f"
 
 dest_files=[ "res://.import/CharacterSpritesGREY.png-5c6440ec6d19c9183584fce483d90983.stex" ]
-dest_md5="0ecbad2db2243e856565af7aa6e70557"
+dest_md5="fbfc226581915b66c91edd19fe6dfbf5"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

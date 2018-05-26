@@ -10,7 +10,7 @@ source_file="res://Art_Assets/CharacterSprites.png"
 source_md5="b5f6e561c07f985bdc0ab5fd828cb1d3"
 
 dest_files=[ "res://.import/CharacterSprites.png-85ea1aec77b888eb3fd59e84396aa532.stex" ]
-dest_md5="f2141cbb8750819d8dc6abad458d1dcf"
+dest_md5="5800b69f868500a652945cd42e519578"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
