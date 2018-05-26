@@ -25,4 +25,4 @@ func get_sprite(type):
 		var clothes_children = children[4].get_children()
 		return clothes_children[randi() % clothes_children.size()]
 	else:
-		return "Error"
+		return "Error" #should never even reach this code 

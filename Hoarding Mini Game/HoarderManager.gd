@@ -52,3 +52,9 @@ func _process(delta):
 		current_item = scene.instance()
 		current_item.sprites_list = NodePath("../Sprites")
 		add_child(current_item)
+		
+func remove_item():
+	current_items -= 1
+	
+func add_item():
+	current_items += 1

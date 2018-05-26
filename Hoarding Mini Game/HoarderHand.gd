@@ -48,6 +48,7 @@ func _process(delta):
 	if moving and $"HoldTimer".is_stopped():
 		#get the center of the target
 		if overlaps_area(curr_target.get_child(2)):
+			$"..".add_item()
 			$"HoldTimer".start()
 		else:
 			var move_vect = (curr_target.position - position).normalized()

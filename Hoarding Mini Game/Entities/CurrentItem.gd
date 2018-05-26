@@ -30,4 +30,6 @@ func start_moving_towards(target):
 
 func _on_CurrentItem_area_entered(body):
 	if target == body:
+		if target.type == type:
+			$"..".remove_item()
 		hide()
