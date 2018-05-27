@@ -13,6 +13,10 @@ config_version=3
 config/name="New Game Project"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameManager="*res://GameManager.tscn"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
