@@ -1,4 +1,4 @@
-extends Node
+extends "res://MiniGame.gd"
 
 # class member variables go here, for example:
 # var a = 2
@@ -10,6 +10,7 @@ var boxes_dict = {}
 var current_target
 var current_item
 const boxes_size = Vector2(3, 2)
+var game_over = false
 
 func mod(x, m):
 	return (x % m + m) % m
@@ -58,3 +59,18 @@ func remove_item():
 	
 func add_item():
 	current_items += 1
+
+func _on_GameTimer_timeout():
+	game_over = true
+	
+func set_points(dialogue):
+	$HoarderHand.set_points(dialogue)
+
+func is_game_over():
+	return game_over
+	
+func get_score():
+	if current_items < 15:
+		return GameOutcomes.BETTER
+	else:
+		return GameOutcomes.WORSE

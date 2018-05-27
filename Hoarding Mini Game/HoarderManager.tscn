@@ -255,6 +255,8 @@ region_enabled = true
 region_rect = Rect2( 14, 151, 15, 23 )
 _sections_unfolded = [ "Region" ]
 
+[connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+
 [connection signal="timeout" from="HoarderHand/HoldTimer" to="HoarderHand" method="_on_HoldTimer_timeout"]
 
 

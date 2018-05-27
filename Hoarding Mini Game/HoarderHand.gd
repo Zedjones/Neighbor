@@ -74,3 +74,9 @@ func _process(delta):
 func _on_HoldTimer_timeout():
 	moving = false
 	moving_back = true
+	
+func set_points(dialogue):
+	if dialogue == $"..".DialogueChoices.WORST:
+		items_to_steal = 10
+	else:
+		items_to_steal = 5

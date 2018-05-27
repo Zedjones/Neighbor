@@ -21,7 +21,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 sprites_list = null
-SPEED = 5
+SPEED = 10
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
