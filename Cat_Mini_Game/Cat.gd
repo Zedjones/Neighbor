@@ -1,8 +1,12 @@
-extends Area2D
+extends RigidBody2D
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+enum CatSpeed { Slow = 1, Normal = 2, Fast = 3, Max = 5}
+var speedMod = CatSpeed.Normal;
+var facingRight = false;
+export (int) var MAX_SPEED
 
 func _ready():
 	# Called every time the node is added to the scene.
