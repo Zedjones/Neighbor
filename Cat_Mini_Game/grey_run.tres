@@ -2,7 +2,7 @@
 
 [resource]
 
-resource_name = "orange_run"
+resource_name = "grey_run"
 length = 2.0
 loop = true
 step = 1.0
@@ -16,6 +16,6 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Rect2( 233, 1, 24, 18 ), Rect2( 259, 1, 24, 18 ) ]
+"values": [ Rect2( 236, 63, 24, 18 ), Rect2( 263, 63, 24, 18 ) ]
 }
 

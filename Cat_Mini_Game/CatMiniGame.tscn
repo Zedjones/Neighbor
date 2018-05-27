@@ -18,7 +18,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 140, 40, 0, 0, 0, 0, 140, 70 )
 }
 
-[node name="CatMiniGame" type="Node" index="0"]
+[node name="CatMiniGame" type="Node"]
 
 script = ExtResource( 1 )
 Cat = ExtResource( 2 )
