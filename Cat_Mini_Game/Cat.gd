@@ -53,7 +53,7 @@ func _on_OrangeCat_input_event(viewport, event, shape_idx):
 	
      if Input.is_mouse_button_pressed(1):
         #print("Clicked")
-        emit_signal("on_cat_hit", color) 
+        emit_signal("on_cat_hit", self) 
 		  
 	
 func flip():
@@ -65,3 +65,24 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func run():
 	isRunning = true;
+
+func right_cat():
+	vel = 0
+	var sitname
+	match color:
+		CatColors.Grey:
+			sitname = "grey_sit"
+		CatColors.Orange:
+			sitname = "orange_sit"
+		CatColors.Black:
+			sitname = "black_sit"
+		CatColors.Brown:
+			sitname = "spotted_sit"
+		CatColors.White:
+			sitname = "white_sit"		
+
+	$AnimationPlayer.play(sitname)
+	
+	
+func wrong_cat():
+	vel = CatSpeed.Max * 50

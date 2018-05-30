@@ -18,7 +18,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 140, 40, 0, 0, 0, 0, 140, 70 )
 }
 
-[node name="CatMiniGame" type="Node"]
+[node name="CatMiniGame" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Cat = ExtResource( 2 )
@@ -76,7 +76,7 @@ autostart = true
 
 process_mode = 1
 wait_time = 30.0
-one_shot = false
+one_shot = true
 autostart = false
 
 [connection signal="timeout" from="CatSpawnTimer" to="." method="_on_CatSpawnTimer_timeout"]

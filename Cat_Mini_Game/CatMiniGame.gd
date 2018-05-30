@@ -40,15 +40,19 @@ func _on_CatSpawnTimer_timeout():
 		
 	pass # replace with function body
 
-func checkCat(color):
+func checkCat(cat):
 	print("cat checked: " )
-	if(targetColor == color):
+	if(targetColor == cat.color):
 		print("found cat!")
+		cat.right_cat()
 	else:
 		print("keep trying")
+		cat.wrong_cat()
 	
 func setTargetColor(color):
 	targetColor = color;
 	
 func getColor():
 	return randi() % 5
+	
+	
