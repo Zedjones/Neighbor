@@ -445,7 +445,6 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
-MAX_SPEED = 50
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="0"]
 

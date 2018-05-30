@@ -2,19 +2,16 @@ extends Area2D
 signal on_cat_hit
 var CatColors = preload("res://GlobalData.gd").CatColor
 
-enum CatSpeed { Slow = 1, Normal = 2, Fast = 3, Max = 5}
-var speedMod = CatSpeed.Normal;
 var facingRight = false;
-export (int) var MAX_SPEED
 var vel = 0
 var isRunning = false
 var color = CatColors.Orange
 var anim_name
+var speed = 30
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	vel = (randi() % 4 +1) * 30
+	randomize()
+	vel = (randi() % 4 +1) * speed
 	facingRight = position.x < 0
 
 	match color:
@@ -30,8 +27,6 @@ func _ready():
 			anim_name = "white_run"
 			
 	$AnimationPlayer.play(anim_name)
-	
-	pass
 
 func _process(delta):
 	if(isRunning):
@@ -39,23 +34,15 @@ func _process(delta):
 			position.x += vel * delta
 		else:
 			position.x -= vel * delta
-		
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 
 
 func _on_OrangeCat_input_event(viewport, event, shape_idx):
-     #print("in cat space")
-	
      if Input.is_mouse_button_pressed(1):
         #print("Clicked")
         emit_signal("on_cat_hit", self) 
-		  
-	
+
 func flip():
 	$RunSprite.flip_h = !$RunSprite.flip_h
-
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
@@ -65,21 +52,19 @@ func run():
 
 func right_cat():
 	vel = 0
-	var sitname
 	match color:
 		CatColors.Grey:
-			sitname = "grey_sit"
+			anim_name = "grey_sit"
 		CatColors.Orange:
-			sitname = "orange_sit"
+			anim_name = "orange_sit"
 		CatColors.Black:
-			sitname = "black_sit"
+			anim_name = "black_sit"
 		CatColors.Brown:
-			sitname = "spotted_sit"
+			anim_name = "spotted_sit"
 		CatColors.White:
-			sitname = "white_sit"		
+			anim_name = "white_sit"
 
-	$AnimationPlayer.play(sitname)
-	
-	
+	$AnimationPlayer.play(anim_name)
+
 func wrong_cat():
-	vel = CatSpeed.Max * 30
+	vel = 5 * speed
