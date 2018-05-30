@@ -1,10 +1,12 @@
-extends Node
+extends "res://MiniGame.gd"
 var CatColors = preload("res://GlobalData.gd").CatColor
 export (PackedScene) var Cat
 
 var targetColor = CatColors.Orange
+var gameOver = false
 
-func _ready():
+
+func _ready():	
 	pass
 
 #func _process(delta):
@@ -37,16 +39,16 @@ func _on_CatSpawnTimer_timeout():
 	cat.position = position
 	
 	add_child(cat)
-		
-	pass # replace with function body
+
 
 func checkCat(cat):
-	print("cat checked: " )
+	print("cat checked: ", cat.color )
 	if(targetColor == cat.color):
-		print("found cat!")
+		#print("found cat!")
 		cat.right_cat()
+		endGame()
 	else:
-		print("keep trying")
+		#print("keep trying")
 		cat.wrong_cat()
 	
 func setTargetColor(color):
@@ -55,4 +57,33 @@ func setTargetColor(color):
 func getColor():
 	return randi() % 5
 	
+	# GameManager or Character will call this to talk to mini-game
+# @param dialogue_choices - a DialogueChoices enum item 
+func set_points(dialogue_choices):
+	pass
 	
+# Whether or not the game is complete 
+func is_game_over():
+	return false
+	
+# GameManager will call this to get the outcome from the mini-game
+# @return - a GameOutcomes enum item
+func get_score():
+	return GameOutcomes.BETTER
+	
+func endGame():
+	print("ending game")
+	gameOver = true
+	$CatSpawnTimer.stop()
+	$EndGameTimer.start()
+	
+
+
+func _on_GameTimer_timeout():
+	print("Game timed out")
+	endGame()
+
+
+func _on_EndGameTimer_timeout():
+	print("return to overworld")
+

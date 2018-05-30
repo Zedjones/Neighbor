@@ -2,9 +2,6 @@ extends Area2D
 signal on_cat_hit
 var CatColors = preload("res://GlobalData.gd").CatColor
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 enum CatSpeed { Slow = 1, Normal = 2, Fast = 3, Max = 5}
 var speedMod = CatSpeed.Normal;
 var facingRight = false;
@@ -17,7 +14,7 @@ var anim_name
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	vel = speedMod * 50
+	vel = (randi() % 4 +1) * 30
 	facingRight = position.x < 0
 
 	match color:
@@ -85,4 +82,4 @@ func right_cat():
 	
 	
 func wrong_cat():
-	vel = CatSpeed.Max * 50
+	vel = CatSpeed.Max * 30
