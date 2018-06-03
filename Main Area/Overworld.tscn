@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=2]
-[ext_resource path="res://Wander.gd" type="Script" id=3]
+[ext_resource path="res://Main Area/Wander.gd" type="Script" id=3]
 [ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=4]
 [ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=5]
-[ext_resource path="res://Elevator.gd" type="Script" id=6]
+[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -61,14 +62,15 @@ shape = SubResource( 1 )
 
 [node name="CatLady" type="KinematicBody2D" parent="Characters" index="1"]
 
+editor/display_folded = true
 position = Vector2( 437.76, 338.621 )
 z_index = 1
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Pause", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -96,11 +98,11 @@ editor/display_folded = true
 position = Vector2( 252.069, 410.836 )
 z_index = 1
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -128,11 +130,11 @@ editor/display_folded = true
 position = Vector2( 319.386, 494.018 )
 z_index = 1
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Visibility", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -160,11 +162,11 @@ editor/display_folded = true
 position = Vector2( 609.671, 258.511 )
 z_index = 1
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Pause", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -301,46 +303,139 @@ _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
 [node name="Elevators" type="Node" parent="Apartment/ApartmentMain" index="2"]
 
-[node name="Bottom" type="Area2D" parent="Apartment/ApartmentMain/Elevators" index="0"]
+[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( 474.863, 558.929 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 6 )
-_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
+target_path = NodePath("../Bottom")
 
-[node name="Bottom" type="CollisionShape2D" parent="Apartment/ApartmentMain/Elevators/Bottom" index="0"]
+[node name="Interactive Object" parent="Apartment/ApartmentMain/Elevators/Top" index="0"]
 
-position = Vector2( -3.5401, -0.394409 )
-scale = Vector2( 1.95968, 2.40513 )
+position = Vector2( 471.285, 497.2 )
+scale = Vector2( 0.562213, 0.75753 )
+player_path = NodePath("../../../../../Characters/Player")
+
+[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 6 )]
+
+target_path = NodePath("../Top")
+
+[node name="Interactive Object" parent="Apartment/ApartmentMain/Elevators/Bottom" index="0"]
+
+position = Vector2( 471.77, 559.008 )
+scale = Vector2( 0.540239, 0.724862 )
+player_path = NodePath("../../../../../Characters/Player")
+
+[node name="CollisionShape2D" parent="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object" index="0"]
+
+position = Vector2( -0.237854, -0.177368 )
+scale = Vector2( 3.31895, 3.21797 )
 shape = SubResource( 4 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Top" type="Area2D" parent="Apartment/ApartmentMain/Elevators" index="1"]
+[node name="Stairs" type="Node" parent="Apartment" index="1"]
 
-position = Vector2( 474.863, 496.152 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+script = ExtResource( 7 )
+player_path = NodePath("../../Characters/Player")
 
-[node name="Top" type="CollisionShape2D" parent="Apartment/ApartmentMain/Elevators/Top" index="0"]
+[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( -3.5401, -0.219543 )
-scale = Vector2( 1.95968, 2.40513 )
-shape = SubResource( 4 )
-_sections_unfolded = [ "Transform" ]
+target_path = NodePath("../2nd Floor Left")
 
-[connection signal="body_entered" from="Apartment/ApartmentMain/Elevators/Bottom" to="Characters/Player" method="_on_Bottom_body_entered"]
+[node name="Interactive Object" parent="Apartment/Stairs/1st Floor" index="0"]
 
-[connection signal="body_entered" from="Apartment/ApartmentMain/Elevators/Top" to="Characters/Player" method="_on_Top_body_entered"]
+position = Vector2( 122.547, 500.032 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 6 )]
+
+target_path = NodePath("../1st Floor")
+
+[node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Left" index="0"]
+
+position = Vector2( 122.372, 420.312 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 6 )]
+
+target_path = NodePath("../3rd Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Right" index="0"]
+
+position = Vector2( 377.64, 421.282 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 6 )]
+
+target_path = NodePath("../2nd Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Left" index="0"]
+
+position = Vector2( 341.27, 347.517 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 6 )]
+
+target_path = NodePath("../4th Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Right" index="0"]
+
+position = Vector2( 702.251, 348.116 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 6 )]
+
+target_path = NodePath("../5th Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/4th Floor Left" index="0"]
+
+position = Vector2( 467.801, 269.608 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 6 )]
+
+target_path = NodePath("../3rd Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/4th Floor Right" index="0"]
+
+position = Vector2( 742.76, 268.891 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 6 )]
+
+target_path = NodePath("../4th Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/5th Floor Left" index="0"]
+
+position = Vector2( 424.548, 190.108 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 6 )]
+
+target_path = NodePath("../6th Floor")
+
+[node name="Interactive Object" parent="Apartment/Stairs/5th Floor Right" index="0"]
+
+position = Vector2( 654.294, 188.348 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 6 )]
+
+target_path = NodePath("../5th Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/6th Floor" index="0"]
+
+position = Vector2( 654.532, 119.567 )
+scale = Vector2( 0.371902, 0.479105 )
 
 
+[editable path="Apartment/ApartmentMain/Elevators/Top"]
+[editable path="Apartment/ApartmentMain/Elevators/Bottom"]
+[editable path="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object"]
+[editable path="Apartment/Stairs/1st Floor"]
+[editable path="Apartment/Stairs/1st Floor/Interactive Object"]
+[editable path="Apartment/Stairs/2nd Floor Left"]
+[editable path="Apartment/Stairs/2nd Floor Right"]
+[editable path="Apartment/Stairs/3rd Floor Left"]
+[editable path="Apartment/Stairs/3rd Floor Right"]
+[editable path="Apartment/Stairs/4th Floor Left"]
+[editable path="Apartment/Stairs/4th Floor Right"]
+[editable path="Apartment/Stairs/5th Floor Left"]
+[editable path="Apartment/Stairs/5th Floor Right"]
+[editable path="Apartment/Stairs/6th Floor"]
