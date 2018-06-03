@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Interactive_Object.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Interactive_Object_Press.gd" type="Script" id=2]
+
+[node name="Interactive Object" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+
