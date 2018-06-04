@@ -9,7 +9,7 @@ The formating for this design document is based on the Game Design Document crea
 
 ## Overview
 #### Theme/Setting/Genre
-Neighbor is a narrative driven game that uses minigames as an additional means to exhibit the story. It takes place in a uniquely shaped 
+Neighbor is a narrative (minigame instead) driven game that uses minigames as an additional means to exhibit the story. It takes place in a uniquely shaped 
 apartment complex. Each floor has a different color scheme to add some variety to the world. You play as (We need a name for the 
 character) who has come back from work at around 6:00 PM. 
 #### Core Gameplay Mechanics Brief
@@ -38,6 +38,36 @@ Night in the Woods was a very important inspiration for this game. The idea that
 <Medium> (Game)
 Stardew Valley influenced me in how the minigames would appear in the game. Stardew Valley's minigames don't always require you to enter an instance of the game. They are built sometimes right into the overworld, such as the "minigame" for the mines, where you simply enter a mine and fight monsters by going deeper into the cave. There is no loading screen, you seemlessly go from being a farmer/villager person, to someone fighting off monsters. While our minigames aren't necessarily going to be as seemless as Stardew Valley there is still some influence taken from the game in that sense. I hope to have our game's minigames be somewhat seemless. The player should not feel like they are entering a completely different area, rather, taking the view of (main character) and playing through his eyes.
 	
-### Gameplay
+## Gameplay
+### Dialogue
 The dialogue options that the player will face will have a general format as to how they affect the NPC and player. One option is to disregard any request to help them, which will of course not help them in any way, and may actually reduce their happiness. The other options will help to different extents. For instance, the next amount of help you could provide would be a constant, where you don't play the minigame but give the NPC some valuable advice. The other two would be if you simply did the task (minigame) for the NPC, which would give points based on how well you did at the minigame, without any modifier, while the last dialogue would initiate the minigame and give you a higher modifier, where you will have given them more "happiness" than any other option. The options that give less happiness will of course drain (main character)'s energy & happiness less, as they require less effort from the player and (main character), while the greater the effort that they put into the dialogue and minigame, the more energy and happiness that will be drained from (main character) but the more happiness will be given to the NPC. This means that the player must sometimes pick and choose where he puts his/her energy.
+### Happiness
+### Minigames
+##### Hoarding
+##### Cooking
+##### Poetry
+##### Cat Catching
+
+## Story
+#### Story Brief
+#### Story
+
+## Assets
+### Art
+#### Characters
+###### Main Character
+###### Santino Rodriguez
+###### Elizabeth Hughes
+###### Fuyumi(Miyazawa)
+###### Joe Jones
+#### Building
+#### Bonus
+### Code
+##### IDK
+
+## Schedule
+#### Objective 1
+#### Objective 2
+#### Objective 3
+#### Objective 4
 
