@@ -42,6 +42,7 @@ Stardew Valley influenced me in how the minigames would appear in the game. Star
 ### Dialogue
 The dialogue options that the player will face will have a general format as to how they affect the NPC and player. One option is to disregard any request to help them, which will of course not help them in any way, and may actually reduce their happiness. The other options will help to different extents. For instance, the next amount of help you could provide would be a constant, where you don't play the minigame but give the NPC some valuable advice. The other two would be if you simply did the task (minigame) for the NPC, which would give points based on how well you did at the minigame, without any modifier, while the last dialogue would initiate the minigame and give you a higher modifier, where you will have given them more "happiness" than any other option. The options that give less happiness will of course drain (main character)'s energy & happiness less, as they require less effort from the player and (main character), while the greater the effort that they put into the dialogue and minigame, the more energy and happiness that will be drained from (main character) but the more happiness will be given to the NPC. This means that the player must sometimes pick and choose where he puts his/her energy.
 ### Happiness
+Happiness is determined in the background, each character in Neighbor has a happiness meter that goes to 100. (main character)'s meter increases and decreases depending on how many times he interacts with an NPC as well as the depth of the interaction. Other characters' happiness meter starts off relatively low, after which the player essentially determines when their happiness decreases and increases, if the player decides not to interact with an NPC for that day, their happiness might decrease, and if they decide to help them with whatever task they have to perform on that day, their happiness could increase. As the happiness increases and decreases, so does the amount of grays used in the character's color pallette respectively. 
 ### Minigames
 ##### Hoarding
 ##### Cooking
@@ -50,6 +51,7 @@ The dialogue options that the player will face will have a general format as to 
 
 ## Story
 #### Story Brief
+(Main character) 
 #### Story
 
 ## Assets
