@@ -8,7 +8,7 @@ export (NodePath) var player_path
 var player
 signal activated
 
-func _ready():
+func _enter_tree():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	player = get_node(player_path)
