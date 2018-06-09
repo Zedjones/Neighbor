@@ -18,6 +18,6 @@ func _ready():
 func _on_PlayButton_pressed():
 	print($Camera2D.position)
 	$Tween.interpolate_property($Camera2D, "position", $Camera2D.position, 
-		Vector2($Camera2D.position.x, get_viewport().get_size().y/2 + 51), 5, Tween.TRANS_QUAD, Tween.EASE_OUT)
+		Vector2($Camera2D.position.x, get_viewport().get_size().y/2 + 51), 3, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 

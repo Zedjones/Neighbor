@@ -208,8 +208,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Apartment" type="Node" parent="." index="1"]
 
-editor/display_folded = true
-
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
 position = Vector2( 433.621, 299.73 )
@@ -221,8 +219,11 @@ __meta__ = {
 
 [node name="ApartmentBoxes" type="Node" parent="Apartment/ApartmentMain" index="0"]
 
+editor/display_folded = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Apartment/ApartmentMain/ApartmentBoxes" index="0"]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -267,6 +268,8 @@ position = Vector2( 555.836, 137.616 )
 shape = SubResource( 3 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
+
+editor/display_folded = true
 
 [node name="HoarderDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="0"]
 
@@ -433,20 +436,19 @@ margin_right = 129.0
 margin_bottom = 41.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 1
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 6 )
 toggle_mode = false
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 text = "Play"
 flat = false
 align = 1
-_sections_unfolded = [ "Material", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Focus", "Material", "Visibility", "custom_fonts" ]
 
 [node name="SettingsButton" type="Button" parent="Menu/Container/ButtonContainer" index="1"]
 
@@ -467,7 +469,7 @@ size_flags_vertical = 1
 custom_fonts/font = SubResource( 6 )
 disabled = true
 toggle_mode = false
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 text = "Settings"
