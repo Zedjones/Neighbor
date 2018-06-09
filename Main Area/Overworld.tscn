@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main Area/Stairs.gd" type="Script" id=8]
 [ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Art_Assets/Square.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -49,6 +50,8 @@ _sections_unfolded = [ "Font", "Settings" ]
 [node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
+dayTime = Color( 0.254902, 0.686275, 0.898039, 1 )
+nightTime = Color( 0.268573, 0.143433, 0.734375, 1 )
 
 [node name="Characters" type="Node" parent="." index="0"]
 
@@ -594,6 +597,15 @@ text = "Settings"
 flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="Sky" type="Sprite" parent="." index="5"]
+
+modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
+position = Vector2( 593.874, 65.1004 )
+scale = Vector2( 499.856, 324.338 )
+z_index = -1
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
