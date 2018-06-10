@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://NPC.gd" type="Script" id=1]
 [ext_resource path="res://Interactive_Object.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -31,9 +32,15 @@ mini_game = null
 
 [node name="Interactive Object" parent="." index="0" instance=ExtResource( 2 )]
 
-visible = false
+position = Vector2( 5.11132, 0 )
+scale = Vector2( 2.75046, 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 216, 7.5, 16, 63 )
+_sections_unfolded = [ "Region" ]
 
 [node name="Animations" type="AnimationPlayer" parent="Sprite" index="0"]
 
