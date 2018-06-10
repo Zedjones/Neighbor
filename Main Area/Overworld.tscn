@@ -36,7 +36,7 @@ func _ready():
 
 func _on_PlayButton_pressed():
 	print($Camera2D.position)
-	$Tween.interpolate_property($Camera2D, \"position\", $Camera2D.position, Vector2($Camera2D.position.x, get_viewport().get_size().y/2 + 51), tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($Camera2D, \"position\", $Camera2D.position, Vector2($Camera2D.position.x, 300 + 51), tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($Sky, \"modulate\", dayTime, nightTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 
@@ -385,6 +385,7 @@ shape = SubResource( 5 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
+editor/display_folded = true
 script = ExtResource( 7 )
 player_path = NodePath("../../Characters/Player")
 
@@ -583,14 +584,13 @@ margin_right = 118.0
 margin_bottom = 37.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 7 )
 toggle_mode = false
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 text = "Play"
@@ -617,7 +617,7 @@ size_flags_vertical = 1
 custom_fonts/font = SubResource( 7 )
 disabled = true
 toggle_mode = false
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 text = "Settings"
