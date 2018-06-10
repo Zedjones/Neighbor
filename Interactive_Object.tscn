@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Interactive_Object.gd" type="Script" id=1]
 
-[node name="Interactive Object" type="Area2D"]
+[node name="Interactive Object" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -16,5 +16,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 player_path = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+[connection signal="body_exited" from="." to="." method="_on_Interactive_Object_body_exited"]
 
 

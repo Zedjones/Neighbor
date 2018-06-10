@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://NPC.gd" type="Script" id=1]
+[ext_resource path="res://Interactive_Object.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Idle Animation"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Special Animation"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "Walk Cycle"
+length = 1.0
+loop = false
+step = 0.1
+
+[node name="NPC" type="Node" index="0"]
+
+script = ExtResource( 1 )
+mini_game = null
+
+[node name="Interactive Object" parent="." index="0" instance=ExtResource( 2 )]
+
+visible = false
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+[node name="Animations" type="AnimationPlayer" parent="Sprite" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+"anims/Idle Animation" = SubResource( 1 )
+"anims/Special Animation" = SubResource( 2 )
+"anims/Walk Cycle" = SubResource( 3 )
+blend_times = [  ]
+
+[connection signal="activated" from="Interactive Object" to="." method="_on_Interactive_Object_activated"]
+
+
