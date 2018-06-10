@@ -45,6 +45,9 @@ The dialogue options that the player will face will have a general format as to 
 Happiness is determined in the background, each character in Neighbor has a happiness meter that goes to 100. (main character)'s meter increases and decreases depending on how many times he interacts with an NPC as well as the depth of the interaction. Other characters' happiness meter starts off relatively low, after which the player essentially determines when their happiness decreases and increases, if the player decides not to interact with an NPC for that day, their happiness might decrease, and if they decide to help them with whatever task they have to perform on that day, their happiness could increase. As the happiness increases and decreases, so does the amount of grays used in the character's color pallette respectively. 
 ### Minigames
 ##### Hoarding
+In the hoarding mini-game, the player helps the hoarder discard of and organize items into the appropriate bins (e.g. a newspaper goes into the recycling bin). Depending on the choices made in the dialogue with the hoarder, he may reach in and take an item back more or less often, saying something along the lines of "I really need this, sorry". 
+
+After a set period of time, the hoarder says that he has something else he needs to attend to and then the game ends. There is no "score" shown to the player, although there is a count of items contained in the code. The reason that the count of items remaining is not displayed is to make it so that the player helps the hoarder because he or she wants to, instead of just trying to "beat" the game. 
 ##### Cooking
 ##### Poetry
 ##### Cat Catching
