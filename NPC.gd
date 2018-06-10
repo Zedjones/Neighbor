@@ -6,17 +6,15 @@ extends Node
 
 export (PackedScene) var mini_game
 signal player_entered
+export (float) var happiness
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
-
 func _on_Interactive_Object_activated():
 	emit_signal(player_entered)
+	
+# GameManager will call this to adjust happiness after dialogue
+func adjust_happiness(points):

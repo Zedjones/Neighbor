@@ -458,9 +458,10 @@ shape = SubResource( 1 )
 
 [node name="RunSprite" type="Sprite" parent="." index="2"]
 
+visible = false
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 263, 81, 24, 19 )
+region_rect = Rect2( 237, 81, 24, 18 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
@@ -485,10 +486,9 @@ _sections_unfolded = [ "Pause", "Playback Options" ]
 
 [node name="SitSprite" type="Sprite" parent="." index="4"]
 
-visible = false
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 24, 20, 20, 16 )
+region_rect = Rect2( 24, 74, 20, 16 )
 _sections_unfolded = [ "Region", "Visibility" ]
 
 [connection signal="input_event" from="." to="." method="_on_OrangeCat_input_event"]

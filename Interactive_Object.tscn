@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Interactive_Object.gd" type="Script" id=1]
 
-[node name="Interactive Object" type="Area2D" index="0"]
+[node name="Interactive Object" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
