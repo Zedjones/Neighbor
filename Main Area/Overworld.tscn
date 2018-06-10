@@ -11,7 +11,7 @@
 [ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=10]
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Node
 
@@ -43,33 +43,25 @@ func _on_PlayButton_pressed():
 
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8.85156, 24.7474 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 446.204, 1.80487 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 316.922, 1.9989 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
-
-[sub_resource type="DynamicFont" id=5]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 9 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=6]
 
@@ -79,9 +71,17 @@ use_filter = false
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="DynamicFont" id=7]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 9 )
+_sections_unfolded = [ "Font", "Settings" ]
+
 [node name="World" type="Node" index="0"]
 
-script = SubResource( 7 )
+script = SubResource( 1 )
 dayTime = Color( 0.254902, 0.686275, 0.898039, 1 )
 nightTime = Color( 0.268573, 0.143433, 0.734375, 1 )
 
@@ -113,7 +113,7 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Player" index="1"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CatLady" type="KinematicBody2D" parent="Characters" index="1"]
 
@@ -144,7 +144,7 @@ _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 position = Vector2( -0.330471, 0 )
 scale = Vector2( 1.20069, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Artist" type="KinematicBody2D" parent="Characters" index="2"]
@@ -156,7 +156,7 @@ collision_layer = 2
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Collision", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -175,7 +175,7 @@ _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 position = Vector2( -0.162646, -0.550459 )
 scale = Vector2( 1.23404, 1.05304 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Student" type="KinematicBody2D" parent="Characters" index="3"]
@@ -206,12 +206,13 @@ _sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibili
 
 position = Vector2( -0.078584, 0.00624247 )
 scale = Vector2( 1.40081, 1.03644 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
-[node name="NPC" parent="Characters" index="4" instance=ExtResource( 5 )]
+[node name="Hoarder" parent="Characters" index="4" instance=ExtResource( 5 )]
 
-position = Vector2( 609.323, 254.573 )
+position = Vector2( 609.323, 259.573 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Visibility", "Z Index" ]
 
 [node name="Apartment" type="Node" parent="." index="1"]
 
@@ -239,37 +240,37 @@ bounce = 0.0
 [node name="FirstFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="0"]
 
 position = Vector2( 441.442, 583.372 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
 
 position = Vector2( 413.258, 520.879 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
 
 position = Vector2( 412.895, 438.254 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
 
 position = Vector2( 534.881, 364.967 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
 
 position = Vector2( 585.111, 286.769 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
 
 position = Vector2( 552.489, 208.524 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
 
 position = Vector2( 555.836, 137.616 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
@@ -352,7 +353,7 @@ player_path = NodePath("../../../../../Characters/Player")
 
 position = Vector2( -0.237854, -0.177368 )
 scale = Vector2( 3.31895, 3.21797 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
@@ -518,7 +519,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -559,7 +560,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -585,7 +586,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
