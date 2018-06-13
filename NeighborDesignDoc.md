@@ -51,6 +51,9 @@ After a set period of time, the hoarder says that he has something else he needs
 ##### Cooking
 ##### Poetry
 ##### Cat Catching
+When talking with Elizabeth Hughes, you find she has a bit of trouble keeping her many cats in line some time. In this mini game the player helps her out by trying to catch the cat shes looking for.
+
+She has plenty of cats so the player must pay attention to the dialog to make sure they catch the right one. Trying to catch the wrong one will just send them off dashing away. If the player fails to catch the right one in time, they will get away. 
 
 ## Story
 #### Story Brief
