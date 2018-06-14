@@ -6,8 +6,8 @@
 
 [node name="Sun" type="Sprite" parent="." index="0"]
 
-position = Vector2( 220, 20 )
-scale = Vector2( 3, 3 )
+position = Vector2( 220, 0 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 centered = false
 vframes = 4
@@ -16,8 +16,8 @@ _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 [node name="Star" type="Sprite" parent="." index="1"]
 
-position = Vector2( 371, 20 )
-scale = Vector2( 3, 3 )
+position = Vector2( 371, 0 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 centered = false
 vframes = 4
@@ -27,8 +27,8 @@ _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 [node name="Fire" type="Sprite" parent="." index="2"]
 
-position = Vector2( 531, 20 )
-scale = Vector2( 3, 3 )
+position = Vector2( 531, 0 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 centered = false
 vframes = 4
@@ -38,8 +38,8 @@ _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 [node name="Candle" type="Sprite" parent="." index="3"]
 
-position = Vector2( 692, 20 )
-scale = Vector2( 3, 3 )
+position = Vector2( 692, 0 )
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 centered = false
 vframes = 4

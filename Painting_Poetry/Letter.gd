@@ -1,8 +1,12 @@
 extends Label
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var vertMove = true
+var horizMove = true
+
+var vertTime = 0
+var horizTime = 0
+
+var randScale
 
 func _ready():
 	# Called every time the node is added to the scene.

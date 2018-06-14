@@ -4,7 +4,7 @@ export (PackedScene) var Letter
 
 signal kill
 
-var spacing = 20
+var spacing = 10
 
 var sun = ["the world grew darker", "as the sun dove", "into the ocean"]
 var star = ["bursting light", "a star flew", "dissipating into the night"]
@@ -17,7 +17,9 @@ var currentLines = {"sun": "", "star": "", "fire": "", "candle": ""}
 
 var currentLetterNum = {"sun": 0, "star": 0, "fire": 0, "candle": 0}
 
-var poemLetterPos = Vector2(525, 250)
+var paintCount = {"sun": 0, "star": 4, "fire": 8, "candle": 12}
+
+var poemLetterPos = Vector2(620, 275)
 
 func _ready():
 	$Paintings/Sun.frame = 0
@@ -37,6 +39,12 @@ func _process(delta):
 	for key in currentLines:
 		write_poem(key)
 	
+	if currentLineNum == 3:
+		$Paintings/Sun.frame = paintCount["sun"]
+		$Paintings/Star.frame = paintCount["star"]
+		$Paintings/Fire.frame = paintCount["fire"]
+		$Paintings/Candle.frame = paintCount["candle"]
+	
 	pass
 
 func current_lines(num):
@@ -47,11 +55,7 @@ func current_lines(num):
 
 func setup(lineNum):
 	
-	if currentLineNum > 2:
-		currentLineNum = 0
-	
 	current_lines(currentLineNum)
-	currentLineNum += 1
 	
 	var linePos = Vector2(10, 250)
 	
@@ -76,6 +80,23 @@ func spawn_line(line, pos):
 func write_poem(poem):
 	if Input.is_action_pressed(currentLines[poem].substr(currentLetterNum[poem], 1)):
 		#connect new signal for game reset not just line reset
+		var letterPos = Vector2(10, 250)
+		match poem:
+			"star":
+				letterPos = Vector2(letterPos.x, letterPos.y + 75)
+			"fire":
+				letterPos = Vector2(letterPos.x, letterPos.y + 150)
+			"candle":
+				letterPos = Vector2(letterPos.x, letterPos.y + 225)
+		
+		letterPos = Vector2(letterPos.x + (spacing * currentLetterNum[poem]), letterPos.y)
+		var letter = Letter.instance()
+		add_child(letter)
+		letter.spawn_letter(currentLines[poem].substr(currentLetterNum[poem], 1))
+		connect("kill", letter, "kill_letter")
+		letter.add_color_override("font_color", Color(0,0,0))
+		letter.rect_position = letterPos
+		
 		print("MATCH")
 		currentLetterNum[poem] += 1
 	elif currentLines[poem].substr(currentLetterNum[poem], 1) == " ":
@@ -83,11 +104,14 @@ func write_poem(poem):
 	
 	if currentLetterNum[poem] == currentLines[poem].length():
 		print("Spawn")
+		paintCount[poem] += 1
 		currentLetterNum[poem] = 0
 		spawn_poem(poem)
-		poemLetterPos = Vector2(525, poemLetterPos.y + 75)
+		poemLetterPos = Vector2(620, poemLetterPos.y + 100)
 		emit_signal("kill")
-		setup(currentLineNum)
+		currentLineNum += 1
+		if currentLineNum < 3:
+			setup(currentLineNum)
 
 func spawn_poem(poem):
 	var currentLetterPos = 0

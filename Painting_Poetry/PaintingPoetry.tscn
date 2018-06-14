@@ -12,10 +12,10 @@ Letter = ExtResource( 2 )
 
 [node name="Paintings" parent="." index="0" instance=ExtResource( 3 )]
 
-[node name="poemstuff" type="Sprite" parent="." index="1"]
+[node name="Notebook" type="Sprite" parent="." index="1"]
 
-position = Vector2( 720, 400 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 752.5, 382.22 )
+scale = Vector2( 3.03879, 3.03879 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
