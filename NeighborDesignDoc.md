@@ -74,8 +74,9 @@ She has plenty of cats so the player must pay attention to the dialog to make su
 ##### IDK
 
 ## Schedule
-#### Objective 1
-#### Objective 2
-#### Objective 3
-#### Objective 4
+#### Milestone 1
+Be able to walk around apartment and interact with the environment by talking to NPCs and having a conversation with them. The dialogues should then lead to their corresponding scene, whether simply going back into the apartment, or the minigame. There does not need to be any other mechanics built into this yet, including day cycle, time management, etc. The only other mechanics that we should be building towards here, is the beginning of a proper implementation of the grayscale.
+#### Milestone 2
+#### Milestone 3
+#### Milestone 4
 
