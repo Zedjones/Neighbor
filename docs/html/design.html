@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Game Design &mdash; Neighbor 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Neighbor 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Game Manager" href="gamemanager.html"/>
+        <link rel="prev" title="Welcome to Neighbor’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Neighbor
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Game Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#techno-beaver-alliance-studios">Techno-Beaver Alliance Studios</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lincense-credit">Lincense Credit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#theme-setting-genre">Theme/Setting/Genre</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-gameplay-mechanics-brief">Core Gameplay Mechanics Brief</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#targeted-platforms">Targeted platforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monetization-model-brief-document">Monetization model (Brief/Document)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#influences-brief">Influences (Brief)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#night-in-the-woods">Night in the Woods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stardew-valley">Stardew Valley</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#gameplay">Gameplay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dialogue">Dialogue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#happiness">Happiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minigames">Minigames</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hoarding">Hoarding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dayweek.html">Day/Week Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Neighbor</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Game Design</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/design.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="game-design">
+<h1>Game Design<a class="headerlink" href="#game-design" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="techno-beaver-alliance-studios">
+<h2>Techno-Beaver Alliance Studios<a class="headerlink" href="#techno-beaver-alliance-studios" title="Permalink to this headline">¶</a></h2>
+<p>Tadeo Menichelli, Jeb Atkinson, Amanda DellaStretto, Nicholas Jones, Varun Mahtre, Lesther Reynoso</p>
+<div class="section" id="lincense-credit">
+<h3>Lincense Credit<a class="headerlink" href="#lincense-credit" title="Permalink to this headline">¶</a></h3>
+<p>The formating for this design document is based on the Game Design Document created by Alec MArkarian and Benjamin Stanley!</p>
+</div>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theme-setting-genre">
+<h3>Theme/Setting/Genre<a class="headerlink" href="#theme-setting-genre" title="Permalink to this headline">¶</a></h3>
+<p>Neighbor is a narrative (minigame instead) driven game that uses minigames as an additional means to exhibit the story. It takes place in a uniquely shaped apartment complex. Each floor has a different color scheme to add some variety to the world. You play as (We need a name for the character) who has come back from work at around 6:00 PM.</p>
+</div>
+<div class="section" id="core-gameplay-mechanics-brief">
+<h3>Core Gameplay Mechanics Brief<a class="headerlink" href="#core-gameplay-mechanics-brief" title="Permalink to this headline">¶</a></h3>
+<p>Neighbor uses many different mechanics to show different parts of the story. These mechanics all show up in a variety of ways, including
+being in the many minigames that Neighbor will have the player interacting with.</p>
+<p>A main aspect of the game that will the player will experience is the changing grayscale levels. When the player starts the game,
+(main character) will be seen in vivid colours, while the rest of the world will completely grayscaled. As the game progresses,
+and the player interacts with players, the amount of grayscale that is visible will decrease or increase depending on how positively
+(main character) interacts with the NPCs. While (main character) affects the world around him through his actions, (main character) will
+lose/gain grayscale depending on how much of his time he gives his Neighbors. This represents him giving part of himself to the NPCs.</p>
+<p>Each game shares a common happiness meter(spelling??) that calculates how &#8220;happy&#8221; you made the NPC, this is determined in two ways. How well you did at the minigame itself, if you played the minigame, as well as what dialogue options you chose. For dialogue choices, there is a general format that has four options.</p>
+</div>
+<div class="section" id="targeted-platforms">
+<h3>Targeted platforms<a class="headerlink" href="#targeted-platforms" title="Permalink to this headline">¶</a></h3>
+<p>Our target for this game is PC first, and a later port to mobile. This changes how we develop the game, as we cannot complicate the controls too much and we have to keep in mind touch controls for all the minigames and overworld movement.</p>
+</div>
+<div class="section" id="monetization-model-brief-document">
+<h3>Monetization model (Brief/Document)<a class="headerlink" href="#monetization-model-brief-document" title="Permalink to this headline">¶</a></h3>
+<p>We plan on selling the game for X dollars, we need to decide this value.</p>
+</div>
+</div>
+<div class="section" id="influences-brief">
+<h2>Influences (Brief)<a class="headerlink" href="#influences-brief" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="night-in-the-woods">
+<h3>Night in the Woods<a class="headerlink" href="#night-in-the-woods" title="Permalink to this headline">¶</a></h3>
+<p>&lt;Heavy?&gt; (Game)
+Night in the Woods was a very important inspiration for this game. The idea that the game would be based around these minigames that helped develop the plot/story of the game is very important to this game. Night in the Woods has minigames that help you understand what Mae Borowski is experiencing through the game. Everything is completely new to Mae, and that&#8217;s what makes each minigame interesting, the fact that you are thrown into each minigame with absolutely no tutorial is something that influenced me as to how gameplay expresses parts of the story. The other thing that Night in the Woods does well is have a narrative story that is very relatable and means something to the player. While all games have things in their stories that you can draw from, such as that the reality of war is very ugly and your decisions can affect more than just yourself in Spec Ops: The Line, I believe that Night in the Woods shows so much more. The game delves into mental illness, loneliness, and many other REAL emotions in a very interesting way. This is what we want from our game, we want the players to feel something from playing our game. We want to make them cry, and realize that helping each other and being kind in a much deeper way makes the world brighter, but to also remember to take care of yourself.</p>
+</div>
+<div class="section" id="stardew-valley">
+<h3>Stardew Valley<a class="headerlink" href="#stardew-valley" title="Permalink to this headline">¶</a></h3>
+<p>&lt;Medium&gt; (Game)
+Stardew Valley influenced me in how the minigames would appear in the game. Stardew Valley&#8217;s minigames don&#8217;t always require you to enter an instance of the game. They are built sometimes right into the overworld, such as the &#8220;minigame&#8221; for the mines, where you simply enter a mine and fight monsters by going deeper into the cave. There is no loading screen, you seemlessly go from being a farmer/villager person, to someone fighting off monsters. While our minigames aren&#8217;t necessarily going to be as seemless as Stardew Valley there is still some influence taken from the game in that sense. I hope to have our game&#8217;s minigames be somewhat seemless. The player should not feel like they are entering a completely different area, rather, taking the view of (main character) and playing through his eyes.</p>
+</div>
+</div>
+</div>
+<div class="section" id="gameplay">
+<h1>Gameplay<a class="headerlink" href="#gameplay" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dialogue">
+<h2>Dialogue<a class="headerlink" href="#dialogue" title="Permalink to this headline">¶</a></h2>
+<p>The dialogue options that the player will face will have a general format as to how they affect the NPC and player. One option is to disregard any request to help them, which will of course not help them in any way, and may actually reduce their happiness. The other options will help to different extents. For instance, the next amount of help you could provide would be a constant, where you don&#8217;t play the minigame but give the NPC some valuable advice. The other two would be if you simply did the task (minigame) for the NPC, which would give points based on how well you did at the minigame, without any modifier, while the last dialogue would initiate the minigame and give you a higher modifier, where you will have given them more &#8220;happiness&#8221; than any other option. The options that give less happiness will of course drain (main character)&#8217;s energy &amp; happiness less, as they require less effort from the player and (main character), while the greater the effort that they put into the dialogue and minigame, the more energy and happiness that will be drained from (main character) but the more happiness will be given to the NPC. This means that the player must sometimes pick and choose where he puts his/her energy.</p>
+</div>
+<div class="section" id="happiness">
+<h2>Happiness<a class="headerlink" href="#happiness" title="Permalink to this headline">¶</a></h2>
+<p>Happiness is determined in the background, each character in Neighbor has a happiness meter that goes to 100. (main character)&#8217;s meter increases and decreases depending on how many times he interacts with an NPC as well as the depth of the interaction. Other characters&#8217; happiness meter starts off relatively low, after which the player essentially determines when their happiness decreases and increases, if the player decides not to interact with an NPC for that day, their happiness might decrease, and if they decide to help them with whatever task they have to perform on that day, their happiness could increase. As the happiness increases and decreases, so does the amount of grays used in the character&#8217;s color pallette respectively.</p>
+</div>
+<div class="section" id="minigames">
+<h2>Minigames<a class="headerlink" href="#minigames" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hoarding">
+<h3>Hoarding<a class="headerlink" href="#hoarding" title="Permalink to this headline">¶</a></h3>
+<p>In the hoarding mini-game, the player helps the hoarder discard of and organize items into the appropriate bins (e.g. a newspaper goes into the recycling bin). Depending on the choices made in the dialogue with the hoarder, he may reach in and take an item back more or less often, saying something along the lines of &#8220;I really need this, sorry&#8221;.</p>
+<p>After a set period of time, the hoarder says that he has something else he needs to attend to and then the game ends. There is no &#8220;score&#8221; shown to the player, although there is a count of items contained in the code. The reason that the count of items remaining is not displayed is to make it so that the player helps the hoarder because he or she wants to, instead of just trying to &#8220;beat&#8221; the game.
+##### Cooking
+##### Poetry
+##### Cat Catching
+When talking with Elizabeth Hughes, you find she has a bit of trouble keeping her many cats in line some time. In this mini game the player helps her out by trying to catch the cat shes looking for.</p>
+<p>She has plenty of cats so the player must pay attention to the dialog to make sure they catch the right one. Trying to catch the wrong one will just send them off dashing away. If the player fails to catch the right one in time, they will get away.</p>
+<p>## Story
+#### Story Brief
+(Main character)
+#### Story</p>
+<p>## Assets
+### Art
+#### Characters
+###### Main Character
+###### Santino Rodriguez
+###### Elizabeth Hughes
+###### Fuyumi(Miyazawa)
+###### Joe Jones
+#### Building
+#### Bonus
+### Code
+##### IDK</p>
+<p>## Schedule
+#### Milestone 1
+Be able to walk around apartment and interact with the environment by talking to NPCs and having a conversation with them. The dialogues should then lead to their corresponding scene, whether simply going back into the apartment, or the minigame. There does not need to be any other mechanics built into this yet, including day cycle, time management, etc. The only other mechanics that we should be building towards here, is the beginning of a proper implementation of the grayscale.
+#### Milestone 2
+#### Milestone 3
+#### Milestone 4</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gamemanager.html" class="btn btn-neutral float-right" title="Game Manager" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Neighbor’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Lesther Reynoso.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
