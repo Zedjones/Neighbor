@@ -97,6 +97,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#player-enters-dialog">Player enters dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#player-extis-dialog-mini-game">Player extis dialog (mini game)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#player-extis-dialog-no-mini-game">Player extis dialog ( no mini game)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-goes-to-his-apartment">Player goes to his apartment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#day-end">Day End</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#day-start">Day Start</a></li>
 </ul>
 </li>
 </ul>
@@ -168,6 +171,19 @@
 <div class="section" id="player-extis-dialog-no-mini-game">
 <h2>Player extis dialog ( no mini game)<a class="headerlink" href="#player-extis-dialog-no-mini-game" title="Permalink to this headline">¶</a></h2>
 <p>The game manager will return player movement control.</p>
+</div>
+<div class="section" id="player-goes-to-his-apartment">
+<h2>Player goes to his apartment<a class="headerlink" href="#player-goes-to-his-apartment" title="Permalink to this headline">¶</a></h2>
+<p>when the player enters the apartment and presses the select button, it will trigger the interactable object, on enter, if pressed. The result of the signal is to inform the game manager to end the day.</p>
+</div>
+<div class="section" id="day-end">
+<h2>Day End<a class="headerlink" href="#day-end" title="Permalink to this headline">¶</a></h2>
+<p>The day ends when the player goes to his apartment and presses select. the day wiil end. Current time of night is subtracted from 11 pm and if the delta is positive, its added to the arrival time of the next day.</p>
+<p>As the day ends, the camera pans up to the sky, the sky changes to day time and the next day starts.</p>
+</div>
+<div class="section" id="day-start">
+<h2>Day Start<a class="headerlink" href="#day-start" title="Permalink to this headline">¶</a></h2>
+<p>The day starts with the camera facing the sky showing the player&#8217;s apartment and pans down the entire apartment. When the player leaves for work, time skips to evening, sky tweens to dark and the player arrives later in the day. The time of night is dependant on when the player when to sleep the night before.</p>
 </div>
 </div>
 

@@ -30,3 +30,20 @@ Player extis dialog ( no mini game)
 -----------------------------------
 
 The game manager will return player movement control. 
+
+Player goes to his apartment
+----------------------------
+
+when the player enters the apartment and presses the select button, it will trigger the interactable object, on enter, if pressed. The result of the signal is to inform the game manager to end the day. 
+
+Day End
+-------
+
+The day ends when the player goes to his apartment and presses select. the day wiil end. Current time of night is subtracted from 11 pm and if the delta is positive, its added to the arrival time of the next day. 
+
+As the day ends, the camera pans up to the sky, the sky changes to day time and the next day starts. 
+
+Day Start
+---------
+
+The day starts with the camera facing the sky showing the player's apartment and pans down the entire apartment. When the player leaves for work, time skips to evening, sky tweens to dark and the player arrives later in the day. The time of night is dependant on when the player when to sleep the night before. 
