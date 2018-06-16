@@ -47,8 +47,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Neighbor'
-copyright = '2018, Lesther Reynoso'
-author = 'Lesther Reynoso'
+copyright = '2018, TBA Studios'
+author = 'TBA Studios'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -223,7 +223,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Neighbor.tex', 'Neighbor Documentation',
-     'Lesther Reynoso', 'manual'),
+     'TBA Studios', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
