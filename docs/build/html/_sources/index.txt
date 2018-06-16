@@ -9,16 +9,16 @@ Welcome to Neighbor's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   .. design
+   design
    gamemanager
    minigameinterface
    npcinterface
    interactablelement
    dialogsystem
    savedata
-   dayweek
+   timemanager
    scenemanager
    pausing
    usecases

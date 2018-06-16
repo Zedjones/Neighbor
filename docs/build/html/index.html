@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="Neighbor 0.0.1 documentation" href="#"/>
-        <link rel="next" title="Game Manager" href="gamemanager.html"/> 
+        <link rel="next" title="Game Design" href="design.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -81,13 +81,16 @@
             
             
                 <ul>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#gameplay">Gameplay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dayweek.html">Day/Week Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timemanager.html">Time Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timemanager.html#time">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
@@ -140,44 +143,19 @@
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#gameplay">Gameplay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="minigameinterface.html#start-game">Start Game</a></li>
-<li class="toctree-l2"><a class="reference internal" href="minigameinterface.html#game-ended">Game Ended</a></li>
-<li class="toctree-l2"><a class="reference internal" href="minigameinterface.html#score">Score</a></li>
-<li class="toctree-l2"><a class="reference internal" href="minigameinterface.html#difficulty">Difficulty</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npcinterface.html#happiness">Happiness</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcinterface.html#door-space">Door/Space</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcinterface.html#dialog">Dialog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcinterface.html#mini-game">Mini Game</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="interactablelement.html#on-enter">On Enter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactablelement.html#on-enter-if-pressed">On Enter, If Pressed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interactablelement.html#on-exit">On Exit</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dayweek.html">Day/Week Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timemanager.html">Time Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timemanager.html#time">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-approaches-a-neighbor">Player approaches a neighbor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-acknowledges-a-neighbor">Player acknowledges a neighbor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-ignores-a-neighbor">Player ignores a neighbor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-enters-dialog">Player enters dialog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-extis-dialog-mini-game">Player extis dialog (mini game)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-extis-dialog-no-mini-game">Player extis dialog ( no mini game)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#player-goes-to-his-apartment">Player goes to his apartment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#day-end">Day End</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usecases.html#day-start">Day Start</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
 </ul>
 </div>
 </div>
@@ -197,7 +175,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gamemanager.html" class="btn btn-neutral float-right" title="Game Manager" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="design.html" class="btn btn-neutral float-right" title="Game Design" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

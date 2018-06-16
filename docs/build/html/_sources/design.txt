@@ -80,35 +80,64 @@ Hoarding
 In the hoarding mini-game, the player helps the hoarder discard of and organize items into the appropriate bins (e.g. a newspaper goes into the recycling bin). Depending on the choices made in the dialogue with the hoarder, he may reach in and take an item back more or less often, saying something along the lines of "I really need this, sorry". 
 
 After a set period of time, the hoarder says that he has something else he needs to attend to and then the game ends. There is no "score" shown to the player, although there is a count of items contained in the code. The reason that the count of items remaining is not displayed is to make it so that the player helps the hoarder because he or she wants to, instead of just trying to "beat" the game. 
-##### Cooking
-##### Poetry
-##### Cat Catching
+
+
+
+Cooking
+~~~~~~~
+
+Poetry
+~~~~~~
+
+Cat Catching
+~~~~~~~~~~~~
+
 When talking with Elizabeth Hughes, you find she has a bit of trouble keeping her many cats in line some time. In this mini game the player helps her out by trying to catch the cat shes looking for.
 
 She has plenty of cats so the player must pay attention to the dialog to make sure they catch the right one. Trying to catch the wrong one will just send them off dashing away. If the player fails to catch the right one in time, they will get away. 
 
-## Story
-#### Story Brief
+Story
+-----
+
+Story Brief
+~~~~~~~~~~~
+
 (Main character) 
-#### Story
 
-## Assets
-### Art
-#### Characters
-###### Main Character
-###### Santino Rodriguez
-###### Elizabeth Hughes
-###### Fuyumi(Miyazawa)
-###### Joe Jones
-#### Building
-#### Bonus
-### Code
-##### IDK
+Story
+~~~~~
 
-## Schedule
-#### Milestone 1
+- Assets
+  - Art
+  
+   - Characters
+
+    - Main Character
+    - Santino Rodriguez
+    - Elizabeth Hughes
+    - Fuyumi(Miyazawa)
+    - Joe Jones
+
+   - Building
+   - Bonus
+
+  - Code
+    - IDK
+
+Schedule
+--------
+
+Milestone 1
+~~~~~~~~~~~
+
 Be able to walk around apartment and interact with the environment by talking to NPCs and having a conversation with them. The dialogues should then lead to their corresponding scene, whether simply going back into the apartment, or the minigame. There does not need to be any other mechanics built into this yet, including day cycle, time management, etc. The only other mechanics that we should be building towards here, is the beginning of a proper implementation of the grayscale.
-#### Milestone 2
-#### Milestone 3
-#### Milestone 4
+
+Milestone 2
+~~~~~~~~~~~
+
+Milestone 3
+~~~~~~~~~~~
+
+Milestone 4
+~~~~~~~~~~~
 

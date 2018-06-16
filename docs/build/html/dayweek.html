@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Day/Week Cycle &mdash; Neighbor 0.0.1 documentation</title>
+  <title>Time Manager &mdash; Neighbor 0.0.1 documentation</title>
   
 
   
@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="Neighbor 0.0.1 documentation" href="index.html"/> 
+    <link rel="top" title="Neighbor 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Scene Manager" href="scenemanager.html"/>
+        <link rel="prev" title="Save Data" href="savedata.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,14 +81,21 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Game Design</a></li>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Time Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interation-time-cost">Interation Time Cost</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#time">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
 </ul>
 
             
@@ -117,7 +126,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Day/Week Cycle</li>
+    <li>Time Manager</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -131,14 +140,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="day-week-cycle">
-<h1>Day/Week Cycle<a class="headerlink" href="#day-week-cycle" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="time-manager">
+<h1>Time Manager<a class="headerlink" href="#time-manager" title="Permalink to this headline">¶</a></h1>
+<p>The Time Manager will be the interface for keeping track of the time of day, and day of the week.</p>
+<p>Player comes home at 6 pm
+Player should go to bed by 11 pm
+Player goes to work at 9 am
+Player passes out at 2 am</p>
+<p>Any time after 11 pm is a tracked offset that is applied to the players arrival time the next night.</p>
+<div class="section" id="interation-time-cost">
+<h2>Interation Time Cost<a class="headerlink" href="#interation-time-cost" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="45%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">A</th>
+<th class="head">interaction</th>
+<th class="head">time cost</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>player ignores after talking</td>
+<td>5 min</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>player just plays mini game</td>
+<td>60 min</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>player gives advice</td>
+<td>20</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>advice and plays mini game</td>
+<td>120 min</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="time">
+<h1>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h1>
+<p>Add time
+hour 12/24?
+minutes 0-59
+Day (sun, sat)</p>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scenemanager.html" class="btn btn-neutral float-right" title="Scene Manager" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="savedata.html" class="btn btn-neutral" title="Save Data" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

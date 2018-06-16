@@ -1,5 +1,5 @@
 Mini Game Interface
-============
+===================
 
 The mini game interface serves to abstract out a communication interface that the game manager can use to communicate with the characters' mini games. 
 
