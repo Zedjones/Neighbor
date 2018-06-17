@@ -10,7 +10,7 @@ source_file="res://Art_Assets/CatGameSprites.png"
 source_md5="cf3212c667e1e94c278967f52485bbf4"
 
 dest_files=[ "res://.import/CatGameSprites.png-0e21bc02d968fa6a9fc9e4b01af310bd.stex" ]
-dest_md5="2715dea1e6186a410ab54a3f24cd7c53"
+dest_md5="b191a9efe93aeb677eac8df2900d6ee3"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

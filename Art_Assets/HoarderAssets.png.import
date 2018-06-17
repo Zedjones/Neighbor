@@ -10,7 +10,7 @@ source_file="res://Art_Assets/HoarderAssets.png"
 source_md5="c161afebbacd38bc9c5a4421910a78fe"
 
 dest_files=[ "res://.import/HoarderAssets.png-8496f0ea2bd730df79b32c711d990c1f.stex" ]
-dest_md5="3e0d1d78df37ac470f121d6093f5a8f3"
+dest_md5="890c5b891d9cb1bf6a533cb216f11520"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

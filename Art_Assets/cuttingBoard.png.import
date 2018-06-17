@@ -10,7 +10,7 @@ source_file="res://Art_Assets/cuttingBoard.png"
 source_md5="95407dcbd1acf2d909d6112baf2e6518"
 
 dest_files=[ "res://.import/cuttingBoard.png-372548623ee099a1cfec1244c64cc9c0.stex" ]
-dest_md5="0f693dad00275bb1069fce9677962340"
+dest_md5="847a040aa61e2c1e6263bd40d13fcb25"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hoarding Mini Game/Entities/SortBox.gd" type="Script" id=1]
+[ext_resource path="res://Art_Assets/HoarderAssets.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.1745, 8.07349 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 12.3684, 13.2076 )
+
+[node name="SortBox" type="Area2D"]
+
+position = Vector2( 156.75, 128.154 )
+scale = Vector2( 5, 5 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+type = null
+box_pos = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( -0.148954, 0.316549 )
+scale = Vector2( 1.59253, 1.84671 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 233, 0, 32, 30 )
+_sections_unfolded = [ "Animation", "Offset", "Pause", "Region", "Transform", "Z Index" ]
+
+[node name="Center" type="Area2D" parent="." index="2"]
+
+position = Vector2( -0.776966, -0.58436 )
+scale = Vector2( 0.046079, 0.0457888 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center" index="0"]
+
+position = Vector2( -0.203645, -0.237259 )
+scale = Vector2( 2.57985, 2.42215 )
+shape = SubResource( 2 )
+
+

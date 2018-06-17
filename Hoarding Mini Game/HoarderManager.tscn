@@ -1,0 +1,267 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Hoarding Mini Game/HoarderManager.gd" type="Script" id=1]
+[ext_resource path="res://Art_Assets/HoarderAssets.png" type="Texture" id=2]
+[ext_resource path="res://Hoarding Mini Game/Entities/CurrentItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hoarding Mini Game/Entities/SortBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hoarding Mini Game/HoarderHand.gd" type="Script" id=5]
+[ext_resource path="res://Hoarding Mini Game/Sprites.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 23.7281, 44.2415 )
+
+[node name="HoarderManager" type="Node" index="0"]
+
+script = ExtResource( 1 )
+boxes_path = NodePath("Boxes")
+current_items = 30
+
+[node name="GameTimer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="Background" type="Sprite" parent="." index="1"]
+
+position = Vector2( 580.742, 375.487 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 232, 150 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="Selection" type="Sprite" parent="." index="2"]
+
+position = Vector2( 171.714, 140.397 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 159, 151, 36, 34 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="CurrentItem" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 528.284, 541.073 )
+sprites_list = NodePath("../Sprites")
+
+[node name="Boxes" type="Node" parent="." index="4"]
+
+[node name="Trash" parent="Boxes" index="0" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 171.714, 140.397 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+box_pos = Vector2( 0, 0 )
+
+[node name="Electronics" parent="Boxes" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 528.857, 140.595 )
+box_pos = Vector2( 1, 0 )
+
+[node name="Sprite" parent="Boxes/Electronics" index="1"]
+
+position = Vector2( 0, -1.2 )
+region_rect = Rect2( 233, 31, 32, 33 )
+
+[node name="Paper" parent="Boxes" index="2" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 848.935, 143.154 )
+box_pos = Vector2( 2, 0 )
+
+[node name="Sprite" parent="Boxes/Paper" index="1"]
+
+position = Vector2( 0, 1.6 )
+region_rect = Rect2( 233, 65, 32, 33 )
+
+[node name="Clothes" parent="Boxes" index="3" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 167.339, 447.44 )
+box_pos = Vector2( 0, 1 )
+
+[node name="Sprite" parent="Boxes/Clothes" index="1"]
+
+region_rect = Rect2( 233, 132, 32, 30 )
+
+[node name="Recycling" parent="Boxes" index="4" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 854.781, 438.48 )
+box_pos = Vector2( 2, 1 )
+
+[node name="Sprite" parent="Boxes/Recycling" index="1"]
+
+region_rect = Rect2( 233, 100, 32, 30 )
+
+[node name="HoarderHand" type="Area2D" parent="." index="5"]
+
+position = Vector2( 161.5, 812.885 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+anchors = NodePath("../Anchors")
+boxes = NodePath("../Boxes")
+SPEED = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoarderHand" index="0"]
+
+position = Vector2( 1.43102, 0 )
+scale = Vector2( 0.94646, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="HoarderHand" index="1"]
+
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 151, 12, 22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="HoldTimer" type="Timer" parent="HoarderHand" index="2"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="Anchors" type="Node" parent="." index="6"]
+
+[node name="TrashAnchor" type="Node2D" parent="Anchors" index="0"]
+
+position = Vector2( 168.2, -137.565 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="ElectronicsAnchor" type="Node2D" parent="Anchors" index="1"]
+
+position = Vector2( 526.699, -131.476 )
+
+[node name="PaperAnchor" type="Node2D" parent="Anchors" index="2"]
+
+position = Vector2( 850.821, -143.476 )
+
+[node name="ClothesAnchor" type="Node2D" parent="Anchors" index="3"]
+
+position = Vector2( 165.744, 664.206 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RecyclingAnchor" type="Node2D" parent="Anchors" index="4"]
+
+position = Vector2( 855.732, 676.483 )
+
+[node name="Sprites" type="Node" parent="." index="7"]
+
+script = ExtResource( 6 )
+
+[node name="Recycling Sprites" type="Node" parent="Sprites" index="0"]
+
+[node name="Bottle" type="Sprite" parent="Sprites/Recycling Sprites" index="0"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 46, 155, 10, 21 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Newspaper" type="Sprite" parent="Sprites/Recycling Sprites" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 59, 163, 24, 12 )
+
+[node name="Trash Sprites" type="Node" parent="Sprites" index="1"]
+
+[node name="Wrapper" type="Sprite" parent="Sprites/Trash Sprites" index="0"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 56, 182, 19, 18 )
+_sections_unfolded = [ "Region", "Visibility" ]
+
+[node name="Banana" type="Sprite" parent="Sprites/Trash Sprites" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 25, 185, 23, 17 )
+_sections_unfolded = [ "Region", "Visibility" ]
+
+[node name="Paper Sprites" type="Node" parent="Sprites" index="2"]
+
+[node name="List" type="Sprite" parent="Sprites/Paper Sprites" index="0"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 113, 174, 19, 18 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Beaver Book" type="Sprite" parent="Sprites/Paper Sprites" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 138, 172, 16, 20 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Electronics Sprites" type="Node" parent="Sprites" index="3"]
+
+[node name="Controller" type="Sprite" parent="Sprites/Electronics Sprites" index="0"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 85, 153, 19, 11 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Mouse" type="Sprite" parent="Sprites/Electronics Sprites" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 109, 153, 11, 19 )
+_sections_unfolded = [ "Region", "Visibility" ]
+
+[node name="Clothes Sprites" type="Node" parent="Sprites" index="4"]
+
+[node name="Pants" type="Sprite" parent="Sprites/Clothes Sprites" index="0"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 30, 152, 11, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Shirt" type="Sprite" parent="Sprites/Clothes Sprites" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 14, 151, 15, 23 )
+_sections_unfolded = [ "Region" ]
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+
+[connection signal="timeout" from="HoarderHand/HoldTimer" to="HoarderHand" method="_on_HoldTimer_timeout"]
+
+
+[editable path="Boxes/Trash"]
+[editable path="Boxes/Electronics"]
+[editable path="Boxes/Paper"]
+[editable path="Boxes/Clothes"]
+[editable path="Boxes/Recycling"]

@@ -10,7 +10,7 @@ source_file="res://Art_Assets/paintingSprites.png"
 source_md5="b982e29bdf680569ac6ee34a4298ccbe"
 
 dest_files=[ "res://.import/paintingSprites.png-edf988a9b558dd53c7097d5daf88000a.stex" ]
-dest_md5="482ca39ea0c1be2c16c9a97a318640d5"
+dest_md5="afaa34cb802d13b18be37a75f349a1f9"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -10,7 +10,7 @@ source_file="res://Art_Assets/ApartmentMain.png"
 source_md5="3ab20d0a4963f5069626db55f1fec433"
 
 dest_files=[ "res://.import/ApartmentMain.png-5341d2b47c1f5754a0fead328981c4d6.stex" ]
-dest_md5="b3e1994238f088057c74d2a179fc9b52"
+dest_md5="156b88bd294072c44d7fec61ef60288d"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

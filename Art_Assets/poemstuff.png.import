@@ -10,7 +10,7 @@ source_file="res://Art_Assets/poemstuff.png"
 source_md5="1b4f223822145a6f3f6933f129e91615"
 
 dest_files=[ "res://.import/poemstuff.png-969af375169971494a3ad0300dab7823.stex" ]
-dest_md5="f9e50646f2d9e249383b6bff249edc4e"
+dest_md5="83f1f79f6a3e719365e75ecfd0698401"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

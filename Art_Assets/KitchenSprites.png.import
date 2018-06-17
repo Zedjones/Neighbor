@@ -10,7 +10,7 @@ source_file="res://Art_Assets/KitchenSprites.png"
 source_md5="12136c13f8d7fa8737fe273c6abca7f1"
 
 dest_files=[ "res://.import/KitchenSprites.png-202eef0a1cff65db63644e2b7bdc74e7.stex" ]
-dest_md5="9de5b1a60922104768bfd7a0ddd0939d"
+dest_md5="014de94313287800fe6a785d10fb5faa"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
