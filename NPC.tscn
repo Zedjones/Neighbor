@@ -123,4 +123,6 @@ _sections_unfolded = [ "Playback Options" ]
 
 [connection signal="activated" from="IO" to="." method="_on_Interactive_Object_activated"]
 
+[connection signal="exited" from="IO" to="." method="_on_IO_exited"]
+
 
