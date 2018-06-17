@@ -7,6 +7,7 @@ extends Area2D
 export (NodePath) var player_path
 var player
 signal activated
+signal exited
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -18,3 +19,7 @@ func _process(delta):
 	# Update game logic here.
 	if overlaps_body(player):
 		emit_signal("activated")
+
+func _on_Interactive_Object_body_exited(body):
+	if body == player:
+		emit_signal("exited")

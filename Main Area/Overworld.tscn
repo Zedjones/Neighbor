@@ -1,14 +1,15 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=2]
 [ext_resource path="res://Main Area/Wander.gd" type="Script" id=3]
 [ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=4]
-[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=5]
-[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=7]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Art_Assets/Square.png" type="Texture" id=9]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=6]
+[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=8]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Art_Assets/Square.png" type="Texture" id=10]
 
 [sub_resource type="GDScript" id=1]
 
@@ -36,7 +37,7 @@ func _ready():
 
 func _on_PlayButton_pressed():
 	print($Camera2D.position)
-	$Tween.interpolate_property($Camera2D, \"position\", $Camera2D.position, Vector2($Camera2D.position.x, get_viewport().get_size().y/2 + 51), tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property($Camera2D, \"position\", $Camera2D.position, Vector2($Camera2D.position.x, 300 + 51), tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($Sky, \"modulate\", dayTime, nightTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 
@@ -67,7 +68,7 @@ extents = Vector2( 10, 10 )
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=7]
@@ -75,7 +76,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="World" type="Node" index="0"]
@@ -148,7 +149,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Artist" type="KinematicBody2D" parent="Characters" index="2"]
 
-editor/display_folded = true
 position = Vector2( 252.069, 410.836 )
 z_index = 1
 input_pickable = false
@@ -156,7 +156,7 @@ collision_layer = 2
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Collision", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -180,7 +180,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Student" type="KinematicBody2D" parent="Characters" index="3"]
 
-editor/display_folded = true
 position = Vector2( 319.386, 494.018 )
 z_index = 1
 input_pickable = false
@@ -201,54 +200,27 @@ vframes = 3
 hframes = 4
 region_enabled = true
 region_rect = Rect2( 10, 148, 26, 63 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Student" index="1"]
 
 position = Vector2( -0.078584, 0.00624247 )
 scale = Vector2( 1.40081, 1.03644 )
 shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
-[node name="Hoarder" type="KinematicBody2D" parent="Characters" index="4"]
+[node name="Hoarder" parent="Characters" index="4" instance=ExtResource( 5 )]
 
-position = Vector2( 609.671, 258.511 )
-z_index = 1
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 3 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="NPCSprite" type="Sprite" parent="Characters/Hoarder" index="0"]
-
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 4 )
-vframes = 3
-hframes = 4
-region_enabled = true
-region_rect = Rect2( 216, 7, 16, 63 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Hoarder" index="1"]
-
-position = Vector2( 0.233667, 0.00624247 )
-scale = Vector2( 1.10195, 1.03644 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 609.323, 259.573 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Visibility", "Z Index" ]
 
 [node name="Apartment" type="Node" parent="." index="1"]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
-editor/display_folded = true
 position = Vector2( 433.621, 299.73 )
 scale = Vector2( 0.752976, 0.752976 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -357,7 +329,7 @@ _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
 [node name="Elevators" type="Node" parent="Apartment/ApartmentMain" index="2"]
 
-[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 6 )]
+[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 7 )]
 
 target_path = NodePath("../Bottom")
 
@@ -367,7 +339,7 @@ position = Vector2( 471.285, 497.2 )
 scale = Vector2( 0.562213, 0.75753 )
 player_path = NodePath("../../../../../Characters/Player")
 
-[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 6 )]
+[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 7 )]
 
 target_path = NodePath("../Top")
 
@@ -385,10 +357,10 @@ shape = SubResource( 5 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 player_path = NodePath("../../Characters/Player")
 
-[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 6 )]
+[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 7 )]
 
 target_path = NodePath("../2nd Floor Left")
 
@@ -397,7 +369,7 @@ target_path = NodePath("../2nd Floor Left")
 position = Vector2( 122.547, 500.032 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 6 )]
+[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 7 )]
 
 target_path = NodePath("../1st Floor")
 
@@ -406,7 +378,7 @@ target_path = NodePath("../1st Floor")
 position = Vector2( 122.372, 420.312 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 6 )]
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 7 )]
 
 target_path = NodePath("../3rd Floor Left")
 
@@ -415,7 +387,7 @@ target_path = NodePath("../3rd Floor Left")
 position = Vector2( 377.64, 421.282 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 6 )]
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 7 )]
 
 target_path = NodePath("../2nd Floor Right")
 
@@ -424,7 +396,7 @@ target_path = NodePath("../2nd Floor Right")
 position = Vector2( 341.27, 347.517 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 6 )]
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 7 )]
 
 target_path = NodePath("../4th Floor Right")
 
@@ -433,7 +405,7 @@ target_path = NodePath("../4th Floor Right")
 position = Vector2( 702.251, 348.116 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 6 )]
+[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 7 )]
 
 target_path = NodePath("../5th Floor Left")
 
@@ -442,7 +414,7 @@ target_path = NodePath("../5th Floor Left")
 position = Vector2( 467.801, 269.608 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 6 )]
+[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 7 )]
 
 target_path = NodePath("../3rd Floor Right")
 
@@ -451,7 +423,7 @@ target_path = NodePath("../3rd Floor Right")
 position = Vector2( 742.76, 268.891 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 6 )]
+[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 7 )]
 
 target_path = NodePath("../4th Floor Left")
 
@@ -460,7 +432,7 @@ target_path = NodePath("../4th Floor Left")
 position = Vector2( 424.548, 190.108 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 6 )]
+[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 7 )]
 
 target_path = NodePath("../6th Floor")
 
@@ -469,7 +441,7 @@ target_path = NodePath("../6th Floor")
 position = Vector2( 654.294, 188.348 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 6 )]
+[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 7 )]
 
 target_path = NodePath("../5th Floor Right")
 
@@ -628,10 +600,10 @@ _sections_unfolded = [ "custom_fonts" ]
 [node name="Sky" type="Sprite" parent="." index="5"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 593.874, 65.1004 )
+position = Vector2( 609.796, 75.7152 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
