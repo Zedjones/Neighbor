@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to Neighbor’s documentation! &mdash; Neighbor 0.0.1 documentation</title>
+  <title>Time Manager &mdash; Neighbor 0.0.1 documentation</title>
   
 
   
@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Game Design" href="design.html" /> 
+    <link rel="next" title="Scene Manager" href="scenemanager.html" />
+    <link rel="prev" title="Save Data" href="savedata.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -47,7 +48,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> Neighbor
+            <a href="index.html" class="icon icon-home"> Neighbor
           
 
           
@@ -81,7 +82,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="design.html">Game Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html#gameplay">Gameplay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
@@ -90,8 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timemanager.html">Time Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timemanager.html#time">Time</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interation-time-cost">Interation Time Cost</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#time">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
@@ -109,7 +113,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Neighbor</a>
+          <a href="index.html">Neighbor</a>
         
       </nav>
 
@@ -138,15 +142,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Welcome to Neighbor’s documentation!</li>
+      <li>Time Manager</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/timemanager.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,33 +163,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-neighbor-s-documentation">
-<h1>Welcome to Neighbor’s documentation!<a class="headerlink" href="#welcome-to-neighbor-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Game Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html#gameplay">Gameplay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timemanager.html">Time Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timemanager.html#time">Time</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usecases.html">Use Cases</a></li>
-</ul>
+  <div class="section" id="time-manager">
+<h1>Time Manager<a class="headerlink" href="#time-manager" title="Permalink to this headline">¶</a></h1>
+<p>The Time Manager will be the interface for keeping track of the time of day, and day of the week.</p>
+<p>Player comes home at 6 pm
+Player should go to bed by 11 pm
+Player goes to work at 9 am
+Player passes out at 2 am</p>
+<p>Any time after 11 pm is a tracked offset that is applied to the players arrival time the next night.</p>
+<p>Time passage is entirely action based. The time in the evenings will only pass as the player interacts with the neighbors.</p>
+<div class="section" id="interation-time-cost">
+<h2>Interation Time Cost<a class="headerlink" href="#interation-time-cost" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="40%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DialogChoices</th>
+<th class="head">interaction</th>
+<th class="head">time cost</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>player ignores after talking</td>
+<td>5 min</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>player just plays mini game</td>
+<td>60 min</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>player gives advice</td>
+<td>20</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>advice and plays mini game</td>
+<td>120 min</td>
+</tr>
+</tbody>
+</table>
+<p>Player goes to sleep
+Player home from work
+Player interacts</p>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="time">
+<h1>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h1>
+<p>class or struct to hold time data</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li>Add time</li>
+<li>hour 12/24?</li>
+<li>minutes 0-59</li>
+<li>Day (sun, sat)</li>
 </ul>
 </div>
 
@@ -197,8 +229,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="design.html" class="btn btn-neutral float-right" title="Game Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scenemanager.html" class="btn btn-neutral float-right" title="Scene Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="savedata.html" class="btn btn-neutral" title="Save Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
