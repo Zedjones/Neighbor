@@ -106,6 +106,9 @@ func setup(lineNum):
 	
 	current_lines(lineNum)
 	
+	for key in currentLetterNum:
+		currentLetterNum[key] = 0
+	
 	for key in currentLines:
 		spawn_line(currentLines[key], linePositions[key])
 
