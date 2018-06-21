@@ -1,12 +1,10 @@
 extends Label
 
-var vertMove = true
-var horizMove = true
-
-var vertTime = 0
-var horizTime = 0
-
-var randScale
+#var vertMove = true
+#var horizMove = true
+#
+#var vertTime = 0
+#var horizTime = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
