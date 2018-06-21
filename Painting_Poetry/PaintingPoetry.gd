@@ -31,6 +31,8 @@ func _ready():
 	$Paintings/Fire.frame = 8
 	$Paintings/Candle.frame = 12
 	
+	randomize()
+	
 	setup(currentLineNum)
 	
 	pass
