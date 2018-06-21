@@ -1,0 +1,642 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
+[ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=4]
+[ext_resource path="res://Main Area/Wander.gd" type="Script" id=5]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=6]
+[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=7]
+[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=9]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.85156, 24.7474 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 446.204, 1.80487 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 316.922, 1.9989 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 10 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 10 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="World" type="Node" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+dayTime = Color( 0.254902, 0.686275, 0.898039, 1 )
+nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
+
+[node name="Sky" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
+position = Vector2( 590.55, 58.4522 )
+scale = Vector2( 499.856, 324.338 )
+z_index = -10
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="Characters" type="Node" parent="." index="1"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+
+[node name="Player" type="KinematicBody2D" parent="Characters" index="0"]
+
+editor/display_folded = true
+position = Vector2( 297.744, 556.439 )
+z_index = -1
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 3 )
+_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+bottomElevator = NodePath("../../Apartment/ApartmentMain/Elevators/Bottom")
+topElevator = NodePath("../../Apartment/ApartmentMain/Elevators/Top")
+
+[node name="PlayerSprite" type="Sprite" parent="Characters/Player" index="0"]
+
+scale = Vector2( 0.752976, 0.752976 )
+texture = ExtResource( 4 )
+vframes = 3
+hframes = 4
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Player" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="CatLady" type="KinematicBody2D" parent="Characters" index="1"]
+
+editor/display_folded = true
+position = Vector2( 437.76, 338.621 )
+z_index = -2
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NPCSprite" type="Sprite" parent="Characters/CatLady" index="0"]
+
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+vframes = 3
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 123, 8, 23, 62 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/CatLady" index="1"]
+
+position = Vector2( -0.330471, 0 )
+scale = Vector2( 1.20069, 1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Artist" type="KinematicBody2D" parent="Characters" index="2"]
+
+editor/display_folded = true
+position = Vector2( 252.069, 410.836 )
+z_index = -2
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NPCSprite" type="Sprite" parent="Characters/Artist" index="0"]
+
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+vframes = 3
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 10, 70, 23, 64 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Artist" index="1"]
+
+position = Vector2( -0.162646, -0.550459 )
+scale = Vector2( 1.23404, 1.05304 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Student" type="KinematicBody2D" parent="Characters" index="3"]
+
+editor/display_folded = true
+position = Vector2( 319.386, 494.018 )
+z_index = -2
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision", "Material", "Visibility", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NPCSprite" type="Sprite" parent="Characters/Student" index="0"]
+
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+vframes = 3
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 10, 148, 26, 63 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Student" index="1"]
+
+position = Vector2( -0.078584, 0.00624247 )
+scale = Vector2( 1.40081, 1.03644 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hoarder" type="KinematicBody2D" parent="Characters" index="4"]
+
+editor/display_folded = true
+position = Vector2( 609.671, 258.511 )
+z_index = -2
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NPCSprite" type="Sprite" parent="Characters/Hoarder" index="0"]
+
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+vframes = 3
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 216, 7, 16, 63 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Hoarder" index="1"]
+
+position = Vector2( 0.233667, 0.00624247 )
+scale = Vector2( 1.10195, 1.03644 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Apartment" type="Node" parent="." index="2"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+
+[node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
+
+position = Vector2( 433.621, 299.73 )
+scale = Vector2( 0.752976, 0.752976 )
+z_index = -5
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ApartmentBoxes" type="Node" parent="Apartment/ApartmentMain" index="0"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Apartment/ApartmentMain/ApartmentBoxes" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="FirstFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="0"]
+
+position = Vector2( 441.442, 583.372 )
+shape = SubResource( 2 )
+
+[node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
+
+position = Vector2( 413.258, 520.879 )
+shape = SubResource( 3 )
+
+[node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
+
+position = Vector2( 412.895, 438.254 )
+shape = SubResource( 3 )
+
+[node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
+
+position = Vector2( 534.881, 364.967 )
+shape = SubResource( 3 )
+
+[node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
+
+position = Vector2( 585.111, 286.769 )
+shape = SubResource( 3 )
+
+[node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
+
+position = Vector2( 552.489, 208.524 )
+shape = SubResource( 3 )
+
+[node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
+
+position = Vector2( 555.836, 137.616 )
+shape = SubResource( 3 )
+
+[node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
+
+editor/display_folded = true
+
+[node name="HoarderDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="0"]
+
+position = Vector2( 608.792, 256.201 )
+scale = Vector2( 0.8, 0.8 )
+z_index = -4
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 235, 8, 50, 73 )
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
+
+[node name="CatLadyDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="1"]
+
+position = Vector2( 437.615, 336.207 )
+scale = Vector2( 0.8, 0.8 )
+z_index = -4
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 161, 3, 29, 67 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="ArtistDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="2"]
+
+position = Vector2( 250.629, 408.891 )
+scale = Vector2( 0.8, 0.8 )
+z_index = -4
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 37, 70, 29, 67 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="StudentDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="3"]
+
+editor/display_folded = true
+position = Vector2( 319.007, 492.032 )
+scale = Vector2( 0.8, 0.8 )
+z_index = -4
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 38, 144, 29, 67 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="Food" type="Sprite" parent="Apartment/ApartmentMain/Doors/StudentDoor" index="0"]
+
+position = Vector2( -38.8651, 27.4968 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 71, 199, 42, 12 )
+_sections_unfolded = [ "Region" ]
+
+[node name="PlayerDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="4"]
+
+position = Vector2( 540.575, 108.748 )
+scale = Vector2( 0.8, 0.8 )
+z_index = -4
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 41, 1, 29, 67 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Elevators" type="Node" parent="Apartment/ApartmentMain" index="2"]
+
+[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 8 )]
+
+target_path = NodePath("../Bottom")
+
+[node name="Interactive Object" parent="Apartment/ApartmentMain/Elevators/Top" index="0"]
+
+position = Vector2( 471.285, 497.2 )
+scale = Vector2( 0.562213, 0.75753 )
+player_path = NodePath("../../../../../Characters/Player")
+
+[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 8 )]
+
+target_path = NodePath("../Top")
+
+[node name="Interactive Object" parent="Apartment/ApartmentMain/Elevators/Bottom" index="0"]
+
+position = Vector2( 471.77, 559.008 )
+scale = Vector2( 0.540239, 0.724862 )
+player_path = NodePath("../../../../../Characters/Player")
+
+[node name="CollisionShape2D" parent="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object" index="0"]
+
+position = Vector2( -0.237854, -0.177368 )
+scale = Vector2( 3.31895, 3.21797 )
+shape = SubResource( 4 )
+
+[node name="Stairs" type="Node" parent="Apartment" index="1"]
+
+editor/display_folded = true
+script = ExtResource( 9 )
+player_path = NodePath("../../Characters/Player")
+
+[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 8 )]
+
+target_path = NodePath("../2nd Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/1st Floor" index="0"]
+
+position = Vector2( 122.547, 500.032 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 8 )]
+
+target_path = NodePath("../1st Floor")
+
+[node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Left" index="0"]
+
+position = Vector2( 122.372, 420.312 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 8 )]
+
+target_path = NodePath("../3rd Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Right" index="0"]
+
+position = Vector2( 377.64, 421.282 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 8 )]
+
+target_path = NodePath("../2nd Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Left" index="0"]
+
+position = Vector2( 341.27, 347.517 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 8 )]
+
+target_path = NodePath("../4th Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Right" index="0"]
+
+position = Vector2( 702.251, 348.116 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 8 )]
+
+target_path = NodePath("../5th Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/4th Floor Left" index="0"]
+
+position = Vector2( 467.801, 269.608 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 8 )]
+
+target_path = NodePath("../3rd Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/4th Floor Right" index="0"]
+
+position = Vector2( 742.76, 268.891 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 8 )]
+
+target_path = NodePath("../4th Floor Left")
+
+[node name="Interactive Object" parent="Apartment/Stairs/5th Floor Left" index="0"]
+
+position = Vector2( 424.548, 190.108 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 8 )]
+
+target_path = NodePath("../6th Floor")
+
+[node name="Interactive Object" parent="Apartment/Stairs/5th Floor Right" index="0"]
+
+position = Vector2( 654.294, 188.348 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 8 )]
+
+target_path = NodePath("../5th Floor Right")
+
+[node name="Interactive Object" parent="Apartment/Stairs/6th Floor" index="0"]
+
+position = Vector2( 654.532, 119.567 )
+scale = Vector2( 0.371902, 0.479105 )
+
+[node name="Tween" type="Tween" parent="." index="3"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+
+position = Vector2( 512, -161 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Editor", "Transform" ]
+
+[node name="Menu" type="Node" parent="." index="5"]
+
+editor/display_folded = true
+
+[node name="Container" type="Container" parent="Menu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -461.0
+margin_bottom = -461.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Title" type="Label" parent="Menu/Container" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -128.5
+margin_right = 128.5
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "Neighbor"
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Container" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 98.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="PlayButton" type="Button" parent="Menu/Container/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 118.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Play"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="SettingsButton" type="Button" parent="Menu/Container/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 41.0
+margin_right = 118.0
+margin_bottom = 78.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Settings"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+
+
+[editable path="Apartment/ApartmentMain/Elevators/Top"]
+[editable path="Apartment/ApartmentMain/Elevators/Bottom"]
+[editable path="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object"]
+[editable path="Apartment/Stairs/1st Floor"]
+[editable path="Apartment/Stairs/1st Floor/Interactive Object"]
+[editable path="Apartment/Stairs/2nd Floor Left"]
+[editable path="Apartment/Stairs/2nd Floor Right"]
+[editable path="Apartment/Stairs/3rd Floor Left"]
+[editable path="Apartment/Stairs/3rd Floor Right"]
+[editable path="Apartment/Stairs/4th Floor Left"]
+[editable path="Apartment/Stairs/4th Floor Right"]
+[editable path="Apartment/Stairs/5th Floor Left"]
+[editable path="Apartment/Stairs/5th Floor Right"]
+[editable path="Apartment/Stairs/6th Floor"]

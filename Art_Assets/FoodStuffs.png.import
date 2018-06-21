@@ -10,7 +10,7 @@ source_file="res://Art_Assets/FoodStuffs.png"
 source_md5="ed749ef46df41539fceb5e439281190c"
 
 dest_files=[ "res://.import/FoodStuffs.png-ff6e40983efcc986a8257e954931e34b.stex" ]
-dest_md5="abfcc46369115dc6d5e894e47a7aae89"
+dest_md5="41334946f81f3485c451fae64b65d088"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
