@@ -436,6 +436,8 @@ tracks/2/keys = {
 
 [node name="Cat" type="Area2D"]
 
+pause_mode = 2
+scale = Vector2( 3, 3 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -444,7 +446,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform" ]
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="0"]
 
@@ -455,6 +457,7 @@ rect = Rect2( -10, -10, 20, 20 )
 position = Vector2( 0.416273, 0.144061 )
 scale = Vector2( 1.16169, 0.914719 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="RunSprite" type="Sprite" parent="." index="2"]
 
