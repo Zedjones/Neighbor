@@ -12,7 +12,7 @@ texture = ExtResource( 1 )
 centered = false
 vframes = 4
 hframes = 4
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Region", "Transform", "Visibility" ]
 
 [node name="Star" type="Sprite" parent="." index="1"]
 

@@ -1,4 +1,4 @@
-extends Node
+extends "res://MiniGame.gd"
 
 export (PackedScene) var Letter
 
@@ -22,16 +22,45 @@ var paintCount = {"sun": 0, "star": 4, "fire": 8, "candle": 12}
 #Where the first line of the poem being written spawns
 var poemLetterPos = Vector2(620, 275)
 
+var activePainting = 0
+var activePoem = ""
+var score = 0
+var gameOver = false
+
 #Figuring out randomization of lines
 var linePositions = {"sun": Vector2(10, 250), "star": Vector2(10, 325), "fire": Vector2(10, 400), "candle": Vector2(10, 475)}
 
 func _ready():
+	#Sets sprites
 	$Paintings/Sun.frame = 0
 	$Paintings/Star.frame = 4
 	$Paintings/Fire.frame = 8
 	$Paintings/Candle.frame = 12
 	
+	#Hides the sprites
+	$Paintings/Sun.hide()
+	$Paintings/Star.hide()
+	$Paintings/Fire.hide()
+	$Paintings/Candle.hide()
+	
 	randomize()
+	#Selects a random painting for the mini game
+	activePainting = randi() % 4
+	match activePainting:
+		0:
+			$Paintings/Sun.show()
+			activePoem = "sun"
+		1:
+			$Paintings/Star.show()
+			activePoem = "star"
+		2:
+			$Paintings/Fire.show()
+			activePoem = "fire"
+		3:
+			$Paintings/Candle.show()
+			activePoem = "candle"
+	
+	$PoemName.text = activePoem.to_upper()
 	
 	setup(currentLineNum)
 	
@@ -139,7 +168,6 @@ func write_poem(poem):
 		connect("kill", letter, "kill_letter")
 		letter.add_color_override("font_color", Color(0,0,0))
 		letter.rect_position = letterPos
-		
 		#print("MATCH")
 		currentLetterNum[poem] += 1
 	elif currentLines[poem].substr(currentLetterNum[poem], 1) == " ":
@@ -149,12 +177,20 @@ func write_poem(poem):
 		#print("Spawn")
 		paintCount[poem] += 1
 		currentLetterNum[poem] = 0
+		#Keeps track of score
+		if poem == activePoem:
+			score += 1
+			print("Scored")
 		spawn_poem(poem)
 		poemLetterPos = Vector2(620, poemLetterPos.y + 100)
 		emit_signal("kill")
 		currentLineNum += 1
+		#Controls whether or not the game is over
 		if currentLineNum < 3:
 			setup(currentLineNum)
+		else:
+			print(score)
+			gameOver = true
 
 #Spawns the typed line
 func spawn_poem(poem):
@@ -168,3 +204,12 @@ func spawn_poem(poem):
 		letter.rect_position = poemLetterPos
 		poemLetterPos = Vector2(poemLetterPos.x + spacing, poemLetterPos.y)
 		currentLetterPos += 1
+
+func get_score():
+	if score < 2:
+		return GameOutcomes.WORSE
+	else:
+		return GameOutcomes.Better
+
+func is_game_over():
+	return gameOver
