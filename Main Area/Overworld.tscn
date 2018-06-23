@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
-[ext_resource path="res://Player.gd" type="Script" id=3]
-[ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=4]
-[ext_resource path="res://Main Area/Wander.gd" type="Script" id=5]
-[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=6]
-[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=7]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.gd" type="Script" id=4]
+[ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=5]
+[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=6]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=7]
 [ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Main Area/Stairs.gd" type="Script" id=9]
 [ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=10]
@@ -47,7 +47,7 @@ use_filter = false
 font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -65,10 +65,28 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="Characters" type="Node" parent="." index="1"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="Player" type="KinematicBody2D" parent="Characters" index="0"]
+[node name="Student" parent="Characters" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 320.294, 497.251 )
+
+[node name="IOP" parent="Characters/Student" index="2"]
+
+position = Vector2( 5.29251, -2.7374 )
+scale = Vector2( 2.41527, 0.914456 )
+
+[node name="Idle" parent="Characters/Student" index="3"]
+
+visible = true
+position = Vector2( -0.0231934, -5.16441 )
+region_rect = Rect2( 9, 69, 26, 63 )
+
+[node name="NPCSprite" parent="Characters/Student" index="4"]
+
+visible = false
+
+[node name="Player" type="KinematicBody2D" parent="Characters" index="1"]
 
 editor/display_folded = true
 position = Vector2( 297.744, 556.439 )
@@ -77,7 +95,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
@@ -88,7 +106,7 @@ topElevator = NodePath("../../Apartment/ApartmentMain/Elevators/Top")
 [node name="PlayerSprite" type="Sprite" parent="Characters/Player" index="0"]
 
 scale = Vector2( 0.752976, 0.752976 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 vframes = 3
 hframes = 4
 _sections_unfolded = [ "Animation", "Transform" ]
@@ -97,137 +115,42 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 shape = SubResource( 1 )
 
-[node name="CatLady" type="KinematicBody2D" parent="Characters" index="1"]
+[node name="Hoarder" parent="Characters" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 608.646, 258.106 )
+
+[node name="CatLady" parent="Characters" index="3" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-position = Vector2( 437.76, 338.621 )
-z_index = -2
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 5 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 438.723, 337.968 )
 
-[node name="NPCSprite" type="Sprite" parent="Characters/CatLady" index="0"]
+[node name="Idle" parent="Characters/CatLady" index="3"]
 
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 6 )
-vframes = 3
-hframes = 4
-region_enabled = true
-region_rect = Rect2( 123, 8, 23, 62 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+visible = true
+region_rect = Rect2( 92, 136, 23, 60 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/CatLady" index="1"]
+[node name="NPCSprite" parent="Characters/CatLady" index="4"]
 
-position = Vector2( -0.330471, 0 )
-scale = Vector2( 1.20069, 1 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+visible = false
+region_rect = Rect2( 123, 8, 23, 61 )
 
-[node name="Artist" type="KinematicBody2D" parent="Characters" index="2"]
+[node name="Artist" parent="Characters" index="4" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-position = Vector2( 252.069, 410.836 )
-z_index = -2
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 5 )
-_sections_unfolded = [ "Collision", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 251.481, 410.574 )
 
-[node name="NPCSprite" type="Sprite" parent="Characters/Artist" index="0"]
+[node name="Idle" parent="Characters/Artist" index="3"]
 
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 6 )
-vframes = 3
-hframes = 4
-region_enabled = true
-region_rect = Rect2( 10, 70, 23, 64 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+visible = true
+region_rect = Rect2( 39, 2, 23, 65 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Artist" index="1"]
+[node name="NPCSprite" parent="Characters/Artist" index="4"]
 
-position = Vector2( -0.162646, -0.550459 )
-scale = Vector2( 1.23404, 1.05304 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Student" type="KinematicBody2D" parent="Characters" index="3"]
-
-editor/display_folded = true
-position = Vector2( 319.386, 494.018 )
-z_index = -2
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 5 )
-_sections_unfolded = [ "Collision", "Material", "Visibility", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="NPCSprite" type="Sprite" parent="Characters/Student" index="0"]
-
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 6 )
-vframes = 3
-hframes = 4
-region_enabled = true
-region_rect = Rect2( 10, 148, 26, 63 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Student" index="1"]
-
-position = Vector2( -0.078584, 0.00624247 )
-scale = Vector2( 1.40081, 1.03644 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Hoarder" type="KinematicBody2D" parent="Characters" index="4"]
-
-editor/display_folded = true
-position = Vector2( 609.671, 258.511 )
-z_index = -2
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 5 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="NPCSprite" type="Sprite" parent="Characters/Hoarder" index="0"]
-
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 6 )
-vframes = 3
-hframes = 4
-region_enabled = true
-region_rect = Rect2( 216, 7, 16, 63 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Hoarder" index="1"]
-
-position = Vector2( 0.233667, 0.00624247 )
-scale = Vector2( 1.10195, 1.03644 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+visible = false
 
 [node name="Apartment" type="Node" parent="." index="2"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
@@ -235,7 +158,7 @@ _sections_unfolded = [ "Pause" ]
 position = Vector2( 433.621, 299.73 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
@@ -290,14 +213,12 @@ shape = SubResource( 3 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
-editor/display_folded = true
-
 [node name="HoarderDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="0"]
 
 position = Vector2( 608.792, 256.201 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 235, 8, 50, 73 )
 _sections_unfolded = [ "Region", "Transform", "Z Index" ]
@@ -307,7 +228,7 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 position = Vector2( 437.615, 336.207 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 161, 3, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -317,7 +238,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 250.629, 408.891 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 37, 70, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -328,7 +249,7 @@ editor/display_folded = true
 position = Vector2( 319.007, 492.032 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 38, 144, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -336,7 +257,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="Food" type="Sprite" parent="Apartment/ApartmentMain/Doors/StudentDoor" index="0"]
 
 position = Vector2( -38.8651, 27.4968 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 71, 199, 42, 12 )
 _sections_unfolded = [ "Region" ]
@@ -346,7 +267,7 @@ _sections_unfolded = [ "Region" ]
 position = Vector2( 540.575, 108.748 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 41, 1, 29, 67 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
@@ -626,6 +547,9 @@ _sections_unfolded = [ "custom_fonts" ]
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
 
+[editable path="Characters/Student"]
+[editable path="Characters/CatLady"]
+[editable path="Characters/Artist"]
 [editable path="Apartment/ApartmentMain/Elevators/Top"]
 [editable path="Apartment/ApartmentMain/Elevators/Bottom"]
 [editable path="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object"]

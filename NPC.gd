@@ -35,8 +35,10 @@ func _process(delta):
 func UpdateDirectionAndMovement():
 	if motion.x > 0:
 		get_node("NPCSprite").set_flip_h(false)
+		get_node("Idle").set_flip_h(false)
 	else:
 		get_node("NPCSprite").set_flip_h(true)
+		get_node("Idle").set_flip_h(true)
 	distanceTimer -= 1
 	
 	
