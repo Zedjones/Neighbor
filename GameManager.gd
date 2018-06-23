@@ -38,10 +38,13 @@ func set_curr_character(character):
 	# since this is called constantly when in player space, check if not already set
 	if curr_character != character:
 		curr_character = character
+		# if not passed in null, call dialogue_manager prompt 
 		if character != null:
 			#dialogue_manager.prompt(character)
 			pass
 
+# Handle the dialogue choice made by the player, passed in by the Dialogue Manager
+# @param dialogue_choice - a DialogueChoice enum
 func handle_dialogue(dialogue_choice):
 	mini_game = curr_character.mini_game
 	match dialogue_choice:
