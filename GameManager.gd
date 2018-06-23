@@ -17,10 +17,12 @@ func _ready():
 	pass
 	
 func _process(delta):
+	# if the player is currently in a mini-game
 	if in_mini_game:
 		if mini_game.is_game_over():
 			in_mini_game = false
 			var score = mini_game.get_score()
+			# adjust based on the outcome being better or worse and the dialogue choice 
 			match score:
 				GameOutcomes.BETTER:
 					curr_character.adjust_happiness(dialogue_choice*BETTER_MULT*HAPPINESS_BASE)
@@ -29,7 +31,11 @@ func _process(delta):
 			mini_game = null
 			dialogue_choice = null
 
+# Set the current character, would be called when player moves into character's 
+# space
+# @param character - the character object to set as current
 func set_curr_character(character):
+	# since this is called constantly when in player space, check if not already set
 	if curr_character != character:
 		curr_character = character
 		if character != null:

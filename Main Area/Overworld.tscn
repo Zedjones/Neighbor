@@ -79,7 +79,7 @@ use_filter = false
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 script = SubResource( 1 )
 dayTime = Color( 0.254902, 0.686275, 0.898039, 1 )
@@ -600,7 +600,7 @@ _sections_unfolded = [ "custom_fonts" ]
 [node name="Sky" type="Sprite" parent="." index="5"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 609.796, 75.7152 )
+position = Vector2( 272.786, 938.693 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -1
 texture = ExtResource( 10 )
