@@ -12,9 +12,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 23.7281, 44.2415 )
 
-[node name="HoarderManager" type="Node"]
+[node name="HoarderManager" type="Node" index="0"]
 
+pause_mode = 2
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 boxes_path = NodePath("Boxes")
 current_items = 30
 

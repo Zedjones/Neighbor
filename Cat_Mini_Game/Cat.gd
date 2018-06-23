@@ -7,7 +7,7 @@ var vel = 0
 var isRunning = false
 var color = CatColors.Orange
 var anim_name
-var speed = 30
+var speed = 80
 
 func _ready():
 	randomize()
