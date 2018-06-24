@@ -18,8 +18,10 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 	if overlaps_body(player):
+		#print("player_entered handled")
 		emit_signal("activated")
 
 func _on_Interactive_Object_body_exited(body):
 	if body == player:
+		#print("player_exited handled")
 		emit_signal("exited")

@@ -15,8 +15,13 @@ func load_scene(scene):
 	var world = get_node("/root/World")
 	#world.get_tree().paused = true
 	world.add_child(instance)
+	currentScene = instance
+	return instance
+	
+func unload_scene():
+	var world = get_node("/root/World")
+	world.remove_child(currentScene)
 
-	pass
 	
 
 	

@@ -12,13 +12,15 @@ onready var game_manager = get_node("/root/GameManager")
 export (PackedScene) var mini_game
 signal player_entered
 signal player_exited
-export (float) var happiness
+signal player_pressed
+export (float) var happiness = 0
 
 
 func _ready():
 	distanceTimer = randi()%51+1
 	connect("player_entered", game_manager, "set_curr_character")
 	connect("player_exited", game_manager, "set_curr_character")
+	connect("player_pressed", game_manager,"start_mini_game")
 	startingXPos = position.x
 	pass
 
@@ -53,6 +55,7 @@ func UpdateDirectionAndMovement():
 # Set GameManager current character to the character and 
 # call the dialogue blip if it hasn't already been called
 func _on_Interactive_Object_activated():
+	print("player_entered")
 	emit_signal("player_entered", self)
 	
 # GameManager will call this to adjust happiness after dialogue
@@ -62,4 +65,11 @@ func adjust_happiness(points):
 
 # Set GameManager current character to null 
 func _on_IO_exited():
+	print("player_exited")
 	emit_signal("player_exited", null)
+
+
+func _on_IOP_activated():
+	print("player_pressed")
+	emit_signal("player_pressed")
+

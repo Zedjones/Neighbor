@@ -2,8 +2,9 @@ extends Node
 
 var DialogueChoices = preload("res://GlobalData.gd").DialogueChoices
 var GameOutcomes = preload("res://GlobalData.gd").GameOutcomes
+
 var curr_character
-var scene_manager
+onready var scene_manager = get_node("/root/SceneManager")
 var time_manager
 var dialogue_manager
 var in_mini_game = false
@@ -28,6 +29,7 @@ func _process(delta):
 					curr_character.adjust_happiness(dialogue_choice*BETTER_MULT*HAPPINESS_BASE)
 				GameOutcomes.WORSE:
 					curr_character.adjust_happiness(dialogue_choice*HAPPINESS_BASE)
+			scene_manager.unload_scene()
 			mini_game = null
 			dialogue_choice = null
 
@@ -42,23 +44,41 @@ func set_curr_character(character):
 		if character != null:
 			#dialogue_manager.prompt(character)
 			pass
+			
+func start_mini_game():
+	if(curr_character != null):
+		#print("Yes curr_character")
+		if(curr_character.mini_game != null):
+			#print("Yes mini_game")	
+			var mg = curr_character.mini_game
+			in_mini_game = true
+			dialogue_choice = DialogueChoices.BEST
+			mini_game = scene_manager.load_scene(mg)
+			
+		#else:
+	#		print("No mini_game")
+	#else:
+	#	print("No curr_character")
+			
+	
 
 # Handle the dialogue choice made by the player, passed in by the Dialogue Manager
 # @param dialogue_choice - a DialogueChoice enum
 func handle_dialogue(dialogue_choice):
-	mini_game = curr_character.mini_game
+	var mg = curr_character.mini_game
+
 	match dialogue_choice:
 		DialogueChoices.Worst:
 			pass
 		DialogueChoices.Okay:
-			mini_game.set_points(DialogueChoices.Okay)
-			scene_manager.loadScene(mini_game)
+			mg.set_points(DialogueChoices.Okay)
+			mini_game = scene_manager.load_scene(mg)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice
 		DialogueChoices.Better:
 			curr_character.adjust_happiness(DialogueChoices.Better*HAPPINESS_BASE)
 		DialogueChoices.Best:
-			mini_game.set_points(DialogueChoices.Best)
-			scene_manager.loadScene(mini_game)
+			mg.set_points(DialogueChoices.Best)
+			mini_game = scene_manager.load_scene(mg)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice
