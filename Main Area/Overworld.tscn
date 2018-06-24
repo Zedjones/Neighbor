@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -29,9 +29,19 @@ extents = Vector2( 316.922, 1.9989 )
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
+extents = Vector2( 1.49487, 11.5475 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.0675, 10.9508 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 
 size = 32
 use_mipmaps = false
@@ -39,7 +49,7 @@ use_filter = false
 font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 
 size = 32
 use_mipmaps = false
@@ -57,7 +67,7 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 [node name="Sky" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 590.55, 58.4522 )
+position = Vector2( 610.753, 57.7379 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -10
 texture = ExtResource( 2 )
@@ -69,6 +79,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Student" parent="Characters" index="0" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 320.294, 497.251 )
 
 [node name="IOP" parent="Characters/Student" index="2"]
@@ -183,33 +194,111 @@ shape = SubResource( 2 )
 
 [node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
 
-position = Vector2( 413.258, 520.879 )
+position = Vector2( 415.659, 520.879 )
+scale = Vector2( 0.992494, 1 )
 shape = SubResource( 3 )
 
 [node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
 
-position = Vector2( 412.895, 438.254 )
+position = Vector2( 310.491, 438.254 )
+scale = Vector2( 0.650208, 1 )
 shape = SubResource( 3 )
 
 [node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
 
-position = Vector2( 534.881, 364.967 )
+position = Vector2( 549.065, 364.967 )
+scale = Vector2( 0.772993, 1 )
 shape = SubResource( 3 )
 
 [node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
 
-position = Vector2( 585.111, 286.769 )
+position = Vector2( 548.104, 286.769 )
+scale = Vector2( 0.776376, 1 )
 shape = SubResource( 3 )
 
 [node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
 
-position = Vector2( 552.489, 208.524 )
+position = Vector2( 584.404, 208.524 )
+scale = Vector2( 0.632934, 1 )
 shape = SubResource( 3 )
 
 [node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
 
-position = Vector2( 555.836, 137.616 )
+position = Vector2( 523.595, 137.616 )
+scale = Vector2( 0.447307, 1 )
 shape = SubResource( 3 )
+
+[node name="SecondRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="7"]
+
+position = Vector2( 726.173, 481.827 )
+scale = Vector2( 1, 1.17283 )
+shape = SubResource( 4 )
+
+[node name="SecondLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="8"]
+
+position = Vector2( 102.528, 493.632 )
+scale = Vector2( 1, 2.22634 )
+shape = SubResource( 4 )
+
+[node name="ThirdLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="9"]
+
+position = Vector2( 107.865, 405.721 )
+scale = Vector2( 1, 2.84255 )
+shape = SubResource( 4 )
+
+[node name="ThirdRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="10"]
+
+position = Vector2( 517.638, 401.916 )
+scale = Vector2( 1, 1.80683 )
+shape = SubResource( 8 )
+
+[node name="FourthLeftWalll" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="11"]
+
+position = Vector2( 304.749, 328.014 )
+scale = Vector2( 1, 1.80683 )
+shape = SubResource( 8 )
+
+[node name="FourthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="12"]
+
+position = Vector2( 791.22, 328.161 )
+scale = Vector2( 1, 1.80683 )
+shape = SubResource( 8 )
+
+[node name="FifthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="13"]
+
+position = Vector2( 458.351, 258.796 )
+scale = Vector2( 1, 1.40755 )
+shape = SubResource( 8 )
+
+[node name="FifthRightWall2" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="14"]
+
+position = Vector2( 784.766, 249.575 )
+scale = Vector2( 1, 1.76165 )
+shape = SubResource( 8 )
+
+[node name="SixthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="15"]
+
+position = Vector2( 674.8, 181.555 )
+scale = Vector2( 1, 2.20163 )
+shape = SubResource( 8 )
+
+[node name="SixthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="16"]
+
+position = Vector2( 385.559, 174.631 )
+scale = Vector2( 1, 2.86099 )
+shape = SubResource( 8 )
+
+[node name="SeventhLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="17"]
+
+position = Vector2( 454.833, 106.6 )
+scale = Vector2( 1, 2.86099 )
+shape = SubResource( 8 )
+
+[node name="SeventhRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="18"]
+
+position = Vector2( 663.833, 107.097 )
+scale = Vector2( 1, 2.61034 )
+shape = SubResource( 8 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
@@ -245,7 +334,6 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="StudentDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="3"]
 
-editor/display_folded = true
 position = Vector2( 319.007, 492.032 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
@@ -298,7 +386,7 @@ player_path = NodePath("../../../../../Characters/Player")
 
 position = Vector2( -0.237854, -0.177368 )
 scale = Vector2( 3.31895, 3.21797 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
@@ -434,8 +522,6 @@ _sections_unfolded = [ "Editor", "Transform" ]
 
 [node name="Menu" type="Node" parent="." index="5"]
 
-editor/display_folded = true
-
 [node name="Container" type="Container" parent="Menu" index="0"]
 
 anchor_left = 0.0
@@ -467,7 +553,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -507,7 +593,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -533,7 +619,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
