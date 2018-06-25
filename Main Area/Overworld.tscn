@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Main Area/Stairs.gd" type="Script" id=8]
 [ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=10]
+[ext_resource path="res://Main Area/Control.vs" type="Script" id=11]
+[ext_resource path="res://Scripts/story_label.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -606,6 +608,52 @@ scale = Vector2( 499.856, 324.338 )
 z_index = -1
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="DialogueTest" type="Node" parent="." index="6"]
+
+[node name="Control" type="Control" parent="DialogueTest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 11 )
+
+[node name="Test" type="RichTextLabel" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 12 )
+scriptPath = "res://story/intro.json"
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
