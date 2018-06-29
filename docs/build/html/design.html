@@ -103,6 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#gameplay">Gameplay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interactions">Interactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dialogue">Dialogue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#happiness">Happiness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#minigames">Minigames</a><ul>
@@ -253,6 +254,17 @@ Stardew Valley influenced me in how the minigames would appear in the game. Star
 </div>
 <div class="section" id="gameplay">
 <h1>Gameplay<a class="headerlink" href="#gameplay" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="interactions">
+<h2>Interactions<a class="headerlink" href="#interactions" title="Permalink to this headline">¶</a></h2>
+<p>Each day, the player has a different interaction with each NPC available to them until the NPC has been helped “sufficiently”.
+This could be either solely a dialogue interaction or an interaction entailing both dialogue and potentially a mini-game, if the player chooses so.
+Each NPC starts at a certain level of “happiness”, which is sort of an inverse scale of how much more than NPC needs to be helped.
+To be clear, happiness does not represent “happiness” in the real sense, it’s simply what we’re using internally to refer to the notion of help.
+Depending on which option is chosen, some dialogue interactions may not appear in each playthrough. This is also affected by the starting “happiness”
+of the NPC, which is scrambled for each NPC from a pre-determined set of values so that each NPC will have a unique initial value from this set. The player
+will also only be able to interact with a certain number of NPCs each day, constrained by the time they arrived home that day and when they need to go
+to sleep.</p>
+</div>
 <div class="section" id="dialogue">
 <h2>Dialogue<a class="headerlink" href="#dialogue" title="Permalink to this headline">¶</a></h2>
 <p>The dialogue options that the player will face will have a general format as to how they affect the NPC and player. One option is to disregard any request to help them, which will of course not help them in any way, and may actually reduce their happiness. The other options will help to different extents. For instance, the next amount of help you could provide would be a constant, where you don’t play the minigame but give the NPC some valuable advice. The other two would be if you simply did the task (minigame) for the NPC, which would give points based on how well you did at the minigame, without any modifier, while the last dialogue would initiate the minigame and give you a higher modifier, where you will have given them more “happiness” than any other option. The options that give less happiness will of course drain (main character)’s energy &amp; happiness less, as they require less effort from the player and (main character), while the greater the effort that they put into the dialogue and minigame, the more energy and happiness that will be drained from (main character) but the more happiness will be given to the NPC. This means that the player must sometimes pick and choose where he puts his/her energy.</p>

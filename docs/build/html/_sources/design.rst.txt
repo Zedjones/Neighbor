@@ -61,6 +61,18 @@ Stardew Valley influenced me in how the minigames would appear in the game. Star
 Gameplay
 ========
 
+Interactions
+------------
+
+Each day, the player has a different interaction with each NPC available to them until the NPC has been helped "sufficiently". 
+This could be either solely a dialogue interaction or an interaction entailing both dialogue and potentially a mini-game, if the player chooses so. 
+Each NPC starts at a certain level of "happiness", which is sort of an inverse scale of how much more than NPC needs to be helped. 
+To be clear, happiness does not represent "happiness" in the real sense, it's simply what we're using internally to refer to the notion of help. 
+Depending on which option is chosen, some dialogue interactions may not appear in each playthrough. This is also affected by the starting "happiness"
+of the NPC, which is scrambled for each NPC from a pre-determined set of values so that each NPC will have a unique initial value from this set. The player 
+will also only be able to interact with a certain number of NPCs each day, constrained by the time they arrived home that day and when they need to go 
+to sleep. 
+
 Dialogue
 --------
 
