@@ -1,6 +1,7 @@
 extends Object
 # changed match to twine_match
 
+
 var passages = {}
 var data = {}
 var scriptPath
@@ -42,8 +43,8 @@ func load_json(json_path):
 		print("Error while reading: ", json_path)
 		return data
 	
-	var text = jsonFile.get_as_text()
-	data.parse_json(text)
+	var text = jsonFile.get_as_text() 
+	data = parse_json(text) #parse_json is not global method
 	jsonFile.close()
 	return data
 
@@ -70,7 +71,7 @@ func parse_links(text, links):
 		return text
 	
 	while(twine_match && twine_match.get_start() >= 0):
-		var linkId = twine_match.get_group_array()[0] # TODO capture 0?
+		var linkId = twine_match.get_string(1) # DONE get_string, 0th and 1st positions have the same values, but 0th has unneccessary things in it
 		var linkText
 		var linkPid
 		if(links.has(linkId)):

@@ -1,0 +1,43 @@
+{
+    "ifid": "8B6876A5-6C11-446E-9A85-B50633A0E806",
+    "name": "NeighborTest",
+    "startNode": 1,
+    "creator": "Twine",
+    "creatorVersion": "2.2.1",
+    "format": "Snowman",
+    "time": "2018-06-30T21:41:33.348Z",
+    "passages": [
+        {
+            "pid": 1,
+            "name": "Start",
+            "text": "<p><%= links['069f6825734ab825940a572720c9f8dbca3774b4'] %>\n<%= links['ddb6e422b5fc5920f6994b2b32251778403bcc97'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "069f6825734ab825940a572720c9f8dbca3774b4",
+                    "label": "{Begin Reading}",
+                    "passageId": 2
+                },
+                {
+                    "id": "ddb6e422b5fc5920f6994b2b32251778403bcc97",
+                    "label": "{Begin Reading}",
+                    "passageId": 3
+                }
+            ]
+        },
+        {
+            "pid": 2,
+            "name": "D2P1",
+            "text": "<p>{This is also text to print}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 3,
+            "name": "D2P2",
+            "text": "<p>{This is Text to print}</p>\n",
+            "tags": [],
+            "links": []
+        }
+    ]
+}

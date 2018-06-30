@@ -1,19 +1,24 @@
 extends RichTextLabel
 
 # added modules and twine-story folders
+#####CURRENT ISSUES####
+# first paragraph is grabbed fine, but the second and onward are not grabbed, text is left blank
+## I think this is because the paragraphs get formated all at once, and the newParagraph var is consequently 
+## empty after the first time through the Show_paragraph method. Trying to fix this
 
 var TwineScript = preload("res://modules/twine-story/twine_script.gd")
 
-export(String, FILE, "*.json") var scriptPath = "res://story/intro.json"
+export(String, FILE, "*.json") var scriptPath = "res://Dialogues/NeighborTest.json"
 
 var script
-var currentPassage = 0
+var currentPassage = 1
 var currentParagraph = 0
 
 func _ready():
 	script = TwineScript.new(scriptPath)
 	script.parse()
 	currentPassage = script.get_start_node()
+	format_paragraphs(currentPassage, currentParagraph)
 	show_paragraph(currentPassage, currentParagraph)
 
 	set_process_input(true)
@@ -22,21 +27,33 @@ func _ready():
 
 func _input(event):
 	if(event.is_action_pressed("ui_accept")):
-		currentParagraph += 1
+		currentPassage += 1
 		if(!show_paragraph(currentPassage, currentParagraph)):
-			currentParagraph -= 1
+			currentPassage -= 1
+		else:
+			print("going to next paragraph")
+			show_paragraph(currentPassage, currentParagraph)
 
 func show_paragraph(pid, paragraph):
+	paragraph = 0
+	currentParagraph = 0
 	var passage
+	pid = int(pid)
 	if(script.has_passage(pid)):
 		passage = script.get_passage(pid)
+		print("Current thing that should print: " + script.get_passage(pid).paragraphs[paragraph])
+		print("P1: " + script.get_passage(1).paragraphs[paragraph])
+		print("P2: " + script.get_passage(2).paragraphs[paragraph])
+		print("P3: " + script.get_passage(3).paragraphs[paragraph])
 	else:
 		passage = script.get_passage(1)
-
+		print("script.get_passage has nothing at " + String(pid))
+	
 	if(paragraph < passage.paragraphs.size()):
 		set_bbcode(passage.paragraphs[paragraph])
 		return true
 	else:
+		print("returning false")
 		return false
 
 func _on_story_meta_clicked(meta):
@@ -45,3 +62,27 @@ func _on_story_meta_clicked(meta):
 	currentPassage = sectionId
 	currentParagraph = 0
 	show_paragraph(currentPassage, currentParagraph)
+
+func format_paragraphs(pid, paragraph):
+	var passage
+	if(script.has_passage(pid)):
+		passage = script.get_passage(pid)
+		print("Current thing that should print: " + script.get_passage(pid).paragraphs[paragraph])
+		print("P1: " + script.get_passage(1).paragraphs[paragraph])
+		print("P2: " + script.get_passage(2).paragraphs[paragraph])
+		print("P3: " + script.get_passage(3).paragraphs[paragraph])
+	else:
+		passage = script.get_passage(1)
+		print("script.get_passage has nothing at " + String(pid))
+		
+	var newParagraph = ""
+	var removeText = true
+	for letter in passage.paragraphs[paragraph]:
+		if letter == '}':
+			removeText = true
+			newParagraph += "\n"
+		if removeText == false:
+			newParagraph = newParagraph + letter
+		if letter == '{':
+			removeText = false
+		passage.paragraphs[paragraph] = newParagraph +"\n"
