@@ -8,7 +8,6 @@ var leftSpeed = -0.1
 var currentSpeed = rightSpeed
 var motion = Vector2()
 var startingXPos
-onready var game_manager = get_node("/root/GameManager")
 export (PackedScene) var mini_game
 signal player_entered
 signal player_exited
@@ -18,9 +17,9 @@ export (float) var happiness = 0
 
 func _ready():
 	distanceTimer = randi()%51+1
-	connect("player_entered", game_manager, "set_curr_character")
-	connect("player_exited", game_manager, "set_curr_character")
-	connect("player_pressed", game_manager,"start_mini_game")
+	connect("player_entered", GameManager, "set_curr_character")
+	connect("player_exited", GameManager, "set_curr_character")
+	connect("player_pressed", GameManager,"start_mini_game")
 	startingXPos = position.x
 	pass
 

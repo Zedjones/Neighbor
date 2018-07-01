@@ -80,8 +80,6 @@ _sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
-bottomElevator = NodePath("../../Apartment/ApartmentMain/Elevators/Bottom")
-topElevator = NodePath("../../Apartment/ApartmentMain/Elevators/Top")
 
 [node name="PlayerSprite" type="Sprite" parent="Player" index="0"]
 

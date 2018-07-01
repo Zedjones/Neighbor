@@ -4,7 +4,6 @@ var DialogueChoices = preload("res://GlobalData.gd").DialogueChoices
 var GameOutcomes = preload("res://GlobalData.gd").GameOutcomes
 
 var curr_character
-onready var scene_manager = get_node("/root/SceneManager")
 var time_manager
 var dialogue_manager
 var in_mini_game = false
@@ -29,7 +28,7 @@ func _process(delta):
 					curr_character.adjust_happiness(dialogue_choice*BETTER_MULT*HAPPINESS_BASE)
 				GameOutcomes.WORSE:
 					curr_character.adjust_happiness(dialogue_choice*HAPPINESS_BASE)
-			scene_manager.unload_scene()
+			SceneManager.unload_scene()
 			mini_game = null
 			dialogue_choice = null
 
@@ -53,7 +52,7 @@ func start_mini_game():
 			var mg = curr_character.mini_game
 			in_mini_game = true
 			dialogue_choice = DialogueChoices.BEST
-			mini_game = scene_manager.load_scene(mg)
+			mini_game = SceneManager.load_scene(mg)
 			
 		#else:
 	#		print("No mini_game")
@@ -72,13 +71,13 @@ func handle_dialogue(dialogue_choice):
 			pass
 		DialogueChoices.Okay:
 			mg.set_points(DialogueChoices.Okay)
-			mini_game = scene_manager.load_scene(mg)
+			mini_game = SceneManager.load_scene(mg)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice
 		DialogueChoices.Better:
 			curr_character.adjust_happiness(DialogueChoices.Better*HAPPINESS_BASE)
 		DialogueChoices.Best:
 			mg.set_points(DialogueChoices.Best)
-			mini_game = scene_manager.load_scene(mg)
+			mini_game = SceneManager.load_scene(mg)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice

@@ -7,10 +7,7 @@ path="res://.import/cuttingBoard.png-372548623ee099a1cfec1244c64cc9c0.stex"
 [deps]
 
 source_file="res://Art_Assets/cuttingBoard.png"
-source_md5="95407dcbd1acf2d909d6112baf2e6518"
-
 dest_files=[ "res://.import/cuttingBoard.png-372548623ee099a1cfec1244c64cc9c0.stex" ]
-dest_md5="847a040aa61e2c1e6263bd40d13fcb25"
 
 [params]
 
