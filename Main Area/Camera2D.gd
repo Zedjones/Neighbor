@@ -3,13 +3,16 @@ extends Camera2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+export (float) var zoomStep = 0.25
 var followPlayer = false
 var targetZoom
 var tweenDuration = 3
 var tween
 
+
 func _ready():
-	tween = get_node("../Tween")
+	#tween = get_node("../Tween")
+	pass
 
 
 func _process(delta):
@@ -18,7 +21,6 @@ func _process(delta):
 		#$Tween.interpolate_property($Sky, "modulate", dayTime, nightTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		#$Tween.start()
 		pass
-
 	
 func _input(event):
 	var drag = false
@@ -26,20 +28,21 @@ func _input(event):
 	var initPosMouse = false
 	var initPosNode = false
 	
-	var zoom = get_zoom()
+	var zoomDelta = get_zoom()
 	if event is InputEventMouseButton:
 		print("Mouse Click/Unclick at: ", event.position)
 		if(event.button_index == BUTTON_WHEEL_UP):
 			print("Button_Wheel_Up: ", event.position)
-			zoom[0] = zoom[0] + 0.25
-			zoom[1] = zoom[1] + 0.25
+			zoomDelta[0] = zoomDelta[0] + zoomStep
+			zoomDelta[1] = zoomDelta[1] + zoomStep
 		if(event.button_index == BUTTON_WHEEL_DOWN):
 			print("Button_Wheel_Down: ", event.position)
-			if(zoom[0] - 0.25 > 0 && zoom[1] - 0.25 > 0):
-	            zoom[0] = zoom[0] - 0.25
-	            zoom[1] = zoom[1] - 0.25
+			if(zoomDelta[0] - zoomStep > 0 && zoomDelta[1] - zoomStep > 0):
+	            zoomDelta[0] = zoomDelta[0] - zoomStep
+	            zoomDelta[1] = zoomDelta[1] - zoomStep
 	
-		targetZoom = zoom
+		targetZoom = zoomDelta
+		reset_tween()
 			
 	elif event is InputEventMouseMotion:
 		print("Mouse Motion at: ", event.position)
@@ -84,12 +87,13 @@ func _input(event):
 #	            drag = false
 
 func reset_tween():
-	var pos = tween.tell()
-	tween.reset_all()
-	tween.remove_all()
+
+	$Tween.stop(self, "zoom")
+
+	$Tween.remove_all()
+	var currentZoom = get_zoom()
+	$Tween.interpolate_property(self, "zoom", currentZoom, targetZoom, 1, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	
-	tween.interpolate_property(self, "zoom", zoom, targetZoom, 1, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	
-	tween.start()
-	tween.seek(pos)
+	$Tween.start()
+
 	

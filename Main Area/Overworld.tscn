@@ -61,7 +61,7 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 [node name="Sky" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 592.501, 56.9892 )
+position = Vector2( 600.789, 70.9305 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -10
 texture = ExtResource( 2 )
@@ -473,10 +473,18 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 script = ExtResource( 13 )
 _sections_unfolded = [ "Editor", "Smoothing", "Transform" ]
+zoomStep = 0.5
+
+[node name="Tween" type="Tween" parent="Camera2D" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="Menu" type="Node" parent="." index="6"]
-
-editor/display_folded = true
 
 [node name="Container" type="Container" parent="Menu" index="0"]
 
