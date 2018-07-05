@@ -8,7 +8,7 @@ extends RichTextLabel
 
 var TwineScript = preload("res://modules/twine-story/twine_script.gd")
 
-export(String, FILE, "*.json") var scriptPath = "res://Dialogues/NeighborTest.json"
+export(String, FILE, "*.json") var scriptPath
 
 var script
 var currentPassage = 1
@@ -18,7 +18,7 @@ func _ready():
 	script = TwineScript.new(scriptPath)
 	script.parse()
 	currentPassage = script.get_start_node()
-	format_paragraphs(currentPassage, currentParagraph)
+	
 	show_paragraph(currentPassage, currentParagraph)
 
 	set_process_input(true)
@@ -30,24 +30,29 @@ func _input(event):
 		currentPassage += 1
 		if(!show_paragraph(currentPassage, currentParagraph)):
 			currentPassage -= 1
-		else:
-			print("going to next paragraph")
-			show_paragraph(currentPassage, currentParagraph)
 
 func show_paragraph(pid, paragraph):
-	paragraph = 0
-	currentParagraph = 0
 	var passage
 	pid = int(pid)
 	if(script.has_passage(pid)):
 		passage = script.get_passage(pid)
-		print("Current thing that should print: " + script.get_passage(pid).paragraphs[paragraph])
-		print("P1: " + script.get_passage(1).paragraphs[paragraph])
-		print("P2: " + script.get_passage(2).paragraphs[paragraph])
-		print("P3: " + script.get_passage(3).paragraphs[paragraph])
 	else:
 		passage = script.get_passage(1)
-		print("script.get_passage has nothing at " + String(pid))
+		print("Shouldn't be here")
+		return false
+	var newParagraph = ""
+	var removeText = true
+	for letter in passage.paragraphs[paragraph]:
+		if letter == '}':
+			removeText = true
+			newParagraph += "\n"
+		if removeText == false:
+			newParagraph = newParagraph + letter
+		if letter == '{':
+			removeText = false
+	passage.paragraphs[paragraph]= newParagraph +"\n"
+	print("Current passage printing")
+	print(passage.paragraphs[paragraph])
 	
 	if(paragraph < passage.paragraphs.size()):
 		set_bbcode(passage.paragraphs[paragraph])
@@ -62,27 +67,3 @@ func _on_story_meta_clicked(meta):
 	currentPassage = sectionId
 	currentParagraph = 0
 	show_paragraph(currentPassage, currentParagraph)
-
-func format_paragraphs(pid, paragraph):
-	var passage
-	if(script.has_passage(pid)):
-		passage = script.get_passage(pid)
-		print("Current thing that should print: " + script.get_passage(pid).paragraphs[paragraph])
-		print("P1: " + script.get_passage(1).paragraphs[paragraph])
-		print("P2: " + script.get_passage(2).paragraphs[paragraph])
-		print("P3: " + script.get_passage(3).paragraphs[paragraph])
-	else:
-		passage = script.get_passage(1)
-		print("script.get_passage has nothing at " + String(pid))
-		
-	var newParagraph = ""
-	var removeText = true
-	for letter in passage.paragraphs[paragraph]:
-		if letter == '}':
-			removeText = true
-			newParagraph += "\n"
-		if removeText == false:
-			newParagraph = newParagraph + letter
-		if letter == '{':
-			removeText = false
-		passage.paragraphs[paragraph] = newParagraph +"\n"

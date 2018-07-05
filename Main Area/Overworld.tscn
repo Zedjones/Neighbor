@@ -627,7 +627,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 11 )
 
-[node name="Test" type="RichTextLabel" parent="." index="7"]
+[node name="Test" type="RichTextLabel" parent="DialogueTest" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
