@@ -22,7 +22,12 @@ func _process(delta):
 
 func _on_PlayButton_pressed():
 	print($Camera2D.position)
-	$Tween.interpolate_property($Camera2D, "position", $Camera2D.position, Vector2($Camera2D.position.x, 300 + 51), tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.connect("tween_completed", self, "follow_player")
+	$Tween.interpolate_property($Camera2D, "position", $Camera2D.position, Vector2($Camera2D.position.x, 348), tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.interpolate_property($Sky, "modulate", dayTime, nightTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$Tween.start()
 
+func follow_player(object, key):
+	print("with key ", key)
+	$Camera2D.follow_player(true)
+#	$Camera2D.scroll_to_min()
