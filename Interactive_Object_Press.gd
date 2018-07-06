@@ -20,7 +20,7 @@ func _process(delta):
 	# Update game logic here.
 	if(player != null):
 		if overlaps_body(player):
-			if Input.is_action_just_pressed("ui_select"):
+			if Input.is_action_just_pressed("ui_select") and not player.is_paused:
 				#print("player_pressed")
 				emit_signal("activated")
 			
