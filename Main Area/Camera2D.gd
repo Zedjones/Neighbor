@@ -4,25 +4,26 @@ extends Camera2D
 # var a = 2
 # var b = "textvar"
 export (float) var targetZoomStep = 0.25
+export (float) var followSpeed = 0.25
 var followPlayer = false
 var targetZoom
 var tweenDuration = 3
 var tween
-var maxZoom
+var maxZoom = Vector2(.84, .84)
 var minZoom = Vector2(.12, .12)
+var player
 
 func _ready():
 	#tween = get_node("../Tween")
 	maxZoom = get_zoom()
-	pass
+	
+	player = get_node("../Player")
 
 
 func _process(delta):
-	#if(followPlayer):
-#		tween.follow_property(self, "zoom", zoom, targetZoom, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		#$Tween.interpolate_property($Sky, "modulate", dayTime, nightTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		#$Tween.start()
-		pass
+	if(followPlayer):
+		follow_player(followPlayer)
+	pass	
 	
 func _input(event):
 	var drag = false
@@ -32,10 +33,8 @@ func _input(event):
 	var zoomStep = targetZoomStep
 	var zoomDelta = get_zoom()
 	
-	print(minZoom)
-	
 	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
+#		print("Mouse Click/Unclick at: ", event.position)
 		if(event.button_index == BUTTON_WHEEL_UP):
 #			print("Button_Wheel_Up: ", event.position)
 			
@@ -43,20 +42,19 @@ func _input(event):
 				zoomStep = clamp(zoomStep, 0, maxZoom[0] - zoomDelta[0])
 			if(zoomDelta[1] + zoomStep > maxZoom[1]):
 				zoomStep = clamp(zoomStep, 0, maxZoom[1] - zoomDelta[1])
-			print(zoomStep)
+#			print(zoomStep)
 				
 			zoomDelta[0] = zoomDelta[0] + zoomStep
 			zoomDelta[1] = zoomDelta[1] + zoomStep
 			
 		if(event.button_index == BUTTON_WHEEL_DOWN):
-			print("Button_Wheel_Down: ", event.position)
-#			if(zoomDelta[0] - zoomStep > 0 && zoomDelta[1] - zoomStep > 0):
+#			print("Button_Wheel_Down: ", event.position)
 
 			if(zoomDelta[0] - zoomStep < minZoom[0]):
 				zoomStep = clamp(zoomStep, 0, zoomDelta[0] - minZoom[0])
 			if(zoomDelta[1] - zoomStep < minZoom[1]):
-				zoomStep = clamp(zoomStep, 0, zoomDelta[1] - minZoom[1] )
-			print(zoomStep)
+				zoomStep = clamp(zoomStep, 0, zoomDelta[1] - minZoom[1])
+#			print(zoomStep)
             
 			zoomDelta[0] = zoomDelta[0] - zoomStep
 			zoomDelta[1] = zoomDelta[1] - zoomStep
@@ -114,7 +112,21 @@ func reset_tween():
 	$Tween.remove_all()
 	var currentZoom = get_zoom()
 	$Tween.interpolate_property(self, "zoom", currentZoom, targetZoom, 1, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	
+	follow_player(followPlayer)
 	$Tween.start()
 
+func follow_player(follow):
+	followPlayer = follow
+	if(follow):
+		print("camera", position)
+		print("player", player.position)
+		$Tween.follow_property(self, "position", position, player, "position", followSpeed, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+#		$Tween.start()
+		
+func scroll_to_max():
+	targetZoom = maxZoom
+	reset_tween()
 	
+func scroll_to_min():
+	targetZoom = minZoom
+	reset_tween()
