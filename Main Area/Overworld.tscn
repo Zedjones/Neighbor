@@ -61,7 +61,7 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 [node name="Sky" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 600.789, 70.9305 )
+position = Vector2( 591.968, 69.4604 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -10
 texture = ExtResource( 2 )
@@ -132,6 +132,7 @@ visible = false
 
 [node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 608.646, 258.106 )
 z_index = -3
 mini_game = ExtResource( 7 )
@@ -149,6 +150,7 @@ _sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z In
 editor/display_folded = true
 position = Vector2( 438.723, 337.968 )
 z_index = -3
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index" ]
 mini_game = ExtResource( 8 )
 
 [node name="Idle" parent="Characters/CatLady" index="3"]
@@ -179,6 +181,7 @@ visible = false
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
@@ -187,7 +190,7 @@ position = Vector2( 433.621, 299.73 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
 texture = ExtResource( 9 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -448,11 +451,11 @@ playback/speed = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
-position = Vector2( 512, -161 )
+position = Vector2( 434, -112 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 0.84, 0.84 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -472,8 +475,8 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 script = ExtResource( 13 )
-_sections_unfolded = [ "Editor", "Smoothing", "Transform" ]
-zoomStep = 0.5
+_sections_unfolded = [ "Editor", "Transform" ]
+targetZoomStep = 0.25
 
 [node name="Tween" type="Tween" parent="Camera2D" index="0"]
 
@@ -492,7 +495,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -461.0
+margin_top = -364.0
+margin_right = -158.0
 margin_bottom = -461.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -508,8 +512,8 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -128.5
-margin_right = 128.5
+margin_left = -129.0
+margin_right = 128.0
 margin_bottom = 94.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
