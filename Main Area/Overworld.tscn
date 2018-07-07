@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=10]
 [ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Main Area/Stairs.gd" type="Script" id=12]
-[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=13]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=14]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -45,12 +46,17 @@ extents = Vector2( 2.0675, 10.9508 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
 [sub_resource type="DynamicFont" id=7]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 14 )
+font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=8]
@@ -58,10 +64,10 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 14 )
+font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -198,6 +204,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
+editor/display_folded = true
 position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
@@ -208,6 +215,8 @@ __meta__ = {
 }
 
 [node name="ApartmentBoxes" type="Node" parent="Apartment/ApartmentMain" index="0"]
+
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Apartment/ApartmentMain/ApartmentBoxes" index="0"]
 
@@ -439,6 +448,7 @@ player_path = NodePath("../../Player")
 
 [node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../2nd Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/1st Floor" index="0"]
@@ -448,6 +458,7 @@ scale = Vector2( 0.327475, 0.479105 )
 
 [node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../1st Floor")
 
 [node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Left" index="0"]
@@ -457,6 +468,7 @@ scale = Vector2( 0.327475, 0.479105 )
 
 [node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../3rd Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Right" index="0"]
@@ -466,6 +478,7 @@ scale = Vector2( 0.327475, 0.479105 )
 
 [node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../2nd Floor Right")
 
 [node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Left" index="0"]
@@ -527,6 +540,20 @@ target_path = NodePath("../5th Floor Right")
 position = Vector2( 654.532, 119.567 )
 scale = Vector2( 0.371902, 0.479105 )
 
+[node name="Bedroom" type="Node" parent="Apartment" index="2"]
+
+[node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 13 )]
+
+position = Vector2( 540.148, 107.392 )
+scale = Vector2( 0.35674, 0.761792 )
+player_path = NodePath("../../../Player")
+
+[node name="CollisionShape2D" parent="Apartment/Bedroom/Interactive Object" index="0"]
+
+position = Vector2( 0.666704, -1.87317 )
+scale = Vector2( 2.51283, 2.5576 )
+shape = SubResource( 9 )
+
 [node name="Tween" type="Tween" parent="." index="4"]
 
 repeat = false
@@ -563,7 +590,7 @@ drag_margin_bottom = 1.0
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
 targetZoomStep = 0.25
 followSpeed = 0.1
@@ -698,6 +725,8 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
 
+[connection signal="activated" from="Apartment/Bedroom/Interactive Object" to="." method="_on_Bedroom_Object_activated"]
+
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
 
@@ -719,3 +748,4 @@ _sections_unfolded = [ "custom_fonts" ]
 [editable path="Apartment/Stairs/5th Floor Left"]
 [editable path="Apartment/Stairs/5th Floor Right"]
 [editable path="Apartment/Stairs/6th Floor"]
+[editable path="Apartment/Bedroom/Interactive Object"]

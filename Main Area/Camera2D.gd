@@ -11,7 +11,10 @@ var tweenDuration = 3
 var tween
 var maxZoom = Vector2(.84, .84)
 var minZoom = Vector2(.12, .12)
+var skyPosition = Vector2(434, -112)
+var apartmentPosition = Vector2(434, 348)
 var player
+var targetPostion
 
 func _ready():
 	#tween = get_node("../Tween")
@@ -66,9 +69,6 @@ func _input(event):
 #	elif event is InputEventMouseMotion:
 #		print("Mouse Motion at: ", event.position)
 
-#	set_zoom(zoom)
-	
-
 	if(drag == true):
 	
 	    var mouse_pos = get_global_mouse_pos()
@@ -112,14 +112,16 @@ func reset_tween():
 	$Tween.remove_all()
 	var currentZoom = get_zoom()
 	$Tween.interpolate_property(self, "zoom", currentZoom, targetZoom, 1, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "position", position, targetPostion, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	
 	follow_player(followPlayer)
 	$Tween.start()
 
 func follow_player(follow):
 	followPlayer = follow
 	if(follow):
-		print("camera", position)
-		print("player", player.position)
+#		print("camera", position)
+#		print("player", player.position)
 		$Tween.follow_property(self, "position", position, player, "position", followSpeed, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 #		$Tween.start()
 		
@@ -130,3 +132,15 @@ func scroll_to_max():
 func scroll_to_min():
 	targetZoom = minZoom
 	reset_tween()
+	
+func scroll_to_sky():
+	followPlayer = false;
+	targetPostion = skyPosition
+	reset_tween()
+	
+func scroll_to_apartment():
+	followPlayer = false;	
+	targetPostion = apartmentPosition
+	reset_tween()
+	
+	
