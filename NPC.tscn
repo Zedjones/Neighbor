@@ -1,10 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://NPC.gd" type="Script" id=1]
 [ext_resource path="res://Interactive_Object.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art_Assets/EveryoneIdle.png" type="Texture" id=4]
 [ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=5]
+[ext_resource path="res://NPC States/States.gd" type="Script" id=6]
+[ext_resource path="res://NPC States/Idle.gd" type="Script" id=7]
+[ext_resource path="res://NPC States/Walk.gd" type="Script" id=8]
+[ext_resource path="res://NPC States/Special.gd" type="Script" id=9]
+[ext_resource path="res://NPC States/StateTimer.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -63,7 +68,7 @@ length = 1.0
 loop = false
 step = 0.1
 
-[node name="NPC" type="KinematicBody2D"]
+[node name="NPC" type="KinematicBody2D" index="0"]
 
 position = Vector2( 279.323, 169.573 )
 z_index = 1
@@ -143,9 +148,41 @@ playback_speed = 2.0
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
+[node name="States" type="Node" parent="." index="5"]
+
+script = ExtResource( 6 )
+
+[node name="Idle" type="Node" parent="States" index="0"]
+
+script = ExtResource( 7 )
+MIN_TIME = 4
+MAX_TIME = 12
+
+[node name="Walk" type="Node" parent="States" index="1"]
+
+script = ExtResource( 8 )
+MIN_TIME = 4
+MAX_TIME = 12
+
+[node name="Special" type="Node" parent="States" index="2"]
+
+script = ExtResource( 9 )
+MIN_TIME = 4
+MAX_TIME = 12
+
+[node name="StateTimer" type="Timer" parent="States" index="3"]
+
+process_mode = 1
+wait_time = 1.5
+one_shot = true
+autostart = false
+script = ExtResource( 10 )
+
 [connection signal="activated" from="IO" to="." method="_on_Interactive_Object_activated"]
 
 [connection signal="exited" from="IO" to="." method="_on_IO_exited"]
+
+[connection signal="timeout" from="States/StateTimer" to="States/StateTimer" method="_on_StateTimer_timeout"]
 
 
 [editable path="IO"]
