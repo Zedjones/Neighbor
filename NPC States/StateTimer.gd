@@ -13,15 +13,15 @@ func _ready():
 
 func start_timer(min_time, max_time, step):
 	randomize()
-	var new_time = rand_range(min_time, max_time)
+	var new_time = int(rand_range(min_time, max_time))
 	while new_time % step != 0:
-		new_time = rand_range(min_time, max_time)
+		new_time = int(rand_range(min_time, max_time))
 	wait_time = new_time
 	start()
 
 func _on_StateTimer_timeout():
 	randomize()
-	var new_state = floor(range_range(0, states.length))
+	var new_state = floor(rand_range(0, states.size()))
 	while new_state == $"..".curr_state:
-		new_state = floor(range_range(0, states.length))
+		new_state = floor(rand_range(0, states.size()))
 	$"..".change_state(new_state)

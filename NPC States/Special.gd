@@ -17,4 +17,4 @@ func _process(delta):
 
 func switched(from_state):
 	$"../../NPCSprite/Animations".queue(animation)
-	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, step)
+	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, int(step))

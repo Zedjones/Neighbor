@@ -12,7 +12,7 @@ var step
 func _ready():
 	step = $"../../NPCSprite/Animations".get_animation(animation).length
 
-func _process(delta):
+func update(delta):
 	pass
 
 func switched(from_state):
