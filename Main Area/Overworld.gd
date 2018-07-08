@@ -10,11 +10,13 @@ export (Color) var nightTime
 var tweenDuration = 3
 enum SkyState { Night, Day }
 var currentSkyState; 
+var playerStartingPosition
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	SceneManager.player = get_node("Player")
+	playerStartingPosition = SceneManager.player.position
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
@@ -86,8 +88,12 @@ func camera_tween_ended(object, key):
 			$Tween.connect("tween_completed", self, "on_tween_completed")
 			night_to_day()
 			
-		elif(currentSkyState == SkyState.Day):
-#			$"Camera2D/Tween".disconnect("tween_completed", self, "camera_tween_ended")
+		elif(currentSkyState == SkyState.Day && $Camera2D.currentPositionState == $Camera2D.PositionState.Apartment):
+			#move player
+			SceneManager.player.position = playerStartingPosition
+			$Camera2D.follow_player(true)			
+			$Player.is_paused = false; 
+			day_to_night()
 			pass
 	elif(key == ":zoom"):
 		print("scroll ended")	
