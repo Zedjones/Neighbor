@@ -11,10 +11,14 @@ var tweenDuration = 3
 var tween
 var maxZoom = Vector2(.84, .84)
 var minZoom = Vector2(.12, .12)
-var skyPosition = Vector2(434, -112)
+var skyPosition = Vector2(434, -106)
 var apartmentPosition = Vector2(434, 348)
 var player
 var targetPostion
+enum PositionState {Apartment, Sky, Player}
+enum ScrollState {Max, Min, Custom}
+var currentPositionState
+var currentScrollState
 
 func _ready():
 	#tween = get_node("../Tween")
@@ -64,6 +68,8 @@ func _input(event):
 			
 	
 		targetZoom = zoomDelta
+		currentScrollState = ScrollState.Custom
+		
 		reset_tween()
 			
 #	elif event is InputEventMouseMotion:
@@ -107,14 +113,15 @@ func _input(event):
 
 func reset_tween():
 
-	$Tween.stop(self, "zoom")
+#	$Tween.stop(self, "zoom")
 
 	$Tween.remove_all()
 	var currentZoom = get_zoom()
 	$Tween.interpolate_property(self, "zoom", currentZoom, targetZoom, 1, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.interpolate_property(self, "position", position, targetPostion, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	
-	follow_player(followPlayer)
+	if(!followPlayer):
+		$Tween.interpolate_property(self, "position", position, targetPostion, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	else:
+		follow_player(followPlayer)
 	$Tween.start()
 
 func follow_player(follow):
@@ -122,25 +129,32 @@ func follow_player(follow):
 	if(follow):
 #		print("camera", position)
 #		print("player", player.position)
+		currentPositionState  = PositionState.Player
 		$Tween.follow_property(self, "position", position, player, "position", followSpeed, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 #		$Tween.start()
+	else:
+		currentPositionState  = PositionState.Apartment		
 		
 func scroll_to_max():
 	targetZoom = maxZoom
+	currentScrollState = ScrollState.Max
 	reset_tween()
 	
 func scroll_to_min():
 	targetZoom = minZoom
+	currentScrollState = ScrollState.Min
 	reset_tween()
 	
 func scroll_to_sky():
 	followPlayer = false;
+	currentPositionState  = PositionState.Sky
 	targetPostion = skyPosition
 	reset_tween()
 	
 func scroll_to_apartment():
 	followPlayer = false;	
 	targetPostion = apartmentPosition
+	currentPositionState  = PositionState.Apartment
 	reset_tween()
 	
 	
