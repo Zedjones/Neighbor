@@ -72,6 +72,7 @@ func on_tween_completed(object, key):
 	#	 	$Camera2D.scroll_to_min()
 		elif(currentSkyState == SkyState.Day && $Camera2D.currentPositionState == $Camera2D.PositionState.Sky):
 			$"Camera2D/Tween".connect("tween_completed", self, "camera_tween_ended")	
+			TimeManager.next_day()			
 			$Camera2D.scroll_to_apartment()
 
 # tween for the camera
@@ -94,7 +95,6 @@ func camera_tween_ended(object, key):
 			$Camera2D.follow_player(true)			
 			$Player.is_paused = false; 
 			day_to_night()
-			pass
 	elif(key == ":zoom"):
 		print("scroll ended")	
 		if($Camera2D.currentScrollState == $Camera2D.ScrollState.Max):

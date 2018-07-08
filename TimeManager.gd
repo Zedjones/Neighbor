@@ -8,9 +8,16 @@ enum Day { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
 
 var currentDay = Day.Monday
 var currentTime
+var day
+var time
+
+func _ready():
+	day = get_node("/root/World/Camera2D/Day")
+	time = get_node("/root/World/Camera2D/Time")
 
 func next_day():
-	currentDay += 1; 
+	currentDay = currentDay + 1; 
+	day.text = String(Day.Tuesday)
 	pass
 
 func get_current_day():
