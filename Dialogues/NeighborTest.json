@@ -5,7 +5,7 @@
     "creator": "Twine",
     "creatorVersion": "2.2.1",
     "format": "Snowman",
-    "time": "2018-07-05T05:33:48.879Z",
+    "time": "2018-07-05T21:57:10.649Z",
     "passages": [
         {
             "pid": 1,
@@ -28,16 +28,28 @@
         {
             "pid": 2,
             "name": "1P1",
-            "text": "<p>{First; Player; Option 1}</p>\n",
+            "text": "<p>{First; Player; Option 1}\n<%= links['2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b'] %> </p>\n",
             "tags": [],
-            "links": []
+            "links": [
+                {
+                    "id": "2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b",
+                    "label": "2N1",
+                    "passageId": 4
+                }
+            ]
         },
         {
             "pid": 3,
             "name": "1P2",
-            "text": "<p>{First; Player; Option 2}</p>\n",
+            "text": "<p>{First; Player; Option 2}\n<%= links['5ccb490d122dface3f7adc04825671cb23a5d75a'] %> </p>\n",
             "tags": [],
-            "links": []
+            "links": [
+                {
+                    "id": "5ccb490d122dface3f7adc04825671cb23a5d75a",
+                    "label": "2N2",
+                    "passageId": 5
+                }
+            ]
         },
         {
             "pid": 4,

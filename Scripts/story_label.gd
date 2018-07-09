@@ -11,8 +11,11 @@ var TwineScript = preload("res://modules/twine-story/twine_script.gd")
 export(String, FILE, "*.json") var scriptPath
 
 var script
+var passage
+var isPlayer = false
 var currentPassage = 1
 var currentParagraph = 0
+var currentSelection = 1
 
 func _ready():
 	script = TwineScript.new(scriptPath)
@@ -20,25 +23,36 @@ func _ready():
 	currentPassage = script.get_start_node()
 	
 	show_paragraph(currentPassage, currentParagraph)
+	show_options(currentPassage, currentParagraph)
 
 	set_process_input(true)
 	print("Story: ", script.get_story_name())
 	print("Passage names: ", script.get_passage_names())
 
+func format_passages(pid,paragraph):
+	return
+
 func _input(event):
 	if(event.is_action_pressed("ui_accept")):
-		currentPassage += 1
-		if(!show_paragraph(currentPassage, currentParagraph)):
+		passage = ""
+		currentPassage += currentSelection
+		if(show_paragraph(currentPassage, currentParagraph) == false):
 			currentPassage -= 1
+		if(check_passage(currentPassage, currentParagraph) == 0):
+			show_options(currentPassage, currentParagraph)
+	if(!isPlayer):
+		if(event.is_action_pressed("ui_up")):
+			currentSelection = 3
+		if(event.is_action_pressed("ui_down")):
+			currentSelection = 4
 
+# goes through paragraphs in the current passage and removes anything that isn't inside {}
 func show_paragraph(pid, paragraph):
-	var passage
 	pid = int(pid)
 	if(script.has_passage(pid)):
 		passage = script.get_passage(pid)
 	else:
 		passage = script.get_passage(1)
-		print("Shouldn't be here")
 		return false
 	var newParagraph = ""
 	var removeText = true
@@ -50,9 +64,42 @@ func show_paragraph(pid, paragraph):
 			newParagraph = newParagraph + letter
 		if letter == '{':
 			removeText = false
-	passage.paragraphs[paragraph]= newParagraph +"\n"
-	print("Current passage printing")
-	print(passage.paragraphs[paragraph])
+	passage.paragraphs[paragraph] = newParagraph +"\n"
+	
+	if(paragraph < passage.paragraphs.size()):
+		set_bbcode(passage.paragraphs[paragraph])
+		return true
+	else:
+		print("returning false")
+		return false
+
+# does the same thing as show_paragraph but is used to show the player dialogue options
+func show_options(pid, paragraph):
+	var temp = passage.links.keys()
+	# this will get the passages that the current passage links to
+	var optionOneId = script.get_passage(int(passage.links[temp[0]].passageId))
+	var optionTwoId = script.get_passage(int(passage.links[temp[1]].passageId))
+	var newParagraph = ""
+	var removeText = true
+	for letter in optionOneId.paragraphs[paragraph]:
+		if letter == '}':
+			removeText = true
+		if removeText == false:
+			newParagraph = newParagraph + letter
+		if letter == '{':
+			removeText = false
+	
+	passage.paragraphs[paragraph] += newParagraph +"\n"
+	newParagraph = ""
+	
+	for letter in optionTwoId.paragraphs[paragraph]:
+		if letter == '}':
+			removeText = true
+		if removeText == false:
+			newParagraph = newParagraph + letter
+		if letter == '{':
+			removeText = false
+	passage.paragraphs[paragraph] += newParagraph +"\n"
 	
 	if(paragraph < passage.paragraphs.size()):
 		set_bbcode(passage.paragraphs[paragraph])
@@ -67,3 +114,20 @@ func _on_story_meta_clicked(meta):
 	currentPassage = sectionId
 	currentParagraph = 0
 	show_paragraph(currentPassage, currentParagraph)
+
+# check if current selection is a player or NPC
+func check_passage(pid, paragraph):
+	if(passage.links.size() > 1):
+		if('N' in passage.name):
+			print("Is an NPC")
+			isPlayer = false
+			return 0
+		elif('P' in passage.name):
+			print("Is a player")
+			isPlayer = true
+			return 1
+	else:
+		return -1
+
+func go_to_next_passage(pid, paragraph):
+	
