@@ -16,6 +16,7 @@ var isPlayer = false
 var currentPassage = 1
 var currentParagraph = 0
 var currentSelection = 1
+var currentDialogue = ""
 
 func _ready():
 	script = TwineScript.new(scriptPath)
@@ -41,10 +42,15 @@ func _input(event):
 		if(check_passage(currentPassage, currentParagraph) == 0):
 			show_options(currentPassage, currentParagraph)
 	if(!isPlayer):
+		passage = ""
 		if(event.is_action_pressed("ui_up")):
 			currentSelection = 3
+			show_paragraph(currentPassage, currentParagraph)
+			show_options(currentPassage, currentParagraph)
 		if(event.is_action_pressed("ui_down")):
 			currentSelection = 4
+			show_paragraph(currentPassage, currentParagraph)
+			show_options(currentPassage, currentParagraph)
 
 # goes through paragraphs in the current passage and removes anything that isn't inside {}
 func show_paragraph(pid, paragraph):
@@ -54,17 +60,24 @@ func show_paragraph(pid, paragraph):
 	else:
 		passage = script.get_passage(1)
 		return false
+		# creates new paragraph to display, and sets the current dialogue.
+		# currentDialogue is so that when we try and print it a second time, we can reset the text, 
+		# and not get infinite repeating text
 	var newParagraph = ""
 	var removeText = true
-	for letter in passage.paragraphs[paragraph]:
-		if letter == '}':
-			removeText = true
-			newParagraph += "\n"
-		if removeText == false:
-			newParagraph = newParagraph + letter
-		if letter == '{':
-			removeText = false
-	passage.paragraphs[paragraph] = newParagraph +"\n"
+	if '{' in passage.paragraphs[paragraph]:
+		for letter in passage.paragraphs[paragraph]:
+			if letter == '}':
+				removeText = true
+				newParagraph += "\n"
+			if removeText == false:
+				newParagraph = newParagraph + letter
+			if letter == '{':
+				removeText = false
+		passage.paragraphs[paragraph] = newParagraph +"\n"
+		currentDialogue = newParagraph +"\n"
+	else:
+		passage.paragraphs[paragraph] = currentDialogue
 	
 	if(paragraph < passage.paragraphs.size()):
 		set_bbcode(passage.paragraphs[paragraph])
@@ -81,6 +94,8 @@ func show_options(pid, paragraph):
 	var optionTwoId = script.get_passage(int(passage.links[temp[1]].passageId))
 	var newParagraph = ""
 	var removeText = true
+	if currentSelection == 3:
+		newParagraph += '>'
 	for letter in optionOneId.paragraphs[paragraph]:
 		if letter == '}':
 			removeText = true
@@ -91,7 +106,8 @@ func show_options(pid, paragraph):
 	
 	passage.paragraphs[paragraph] += newParagraph +"\n"
 	newParagraph = ""
-	
+	if currentSelection == 4:
+		newParagraph += '>'
 	for letter in optionTwoId.paragraphs[paragraph]:
 		if letter == '}':
 			removeText = true
