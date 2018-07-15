@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=10]
 [ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Main Area/Stairs.gd" type="Script" id=12]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=13]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -49,7 +50,7 @@ extents = Vector2( 10, 10 )
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 13 )
+font_data = ExtResource( 14 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=8]
@@ -57,7 +58,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 13 )
+font_data = ExtResource( 14 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="World" type="Node"]
@@ -78,7 +79,6 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 297.744, 556.439 )
 z_index = -1
 input_pickable = false
@@ -86,7 +86,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -105,6 +105,7 @@ shape = SubResource( 1 )
 
 [node name="Characters" type="Node" parent="." index="2"]
 
+editor/display_folded = true
 script = ExtResource( 5 )
 _sections_unfolded = [ "Pause" ]
 player_path = NodePath("../Player")
@@ -131,6 +132,7 @@ visible = false
 
 [node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 608.646, 258.106 )
 z_index = -3
 mini_game = ExtResource( 7 )
@@ -153,6 +155,7 @@ region_rect = Rect2( 52, 201, 16, 63 )
 
 position = Vector2( 438.723, 337.968 )
 z_index = -3
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index" ]
 mini_game = ExtResource( 8 )
 
 [node name="IO" parent="Characters/CatLady" index="1"]
@@ -190,15 +193,16 @@ visible = false
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
-position = Vector2( 433.621, 299.73 )
+position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
 texture = ExtResource( 9 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -534,32 +538,48 @@ playback/speed = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
-position = Vector2( 512, -161 )
+editor/display_folded = true
+position = Vector2( 434, -112 )
+offset = Vector2( 0, -7 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
+zoom = Vector2( 0.84, 0.84 )
+limit_left = 0
+limit_top = -370
+limit_right = 866
+limit_bottom = 598
+limit_smoothed = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
 smoothing_speed = 5.0
 offset_v = 0.0
 offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
+drag_margin_left = 0.7
+drag_margin_top = 1.0
+drag_margin_right = 0.7
+drag_margin_bottom = 1.0
 editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Editor", "Transform" ]
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 13 )
+_sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
+targetZoomStep = 0.25
+followSpeed = 0.1
+
+[node name="Tween" type="Tween" parent="Camera2D" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="Menu" type="Node" parent="." index="6"]
+
+editor/display_folded = true
 
 [node name="Container" type="Container" parent="Menu" index="0"]
 
@@ -567,7 +587,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -461.0
+margin_top = -364.0
+margin_right = -158.0
 margin_bottom = -461.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -583,8 +604,8 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -128.5
-margin_right = 128.5
+margin_left = -129.0
+margin_right = 128.0
 margin_bottom = 94.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
