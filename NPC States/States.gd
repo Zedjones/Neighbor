@@ -1,6 +1,6 @@
 extends Node
 
-enum states {Idle, Walk, Special}
+enum states {Idle=0, Walk=1, Special=2}
 var curr_state
 onready var state_map = \
 	{states.Idle: $Idle, states.Walk: $Walk, states.Special: $Special}
@@ -14,6 +14,7 @@ func _ready():
 	change_state(new_state)
 
 func _process(delta):
+	
 	state_map[curr_state].update(delta)
 
 func change_state(new_state):

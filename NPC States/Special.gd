@@ -14,7 +14,11 @@ func _ready():
 
 func _process(delta):
 	pass
+	
+func update(delta):
+	pass
 
 func switched(from_state):
+	print("Entering special")
 	$"../../NPCSprite/Animations".queue(animation)
 	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, int(step))

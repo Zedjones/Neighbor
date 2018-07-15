@@ -116,7 +116,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Idle" type="Sprite" parent="." index="3"]
 
-visible = false
 position = Vector2( -0.0231934, -1.16441 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
@@ -126,6 +125,7 @@ _sections_unfolded = [ "Offset", "Region", "Transform" ]
 
 [node name="NPCSprite" type="Sprite" parent="." index="4"]
 
+visible = false
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 5 )
 region_enabled = true

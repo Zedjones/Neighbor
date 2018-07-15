@@ -21,7 +21,7 @@ func start_timer(min_time, max_time, step):
 
 func _on_StateTimer_timeout():
 	randomize()
-	var new_state = floor(rand_range(0, states.size()))
+	var new_state = int(rand_range(0, states.size()))
 	while new_state == $"..".curr_state:
-		new_state = floor(rand_range(0, states.size()))
+		new_state = int(rand_range(0, states.size()))
 	$"..".change_state(new_state)
