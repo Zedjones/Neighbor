@@ -14,8 +14,11 @@ func _ready():
 	change_state(new_state)
 
 func _process(delta):
-	
 	state_map[curr_state].update(delta)
+	
+func handle_anim():
+	$"../NPCSprite/Animations".stop(true)
+	$"../NPCSprite/Animations".play(state_map[curr_state].animation)
 
 func change_state(new_state):
 	var state_node = state_map[new_state]

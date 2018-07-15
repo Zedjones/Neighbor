@@ -13,7 +13,7 @@ func _ready():
 	step = $"../../NPCSprite/Animations".get_animation(animation).length
 
 func update(delta):
-	pass
+	$"../../".move_and_slide(Vector2(0, 0))
 
 func switched(from_state):
 	print("Entering idle")
