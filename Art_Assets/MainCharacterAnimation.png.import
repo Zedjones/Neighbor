@@ -7,7 +7,10 @@ path="res://.import/MainCharacterAnimation.png-10a444f7ceca5dbb7189486bdc5487ed.
 [deps]
 
 source_file="res://Art_Assets/MainCharacterAnimation.png"
+source_md5="904c4eb37672367f7988f564a6d6421d"
+
 dest_files=[ "res://.import/MainCharacterAnimation.png-10a444f7ceca5dbb7189486bdc5487ed.stex" ]
+dest_md5="606a57ccf335ac1a53faef14ebc91087"
 
 [params]
 

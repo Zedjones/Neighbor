@@ -7,7 +7,10 @@ path="res://.import/FoodStuffs.png-ff6e40983efcc986a8257e954931e34b.stex"
 [deps]
 
 source_file="res://Art_Assets/FoodStuffs.png"
+source_md5="ed749ef46df41539fceb5e439281190c"
+
 dest_files=[ "res://.import/FoodStuffs.png-ff6e40983efcc986a8257e954931e34b.stex" ]
+dest_md5="41334946f81f3485c451fae64b65d088"
 
 [params]
 
