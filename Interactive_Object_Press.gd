@@ -13,7 +13,7 @@ func _enter_tree():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	player = get_node(player_path)
-	print(player_path)
+	#print(player_path)
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.

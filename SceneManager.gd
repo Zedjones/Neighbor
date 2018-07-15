@@ -1,5 +1,7 @@
 extends Node
 
+var AspectRatio = Vector2(16, 9)
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -17,6 +19,14 @@ func load_scene(scene):
 	var instance = scene.instance()
 	var world = get_node("/root/World")
 	#world.get_tree().paused = true
+	var camera = world.get_node("Camera2D")
+	
+	var relativeScale = Vector2((camera.zoom.x / camera.maxZoom.x) * AspectRatio.x, 
+	(camera.zoom.y / camera.maxZoom.y) * AspectRatio.y)
+	print ("relativeScale: ", relativeScale)
+	
+	instance.get_node("Sizer").scale = relativeScale
+	instance.get_node("Sizer").position = camera.position
 	world.add_child(instance)
 	currentScene = instance
 	return instance

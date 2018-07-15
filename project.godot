@@ -73,6 +73,7 @@ Z=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","dev
 
 GameManager="*res://GameManager.tscn"
 SceneManager="*res://SceneManager.tscn"
+TimeManager="*res://TimeManager.tscn"
 
 [display]
 
