@@ -54,7 +54,7 @@ func UpdateDirectionAndMovement():
 # Set GameManager current character to the character and 
 # call the dialogue blip if it hasn't already been called
 func _on_Interactive_Object_activated():
-	print("player_entered")
+	#print("player_entered")
 	emit_signal("player_entered", self)
 	
 # GameManager will call this to adjust happiness after dialogue
@@ -64,11 +64,11 @@ func adjust_happiness(points):
 
 # Set GameManager current character to null 
 func _on_IO_exited():
-	print("player_exited")
+	#print("player_exited")
 	emit_signal("player_exited", null)
 
 
 func _on_IOP_activated():
-	print("player_pressed")
+	#print("player_pressed")
 	emit_signal("player_pressed")
 

@@ -51,14 +51,6 @@ extents = Vector2( 10, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="DynamicFont" id=10]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 15 )
-_sections_unfolded = [ "Font", "Settings" ]
-
 [sub_resource type="DynamicFont" id=8]
 
 size = 32
@@ -68,6 +60,14 @@ font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=9]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=10]
 
 size = 32
 use_mipmaps = false
@@ -650,7 +650,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 8 )
 text = "Monday"
 percent_visible = 1.0
 lines_skipped = 0
@@ -673,7 +673,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 8 )
 text = "6:00 pm"
 percent_visible = 1.0
 lines_skipped = 0
@@ -714,7 +714,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -754,7 +754,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -780,7 +780,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
