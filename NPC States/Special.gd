@@ -12,7 +12,6 @@ var step
 func _ready():
 	step = $"../../NPCSprite/Animations".get_animation(animation).length
 
-
 func update(delta):
 	$"../../".move_and_slide(Vector2(0, 0))
 

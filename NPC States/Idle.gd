@@ -18,5 +18,4 @@ func update(delta):
 func switched(from_state):
 	print("Entering idle")
 	$"../../NPCSprite/Animations".queue(animation)
-	
 	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, int(step))
