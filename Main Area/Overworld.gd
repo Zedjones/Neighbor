@@ -35,13 +35,13 @@ func night_to_day():
 	print("night_to_day")
 	$Tween.interpolate_property($Sky, "modulate", nightTime, dayTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	currentSkyState = SkyState.Day
-#	$Tween.start()
+	$Tween.start()
 	
 func day_to_night():
 	print("day_to_night")
 	$Tween.interpolate_property($Sky, "modulate", dayTime, nightTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	currentSkyState = SkyState.Night
-#	$Tween.start()
+	$Tween.start()
 
 func _on_Bedroom_Object_activated():
 	print("player in bedroom")
@@ -65,7 +65,7 @@ func _on_Bedroom_Object_activated():
 func on_tween_completed(object, key):
 	print("sky tween ended:", key)
 	$Tween.disconnect("tween_completed", self, "on_tween_completed")
-	
+	$Tween.stop_all()
 	if(key == ":modulate"):
 		if($Camera2D.currentPositionState == $Camera2D.PositionState.Apartment):
 			$Camera2D.follow_player(true)
