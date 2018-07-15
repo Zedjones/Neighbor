@@ -17,7 +17,7 @@ var currentPassage = 1
 var currentParagraph = 0
 var currentSelection = 1
 var currentDialogue = ""
-
+var dialogueEnabled = false
 func _ready():
 	script = TwineScript.new(scriptPath)
 	script.parse()
@@ -34,23 +34,24 @@ func format_passages(pid,paragraph):
 	return
 
 func _input(event):
-	if(event.is_action_pressed("ui_accept")):
-		passage = ""
-		currentPassage += currentSelection
-		if(show_paragraph(currentPassage, currentParagraph) == false):
-			currentPassage -= 1
-		if(check_passage(currentPassage, currentParagraph) == 0):
-			show_options(currentPassage, currentParagraph)
-	if(!isPlayer):
-		passage = ""
-		if(event.is_action_pressed("ui_up")):
-			currentSelection = 3
-			show_paragraph(currentPassage, currentParagraph)
-			show_options(currentPassage, currentParagraph)
-		if(event.is_action_pressed("ui_down")):
-			currentSelection = 4
-			show_paragraph(currentPassage, currentParagraph)
-			show_options(currentPassage, currentParagraph)
+	if(dialogueEnabled):
+		if(event.is_action_pressed("ui_accept")):
+			passage = ""
+			currentPassage += currentSelection
+			if(show_paragraph(currentPassage, currentParagraph) == false):
+				currentPassage -= 1
+			if(check_passage(currentPassage, currentParagraph) == 0):
+				show_options(currentPassage, currentParagraph)
+		if(!isPlayer):
+			passage = ""
+			if(event.is_action_pressed("ui_up")):
+				currentSelection = 3
+				show_paragraph(currentPassage, currentParagraph)
+				show_options(currentPassage, currentParagraph)
+			if(event.is_action_pressed("ui_down")):
+				currentSelection = 4
+				show_paragraph(currentPassage, currentParagraph)
+				show_options(currentPassage, currentParagraph)
 
 # goes through paragraphs in the current passage and removes anything that isn't inside {}
 func show_paragraph(pid, paragraph):
