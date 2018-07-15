@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CharacterSprites.png-85ea1aec77b888eb3fd59e84396aa532.stex"
+path="res://.import/paintingSpritesEdit.png-e8dab5ca4d008a16b7f7d06c41493a51.stex"
 
 [deps]
 
-source_file="res://Art_Assets/CharacterSprites.png"
-source_md5="b5f6e561c07f985bdc0ab5fd828cb1d3"
+source_file="res://Art_Assets/paintingSpritesEdit.png"
+source_md5="ee2ee6e3865884e6af8b742372b701d3"
 
-dest_files=[ "res://.import/CharacterSprites.png-85ea1aec77b888eb3fd59e84396aa532.stex" ]
-dest_md5="5800b69f868500a652945cd42e519578"
+dest_files=[ "res://.import/paintingSpritesEdit.png-e8dab5ca4d008a16b7f7d06c41493a51.stex" ]
+dest_md5="3e0a0c00a3b638145873f4a7fe0bc789"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

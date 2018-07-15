@@ -7,7 +7,10 @@ path="res://.import/EveryoneIdle.png-4692d3775a92b91722a8584e6f724590.stex"
 [deps]
 
 source_file="res://Art_Assets/EveryoneIdle.png"
+source_md5="b4a559cc506937af755de578a44495e5"
+
 dest_files=[ "res://.import/EveryoneIdle.png-4692d3775a92b91722a8584e6f724590.stex" ]
+dest_md5="9c4d21f7d43f6e3fc0eeb10129551de9"
 
 [params]
 
