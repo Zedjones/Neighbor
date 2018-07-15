@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use Cases &mdash; Neighbor 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Pausing" href="pausing.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Neighbor
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="design.html">Game Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#gameplay">Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gamemanager.html">Game Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minigameinterface.html">Mini Game Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcinterface.html">NPC Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactablelement.html">Interactive Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dialogsystem.html">Dialog System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="savedata.html">Save Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timemanager.html">Time Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timemanager.html#time">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenemanager.html">Scene Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pausing.html">Pausing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#player-approaches-a-neighbor">Player approaches a neighbor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-acknowledges-a-neighbor">Player acknowledges a neighbor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-ignores-a-neighbor">Player ignores a neighbor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-enters-dialog">Player enters dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-extis-dialog-mini-game">Player extis dialog (mini game)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-extis-dialog-no-mini-game">Player extis dialog ( no mini game)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-goes-to-his-apartment">Player goes to his apartment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#day-end">Day End</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#day-start">Day Start</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Neighbor</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Use Cases</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usecases.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="use-cases">
+<h1>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="player-approaches-a-neighbor">
+<h2>Player approaches a neighbor<a class="headerlink" href="#player-approaches-a-neighbor" title="Permalink to this headline">¶</a></h2>
+<p>Interactiable element code will emit a signal that will pass the character information to the game mananger. The game manager will then pass dialog information fron the character to the dialog system so that it may generate a speech bubble over the character.</p>
+</div>
+<div class="section" id="player-acknowledges-a-neighbor">
+<h2>Player acknowledges a neighbor<a class="headerlink" href="#player-acknowledges-a-neighbor" title="Permalink to this headline">¶</a></h2>
+<p>When the player approaches the neighbor and triggers the dialog of the neighbor, the player will have to acknowledge the neighbor to progress with the dialog. This will trigger the interactable elmement, on enter if pressed signal. the signal will be processed by the character to pass its information to the game manager to pass to the dialog system to progress the dialog.</p>
+</div>
+<div class="section" id="player-ignores-a-neighbor">
+<h2>Player ignores a neighbor<a class="headerlink" href="#player-ignores-a-neighbor" title="Permalink to this headline">¶</a></h2>
+<p>When the neighbor speaks as the player approaches, the player may choose to ignore them. In that case, the dialog prompt will remain until the player exits the neighbors region. This would be an interactive element, on exit signal. The signal will tell the dialog system to close the speech bubble.</p>
+</div>
+<div class="section" id="player-enters-dialog">
+<h2>Player enters dialog<a class="headerlink" href="#player-enters-dialog" title="Permalink to this headline">¶</a></h2>
+<p>Player loses movement control. The dialog manager navigates through the dialog.</p>
+</div>
+<div class="section" id="player-extis-dialog-mini-game">
+<h2>Player extis dialog (mini game)<a class="headerlink" href="#player-extis-dialog-mini-game" title="Permalink to this headline">¶</a></h2>
+<p>The game manager recieving the exit dialog signal will take the exit status from the dialog system and start the mini game for the currently engaged character. This will call the mini game interface Start Game, passing in the difficulty settings.</p>
+</div>
+<div class="section" id="player-extis-dialog-no-mini-game">
+<h2>Player extis dialog ( no mini game)<a class="headerlink" href="#player-extis-dialog-no-mini-game" title="Permalink to this headline">¶</a></h2>
+<p>The game manager will return player movement control.</p>
+</div>
+<div class="section" id="player-goes-to-his-apartment">
+<h2>Player goes to his apartment<a class="headerlink" href="#player-goes-to-his-apartment" title="Permalink to this headline">¶</a></h2>
+<p>when the player enters the apartment and presses the select button, it will trigger the interactable object, on enter, if pressed. The result of the signal is to inform the game manager to end the day.</p>
+</div>
+<div class="section" id="day-end">
+<h2>Day End<a class="headerlink" href="#day-end" title="Permalink to this headline">¶</a></h2>
+<p>The day ends when the player goes to his apartment and presses select. the day wiil end. Current time of night is subtracted from 11 pm and if the delta is positive, its added to the arrival time of the next day.</p>
+<p>As the day ends, the camera pans up to the sky, the sky changes to day time and the next day starts.</p>
+</div>
+<div class="section" id="day-start">
+<h2>Day Start<a class="headerlink" href="#day-start" title="Permalink to this headline">¶</a></h2>
+<p>The day starts with the camera facing the sky showing the player’s apartment and pans down the entire apartment. When the player leaves for work, time skips to evening, sky tweens to dark and the player arrives later in the day. The time of night is dependant on when the player when to sleep the night before.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="pausing.html" class="btn btn-neutral" title="Pausing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, TBA Studios.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
