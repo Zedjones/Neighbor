@@ -7,10 +7,7 @@ path="res://.import/ApartmentMainGREY.png-60094b508b745050ab34bee4e4aa1d17.stex"
 [deps]
 
 source_file="res://Art_Assets/ApartmentMainGREY.png"
-source_md5="4cc2f2add0ac1c21c5ba9b6ab4d0c5f9"
-
 dest_files=[ "res://.import/ApartmentMainGREY.png-60094b508b745050ab34bee4e4aa1d17.stex" ]
-dest_md5="c1dcf31dad053dbd746c5cd009a04048"
 
 [params]
 

@@ -9,7 +9,9 @@ func _enter_tree():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	for stairs in get_children():
-		stairs.get_child(0).player_path = "../../" + player_path
+		var path = "../../" + player_path
+		stairs.get_child(0).player_path = path
+		print(path)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

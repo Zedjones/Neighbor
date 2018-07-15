@@ -71,6 +71,7 @@ Z=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","dev
 
 [autoload]
 
+GameManager="*res://GameManager.tscn"
 SceneManager="*res://SceneManager.tscn"
 
 [display]

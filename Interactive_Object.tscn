@@ -17,4 +17,6 @@ player_path = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
+[connection signal="body_exited" from="." to="." method="_on_Interactive_Object_body_exited"]
+
 

@@ -56,7 +56,7 @@ func set_points(dialogue_choices):
 	
 # Whether or not the game is complete 
 func is_game_over():
-	return false
+	return gameOver
 	
 # GameManager will call this to get the outcome from the mini-game
 # @return - a GameOutcomes enum item
@@ -68,9 +68,10 @@ func get_score():
 	
 func endGame():
 	print("ending game")
-	gameOver = true
 	$CatSpawnTimer.stop()
 	$EndGameTimer.start()
+	
+
 
 func _on_GameTimer_timeout():
 	print("Game timed out")
@@ -78,6 +79,7 @@ func _on_GameTimer_timeout():
 
 func _on_EndGameTimer_timeout():
 	print("return to overworld")
+	gameOver = true
 	
 func set_camera(current):
 	$Background.get_node("Camera2D").current = current

@@ -7,10 +7,7 @@ path="res://.import/KitchenSprites.png-202eef0a1cff65db63644e2b7bdc74e7.stex"
 [deps]
 
 source_file="res://Art_Assets/KitchenSprites.png"
-source_md5="12136c13f8d7fa8737fe273c6abca7f1"
-
 dest_files=[ "res://.import/KitchenSprites.png-202eef0a1cff65db63644e2b7bdc74e7.stex" ]
-dest_md5="014de94313287800fe6a785d10fb5faa"
 
 [params]
 

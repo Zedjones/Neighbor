@@ -12,7 +12,7 @@ var tweenDuration = 3
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	pass
+	SceneManager.player = get_node("Player")
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.

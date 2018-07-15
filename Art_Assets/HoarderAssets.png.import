@@ -7,10 +7,7 @@ path="res://.import/HoarderAssets.png-8496f0ea2bd730df79b32c711d990c1f.stex"
 [deps]
 
 source_file="res://Art_Assets/HoarderAssets.png"
-source_md5="c161afebbacd38bc9c5a4421910a78fe"
-
 dest_files=[ "res://.import/HoarderAssets.png-8496f0ea2bd730df79b32c711d990c1f.stex" ]
-dest_md5="890c5b891d9cb1bf6a533cb216f11520"
 
 [params]
 
