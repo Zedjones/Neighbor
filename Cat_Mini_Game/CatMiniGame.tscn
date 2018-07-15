@@ -1,84 +1,52 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Cat_Mini_Game/CatMiniGame.gd" type="Script" id=1]
 [ext_resource path="res://Cat_Mini_Game/Cat.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Cat_Mini_Game/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art_Assets/CatGameSprites.png" type="Texture" id=3]
 
 [sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -140, 40, 0, 0, 0, 0, -140, 70 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 30, 60, 0, 0, 0, 0, -40, 60, 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 10, 70 )
 }
 
-[sub_resource type="Curve2D" id=2]
+[node name="CatMiniGame" type="Node"]
 
-bake_interval = 5.0
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 140, 40, 0, 0, 0, 0, 140, 70 )
-}
-
-[node name="CatMiniGame" type="Node" index="0"]
-
+pause_mode = 2
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 Cat = ExtResource( 2 )
 
-[node name="Background" parent="." index="0" instance=ExtResource( 3 )]
+[node name="Background" type="Sprite" parent="." index="0"]
+
+position = Vector2( 510, 280 )
+scale = Vector2( 4.50862, 4.50862 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 232, 150 )
+_sections_unfolded = [ "Region" ]
 
 [node name="OrangeCat" parent="." index="1" instance=ExtResource( 2 )]
 
 visible = false
-position = Vector2( 90, 60 )
+position = Vector2( 190, 510 )
 
-[node name="LeftSide" type="Path2D" parent="." index="2"]
-
-curve = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="LeftPathFollow" type="PathFollow2D" parent="LeftSide" index="0"]
-
-position = Vector2( -140, 40 )
-rotation = 1.5708
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
-rotate = true
-cubic_interp = true
-loop = true
-lookahead = 4.0
-
-[node name="RightSide" type="Path2D" parent="." index="3"]
-
-curve = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="RightPathFollow" type="PathFollow2D" parent="RightSide" index="0"]
-
-position = Vector2( 140, 40 )
-rotation = 1.5708
-offset = 0.0
-h_offset = 0.0
-v_offset = 0.0
-rotate = true
-cubic_interp = true
-loop = true
-lookahead = 4.0
-
-[node name="CatSpawnTimer" type="Timer" parent="." index="4"]
+[node name="CatSpawnTimer" type="Timer" parent="." index="2"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="GameTimer" type="Timer" parent="." index="5"]
+[node name="GameTimer" type="Timer" parent="." index="3"]
 
 process_mode = 1
 wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="TimeRemaining" type="Label" parent="." index="6"]
+[node name="TimeRemaining" type="Label" parent="." index="4"]
 
 visible = false
 anchor_left = 0.0
@@ -102,12 +70,49 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction", "Margin", "custom_fonts" ]
 
-[node name="EndGameTimer" type="Timer" parent="." index="7"]
+[node name="EndGameTimer" type="Timer" parent="." index="5"]
 
 process_mode = 1
 wait_time = 3.0
 one_shot = true
 autostart = false
+
+[node name="LeftSide" type="Path2D" parent="." index="6"]
+
+position = Vector2( -50, 450 )
+curve = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="LeftPathFollow" type="PathFollow2D" parent="LeftSide" index="0"]
+
+position = Vector2( 0, 120 )
+rotation = -1.5708
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="RightSide" type="Path2D" parent="." index="7"]
+
+position = Vector2( 1100, 450 )
+curve = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightPathFollow" type="PathFollow2D" parent="RightSide" index="0"]
+
+position = Vector2( 0, 120 )
+rotation = -1.5708
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="CatSpawnTimer" to="." method="_on_CatSpawnTimer_timeout"]
 

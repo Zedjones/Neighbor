@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://NPC.gd" type="Script" id=1]
+[ext_resource path="res://Interactive_Object.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art_Assets/EveryoneIdle.png" type="Texture" id=4]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.81754, 26.0793 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.4498, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="Animation" id=4]
+
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Idle:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 200, 16, 64 ), Rect2( 29, 200, 16, 64 ), Rect2( 52, 201, 16, 63 ), Rect2( 78, 202, 16, 62 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Idle:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=6]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[node name="NPC" type="KinematicBody2D"]
+
+position = Vector2( 279.323, 169.573 )
+z_index = 1
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+mini_game = null
+happiness = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0.443197, 0 )
+scale = Vector2( 0.965908, 1 )
+shape = SubResource( 1 )
+
+[node name="IO" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 5.11132, 0 )
+scale = Vector2( 2.75046, 1 )
+player_path = NodePath("..")
+
+[node name="CollisionShape2D" parent="IO" index="0"]
+
+scale = Vector2( 1.0777, 2.32584 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="IOP" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 5.29251, 0 )
+scale = Vector2( 2.41527, 1 )
+player_path = NodePath("..")
+
+[node name="CollisionShape2D" parent="IOP" index="0"]
+
+scale = Vector2( 1.98176, 2.15703 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Idle" type="Sprite" parent="." index="3"]
+
+visible = false
+position = Vector2( -0.0231934, -1.16441 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 29, 200, 16, 64 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="NPCSprite" type="Sprite" parent="." index="4"]
+
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 216, 7.5, 16, 63 )
+_sections_unfolded = [ "Material", "Region", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Animations" type="AnimationPlayer" parent="NPCSprite" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+"anims/Idle Animation" = SubResource( 4 )
+"anims/Special Animation" = SubResource( 5 )
+"anims/Walk Cycle" = SubResource( 6 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[connection signal="activated" from="IO" to="." method="_on_Interactive_Object_activated"]
+
+[connection signal="exited" from="IO" to="." method="_on_IO_exited"]
+
+
+[editable path="IO"]
+[editable path="IOP"]
