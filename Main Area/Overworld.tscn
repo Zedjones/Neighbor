@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=14]
 [ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Scripts/story_label.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -207,6 +208,7 @@ visible = false
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
@@ -792,16 +794,17 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Test" type="RichTextLabel" parent="." index="7"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu" index="1"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 75.0
-margin_top = -152.0
-margin_right = 250.0
-margin_bottom = -69.0
+margin_left = 62.0
+margin_top = -8.0
+margin_right = 325.0
+margin_bottom = 91.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -819,7 +822,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 scriptPath = "res://Dialogues/NeighborTest.json"
 
 [connection signal="activated" from="Characters/Student/IOP" to="Characters/Student" method="_on_IOP_activated"]
