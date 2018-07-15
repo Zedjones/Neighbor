@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=10]
 [ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Main Area/Stairs.gd" type="Script" id=12]
-[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=13]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=14]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -45,20 +46,33 @@ extents = Vector2( 2.0675, 10.9508 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="RectangleShape2D" id=7]
 
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 14 )
-_sections_unfolded = [ "Font", "Settings" ]
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="DynamicFont" id=8]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 14 )
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="World" type="Node" index="0"]
@@ -193,11 +207,11 @@ visible = false
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
+editor/display_folded = true
 position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
@@ -208,6 +222,8 @@ __meta__ = {
 }
 
 [node name="ApartmentBoxes" type="Node" parent="Apartment/ApartmentMain" index="0"]
+
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Apartment/ApartmentMain/ApartmentBoxes" index="0"]
 
@@ -439,6 +455,7 @@ player_path = NodePath("../../Player")
 
 [node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../2nd Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/1st Floor" index="0"]
@@ -446,8 +463,27 @@ target_path = NodePath("../2nd Floor Left")
 position = Vector2( 122.547, 500.032 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 11 )]
+[node name="1st Floor Bedroom" parent="Apartment/Stairs" index="1" instance=ExtResource( 11 )]
 
+target_path = NodePath("../Bedroom")
+
+[node name="Interactive Object" parent="Apartment/Stairs/1st Floor Bedroom" index="0"]
+
+position = Vector2( 262.274, 567.133 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="Bedroom" parent="Apartment/Stairs" index="2" instance=ExtResource( 11 )]
+
+target_path = NodePath("../1st Floor Bedroom")
+
+[node name="Interactive Object" parent="Apartment/Stairs/Bedroom" index="0"]
+
+position = Vector2( 483.069, 118.642 )
+scale = Vector2( 0.327475, 0.479105 )
+
+[node name="2nd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 11 )]
+
+editor/display_folded = true
 target_path = NodePath("../1st Floor")
 
 [node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Left" index="0"]
@@ -455,8 +491,9 @@ target_path = NodePath("../1st Floor")
 position = Vector2( 122.372, 420.312 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 11 )]
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../3rd Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/2nd Floor Right" index="0"]
@@ -464,8 +501,9 @@ target_path = NodePath("../3rd Floor Left")
 position = Vector2( 377.64, 421.282 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 11 )]
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../2nd Floor Right")
 
 [node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Left" index="0"]
@@ -473,8 +511,9 @@ target_path = NodePath("../2nd Floor Right")
 position = Vector2( 341.27, 347.517 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 11 )]
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../4th Floor Right")
 
 [node name="Interactive Object" parent="Apartment/Stairs/3rd Floor Right" index="0"]
@@ -482,8 +521,9 @@ target_path = NodePath("../4th Floor Right")
 position = Vector2( 702.251, 348.116 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 11 )]
+[node name="4th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../5th Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/4th Floor Left" index="0"]
@@ -491,8 +531,9 @@ target_path = NodePath("../5th Floor Left")
 position = Vector2( 467.801, 269.608 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 11 )]
+[node name="4th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../3rd Floor Right")
 
 [node name="Interactive Object" parent="Apartment/Stairs/4th Floor Right" index="0"]
@@ -500,8 +541,9 @@ target_path = NodePath("../3rd Floor Right")
 position = Vector2( 742.76, 268.891 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 11 )]
+[node name="5th Floor Left" parent="Apartment/Stairs" index="9" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../4th Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/5th Floor Left" index="0"]
@@ -509,8 +551,9 @@ target_path = NodePath("../4th Floor Left")
 position = Vector2( 424.548, 190.108 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 11 )]
+[node name="5th Floor Right" parent="Apartment/Stairs" index="10" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../6th Floor")
 
 [node name="Interactive Object" parent="Apartment/Stairs/5th Floor Right" index="0"]
@@ -518,14 +561,29 @@ target_path = NodePath("../6th Floor")
 position = Vector2( 654.294, 188.348 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 11 )]
+[node name="6th Floor" parent="Apartment/Stairs" index="11" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 target_path = NodePath("../5th Floor Right")
 
 [node name="Interactive Object" parent="Apartment/Stairs/6th Floor" index="0"]
 
 position = Vector2( 654.532, 119.567 )
 scale = Vector2( 0.371902, 0.479105 )
+
+[node name="Bedroom" type="Node" parent="Apartment" index="2"]
+
+[node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 13 )]
+
+position = Vector2( 540.148, 107.392 )
+scale = Vector2( 0.35674, 0.761792 )
+player_path = NodePath("../../../Player")
+
+[node name="CollisionShape2D" parent="Apartment/Bedroom/Interactive Object" index="0"]
+
+position = Vector2( 0.666704, -1.87317 )
+scale = Vector2( 2.51283, 2.5576 )
+shape = SubResource( 7 )
 
 [node name="Tween" type="Tween" parent="." index="4"]
 
@@ -538,8 +596,7 @@ playback/speed = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
-editor/display_folded = true
-position = Vector2( 434, -112 )
+position = Vector2( 434, -106 )
 offset = Vector2( 0, -7 )
 anchor_mode = 1
 rotating = false
@@ -563,7 +620,7 @@ drag_margin_bottom = 1.0
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
 targetZoomStep = 0.25
 followSpeed = 0.1
@@ -577,9 +634,53 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="Menu" type="Node" parent="." index="6"]
+[node name="Day" type="Label" parent="Camera2D" index="1"]
 
-editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -412.0
+margin_top = -258.0
+margin_right = -313.0
+margin_bottom = -227.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "Monday"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "custom_fonts" ]
+
+[node name="Time" type="Label" parent="Camera2D" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -414.0
+margin_top = -227.0
+margin_right = -310.0
+margin_bottom = -196.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "6:00 pm"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Menu" type="Node" parent="." index="6"]
 
 [node name="Container" type="Container" parent="Menu" index="0"]
 
@@ -613,7 +714,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -653,7 +754,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -679,7 +780,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
@@ -698,6 +799,8 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
 
+[connection signal="activated" from="Apartment/Bedroom/Interactive Object" to="." method="_on_Bedroom_Object_activated"]
+
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
 
@@ -710,6 +813,8 @@ _sections_unfolded = [ "custom_fonts" ]
 [editable path="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object"]
 [editable path="Apartment/Stairs/1st Floor"]
 [editable path="Apartment/Stairs/1st Floor/Interactive Object"]
+[editable path="Apartment/Stairs/1st Floor Bedroom"]
+[editable path="Apartment/Stairs/Bedroom"]
 [editable path="Apartment/Stairs/2nd Floor Left"]
 [editable path="Apartment/Stairs/2nd Floor Right"]
 [editable path="Apartment/Stairs/3rd Floor Left"]
@@ -719,3 +824,4 @@ _sections_unfolded = [ "custom_fonts" ]
 [editable path="Apartment/Stairs/5th Floor Left"]
 [editable path="Apartment/Stairs/5th Floor Right"]
 [editable path="Apartment/Stairs/6th Floor"]
+[editable path="Apartment/Bedroom/Interactive Object"]

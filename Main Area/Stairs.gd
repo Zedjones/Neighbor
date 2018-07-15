@@ -11,7 +11,7 @@ func _enter_tree():
 	for stairs in get_children():
 		var path = "../../" + player_path
 		stairs.get_child(0).player_path = path
-		print(path)
+		#print(path)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
