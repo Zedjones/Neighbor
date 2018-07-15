@@ -55,6 +55,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("../States")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 
@@ -119,8 +133,9 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -0.0231934, -1.16441 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
+offset = Vector2( 0, 1 )
 region_enabled = true
-region_rect = Rect2( 29, 200, 16, 64 )
+region_rect = Rect2( 78, 202, 16, 62 )
 _sections_unfolded = [ "Offset", "Region", "Transform" ]
 
 [node name="NPCSprite" type="Sprite" parent="." index="4"]

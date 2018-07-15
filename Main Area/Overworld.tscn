@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -19,32 +19,200 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8.85156, 24.7474 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="Animation" id=2]
+
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Idle:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 69, 26, 63 ), Rect2( 38, 68, 26, 64 ), Rect2( 71, 69, 26, 63 ), Rect2( 102, 70, 26, 62 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Idle:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../States")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=5]
+
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Idle:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 9, 135, 23, 61 ), Rect2( 37, 134, 23, 62 ), Rect2( 64, 135, 23, 61 ), Rect2( 92, 136, 23, 60 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Idle:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../States")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=7]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=8]
+
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Idle:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 12, 3, 23, 64 ), Rect2( 39, 2, 23, 65 ), Rect2( 66, 3, 23, 64 ), Rect2( 92, 4, 23, 63 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Idle:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../States")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=10]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 446.204, 1.80487 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
 extents = Vector2( 316.922, 1.9989 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.49487, 11.5475 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.0675, 10.9508 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=16]
 
 size = 32
 use_mipmaps = false
@@ -52,7 +220,7 @@ use_filter = false
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=17]
 
 size = 32
 use_mipmaps = false
@@ -70,7 +238,7 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 [node name="Sky" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 610.753, 57.7379 )
+position = Vector2( 612.15, 57.7379 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -10
 texture = ExtResource( 2 )
@@ -121,13 +289,14 @@ scale = Vector2( 2.41527, 0.914456 )
 
 [node name="Idle" parent="Characters/Student" index="3"]
 
-visible = true
 position = Vector2( -0.0231934, -5.16441 )
-region_rect = Rect2( 9, 69, 26, 63 )
+region_rect = Rect2( 102, 70, 26, 62 )
 
-[node name="NPCSprite" parent="Characters/Student" index="4"]
+[node name="Animations" parent="Characters/Student/NPCSprite" index="0"]
 
-visible = false
+"anims/Idle Animation" = SubResource( 2 )
+"anims/Special Animation" = SubResource( 3 )
+"anims/Walk Cycle" = SubResource( 4 )
 
 [node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 6 )]
 
@@ -145,8 +314,6 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Hoarder" index="3"]
 
-visible = true
-offset = Vector2( 0, 1 )
 region_rect = Rect2( 52, 201, 16, 63 )
 
 [node name="CatLady" parent="Characters" index="2" instance=ExtResource( 6 )]
@@ -165,13 +332,17 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/CatLady" index="3"]
 
-visible = true
 region_rect = Rect2( 92, 136, 23, 60 )
 
 [node name="NPCSprite" parent="Characters/CatLady" index="4"]
 
-visible = false
 region_rect = Rect2( 123, 8, 23, 61 )
+
+[node name="Animations" parent="Characters/CatLady/NPCSprite" index="0"]
+
+"anims/Idle Animation" = SubResource( 5 )
+"anims/Special Animation" = SubResource( 6 )
+"anims/Walk Cycle" = SubResource( 7 )
 
 [node name="Artist" parent="Characters" index="3" instance=ExtResource( 6 )]
 
@@ -180,13 +351,14 @@ z_index = -3
 
 [node name="Idle" parent="Characters/Artist" index="3"]
 
-visible = true
-region_rect = Rect2( 39, 2, 23, 65 )
+region_rect = Rect2( 92, 4, 23, 63 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="NPCSprite" parent="Characters/Artist" index="4"]
+[node name="Animations" parent="Characters/Artist/NPCSprite" index="0"]
 
-visible = false
+"anims/Idle Animation" = SubResource( 8 )
+"anims/Special Animation" = SubResource( 9 )
+"anims/Walk Cycle" = SubResource( 10 )
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
@@ -218,127 +390,127 @@ bounce = 0.0
 [node name="FirstFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="0"]
 
 position = Vector2( 441.442, 583.372 )
-shape = SubResource( 2 )
+shape = SubResource( 11 )
 
 [node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
 
 position = Vector2( 415.659, 520.879 )
 scale = Vector2( 0.992494, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
 
 position = Vector2( 310.491, 438.254 )
 scale = Vector2( 0.650208, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
 
 position = Vector2( 549.065, 364.967 )
 scale = Vector2( 0.772993, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
 
 position = Vector2( 548.104, 286.769 )
 scale = Vector2( 0.776376, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
 
 position = Vector2( 584.404, 208.524 )
 scale = Vector2( 0.632934, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
 
 position = Vector2( 523.595, 137.616 )
 scale = Vector2( 0.447307, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="FirstRight" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="7"]
 
 position = Vector2( 865.145, 530.18 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="FirstLeft" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="8"]
 
 position = Vector2( 3.14917, 527.698 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="SecondRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="9"]
 
 position = Vector2( 726.173, 481.827 )
 scale = Vector2( 1, 1.17283 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="SecondLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="10"]
 
 position = Vector2( 102.528, 493.632 )
 scale = Vector2( 1, 2.22634 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="ThirdLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="11"]
 
 position = Vector2( 107.865, 405.721 )
 scale = Vector2( 1, 2.84255 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="ThirdRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="12"]
 
 position = Vector2( 517.638, 401.916 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="FourthLeftWalll" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="13"]
 
 position = Vector2( 304.749, 328.014 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="FourthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="14"]
 
 position = Vector2( 791.22, 328.161 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="FifthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="15"]
 
 position = Vector2( 458.351, 258.796 )
 scale = Vector2( 1, 1.40755 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="FifthRightWall2" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="16"]
 
 position = Vector2( 784.766, 249.575 )
 scale = Vector2( 1, 1.76165 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="SixthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="17"]
 
 position = Vector2( 674.8, 181.555 )
 scale = Vector2( 1, 2.20163 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="SixthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="18"]
 
 position = Vector2( 385.559, 174.631 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="SeventhLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="19"]
 
 position = Vector2( 454.833, 106.6 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="SeventhRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="20"]
 
 position = Vector2( 663.833, 107.097 )
 scale = Vector2( 1, 2.61034 )
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
@@ -426,7 +598,7 @@ player_path = NodePath("../../../../../Player")
 
 position = Vector2( -0.237854, -0.177368 )
 scale = Vector2( 3.31895, 3.21797 )
-shape = SubResource( 6 )
+shape = SubResource( 15 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
@@ -592,7 +764,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 16 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -632,7 +804,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 17 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -658,7 +830,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 17 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
