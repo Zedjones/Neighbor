@@ -19,3 +19,4 @@ func _ready():
 
 func _on_Interactive_Object_activated():
 	$"Interactive Object".player.position = target.get_child(0).position
+	print("Elevator")

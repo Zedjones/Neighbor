@@ -8,6 +8,7 @@ export (NodePath) var player_path
 var player
 signal activated
 signal exited
+signal deactivate
 
 func _enter_tree():
 	# Called every time the node is added to the scene.
