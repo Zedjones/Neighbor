@@ -1,0 +1,171 @@
+{
+    "ifid": "ECC31E9F-29C0-4D3C-8ED1-14A2779027FB",
+    "name": "JonDoe",
+    "startNode": 1,
+    "creator": "Twine",
+    "creatorVersion": "2.2.1",
+    "format": "Harlowe",
+    "time": "2018-07-13T00:40:45.941Z",
+    "passages": [
+        {
+            "pid": 1,
+            "name": "0N1",
+            "text": "<p>{<em>munch munch</em>}\n<%= links['503d333ad613286c61b75f997d0d88c83e225e05'] %>\n<%= links['6d663166ae201f2ffab88029683f873a2ae3662b'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "503d333ad613286c61b75f997d0d88c83e225e05",
+                    "label": "1P1",
+                    "passageId": 2
+                },
+                {
+                    "id": "6d663166ae201f2ffab88029683f873a2ae3662b",
+                    "label": "1P2",
+                    "passageId": 3
+                }
+            ]
+        },
+        {
+            "pid": 2,
+            "name": "1P1",
+            "text": "<p>{Wow.}\n<%= links['22d861a2171bc12f134e8e0e3bbf5a889e109fb2'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "22d861a2171bc12f134e8e0e3bbf5a889e109fb2",
+                    "label": "2N1X",
+                    "passageId": 4
+                }
+            ]
+        },
+        {
+            "pid": 3,
+            "name": "1P2",
+            "text": "<p>{You should probably cook that before you eat it.}\n<%= links['5ccb490d122dface3f7adc04825671cb23a5d75a'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "5ccb490d122dface3f7adc04825671cb23a5d75a",
+                    "label": "2N2",
+                    "passageId": 5
+                }
+            ]
+        },
+        {
+            "pid": 4,
+            "name": "2N1X",
+            "text": "<p>{...}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 5,
+            "name": "2N2",
+            "text": "<p>{I don't know how to cook.}\n<%= links['70e7637d6f259e7453d48e855a70642f258faf79'] %> \n<%= links['3f76955a29ef69e8c2580327fe7b2a753cda78b4'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "70e7637d6f259e7453d48e855a70642f258faf79",
+                    "label": "3P1",
+                    "passageId": 6
+                },
+                {
+                    "id": "3f76955a29ef69e8c2580327fe7b2a753cda78b4",
+                    "label": "3P2",
+                    "passageId": 7
+                }
+            ]
+        },
+        {
+            "pid": 6,
+            "name": "3P1",
+            "text": "<p>{That is quite unhealthy, you should learn some recipes}\n<%= links['c0c2885b2867914774d791b63ef700c6cfae9a28'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "c0c2885b2867914774d791b63ef700c6cfae9a28",
+                    "label": "4N1",
+                    "passageId": 8
+                }
+            ]
+        },
+        {
+            "pid": 7,
+            "name": "3P2",
+            "text": "<p>{I'm going to cook some food for us.}\n<%= links['d99572bd0dcd44c24ed72eefdbce8343df5dc72e'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "d99572bd0dcd44c24ed72eefdbce8343df5dc72e",
+                    "label": "4N2P",
+                    "passageId": 9
+                }
+            ]
+        },
+        {
+            "pid": 8,
+            "name": "4N1",
+            "text": "<p>{I don't have the time}\n<%= links['cebcf271bd999831a9dc339153edcf5bd9d589d4'] %>\n<%= links['bd2396e6911f219db5c69920a3404ee91fa04177'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "cebcf271bd999831a9dc339153edcf5bd9d589d4",
+                    "label": "5P1",
+                    "passageId": 10
+                },
+                {
+                    "id": "bd2396e6911f219db5c69920a3404ee91fa04177",
+                    "label": "5P2",
+                    "passageId": 11
+                }
+            ]
+        },
+        {
+            "pid": 9,
+            "name": "4N2P",
+            "text": "<p>{Oh that sounds incredible.}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 10,
+            "name": "5P1",
+            "text": "<p>{Me too bud, but cooking your own food will give you energy}\n<%= links['fb63cc2869ce3a66f6bd41fee57c42948f0b5630'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "fb63cc2869ce3a66f6bd41fee57c42948f0b5630",
+                    "label": "6N1S",
+                    "passageId": 12
+                }
+            ]
+        },
+        {
+            "pid": 11,
+            "name": "5P2",
+            "text": "<p>{Let's cook some food together and you'll learn the recipe}\n<%= links['ae45ded27987d89e5664b31c4d86a458e9efeffa'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "ae45ded27987d89e5664b31c4d86a458e9efeffa",
+                    "label": "6N2E",
+                    "passageId": 13
+                }
+            ]
+        },
+        {
+            "pid": 12,
+            "name": "6N1S",
+            "text": "<p>{I guess you're right, I'll try to learn some recipes}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 13,
+            "name": "6N2E",
+            "text": "<p>{That sounds awesome! Let's do it.}</p>\n",
+            "tags": [],
+            "links": []
+        }
+    ]
+}
