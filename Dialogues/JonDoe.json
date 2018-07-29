@@ -10,7 +10,7 @@
         {
             "pid": 1,
             "name": "0N1",
-            "text": "<p>{<em>munch munch</em>}\n<%= links['503d333ad613286c61b75f997d0d88c83e225e05'] %>\n<%= links['6d663166ae201f2ffab88029683f873a2ae3662b'] %> </p>\n",
+            "text": "<p>{*munch munch*}\n<%= links['503d333ad613286c61b75f997d0d88c83e225e05'] %>\n<%= links['6d663166ae201f2ffab88029683f873a2ae3662b'] %> </p>\n",
             "tags": [],
             "links": [
                 {

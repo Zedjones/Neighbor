@@ -3,8 +3,8 @@ extends KinematicBody2D
 # class member variables go here, for example:
 
 var distanceTimer
-var rightSpeed = 0.1
-var leftSpeed = -0.1
+var rightSpeed = 0# 0.1
+var leftSpeed = 0#-0.1
 var currentSpeed = rightSpeed
 var motion = Vector2()
 var startingXPos

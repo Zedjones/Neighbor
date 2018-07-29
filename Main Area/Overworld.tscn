@@ -1,18 +1,21 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://Overworld.gd" type="Script" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=3]
-[ext_resource path="res://Main Area/Wander.gd" type="Script" id=4]
-[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=5]
-[ext_resource path="res://Interactive_Object_Press.gd" type="Script" id=6]
-[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=7]
-[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=9]
-[ext_resource path="res://Scripts/story_label.gd" type="Script" id=10]
-[ext_resource path="res://Main Area/Control.vs" type="Script" id=11]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://Art_Assets/Square.png" type="Texture" id=13]
+[ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
+[ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=4]
+[ext_resource path="res://Main Area/Characters.gd" type="Script" id=5]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hoarding Mini Game/HoarderManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Cat_Mini_Game/CatMiniGame.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=9]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=10]
+[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=12]
+[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=14]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Scripts/story_label.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -54,7 +57,7 @@ extents = Vector2( 10, 10 )
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 12 )
+font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=9]
@@ -62,7 +65,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 12 )
+font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=10]
@@ -73,6 +76,22 @@ use_filter = false
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="DynamicFont" id=11]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=12]
+
+size = 0
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font" ]
+
 [node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
@@ -82,7 +101,14 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 
 [node name="Sky" type="Sprite" parent="." index="0"]
 
-[node name="Player" type="KinematicBody2D" parent="Characters" index="0"]
+modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
+position = Vector2( 610.753, 57.7379 )
+scale = Vector2( 499.856, 324.338 )
+z_index = -10
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="Player" type="KinematicBody2D" parent="." index="1"]
 
 position = Vector2( 297.744, 556.439 )
 z_index = -1
@@ -108,175 +134,103 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 shape = SubResource( 1 )
 
-[node name="Elizabeth" type="KinematicBody2D" parent="Characters" index="1"]
+[node name="Characters" type="Node" parent="." index="2"]
 
-position = Vector2( 437.76, 338.621 )
-z_index = 1
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
+script = ExtResource( 5 )
+_sections_unfolded = [ "Pause" ]
+player_path = NodePath("../Player")
 
-[node name="NPCSprite" type="Sprite" parent="Characters/Elizabeth" index="0"]
+[node name="Student" parent="Characters" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 320.294, 497.251 )
 z_index = -3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Elizabeth" index="1"]
+[node name="CollisionShape2D" parent="Characters/Student" index="0"]
 
-position = Vector2( 5.29251, -2.7374 )
-scale = Vector2( 2.41527, 0.914456 )
+position = Vector2( -1.15109, -5.94718 )
+scale = Vector2( 1.80197, 1.1032 )
 
-[node name="Interactive Object" type="Area2D" parent="Characters/Elizabeth" index="2"]
+[node name="IOP" parent="Characters/Student" index="2"]
 
-position = Vector2( -0.281189, -0.607666 )
-scale = Vector2( 0.35586, 0.761905 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 6 )
-player_path = NodePath("../../Player")
+position = Vector2( -0.0147384, -7.43322 )
+scale = Vector2( 0.906901, 1.35489 )
+player_path = NodePath("../../../Player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Elizabeth/Interactive Object" index="0"]
+[node name="Idle" parent="Characters/Student" index="3"]
 
-position = Vector2( 4.86374e-05, 0.522267 )
-scale = Vector2( 3.32315, 1.28636 )
-shape = SubResource( 1 )
+visible = true
+position = Vector2( -0.0231934, -5.16441 )
+region_rect = Rect2( 9, 69, 26, 63 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="Fuyumi" type="KinematicBody2D" parent="Characters" index="2"]
+[node name="NPCSprite" parent="Characters/Student" index="4"]
 
-position = Vector2( 252.069, 410.836 )
-z_index = 1
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Z Index", "collision" ]
+visible = false
 
-[node name="NPCSprite" type="Sprite" parent="Characters/Fuyumi" index="0"]
+[node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 608.646, 258.106 )
+z_index = -3
+mini_game = ExtResource( 7 )
+
+[node name="IO" parent="Characters/Hoarder" index="1"]
 
 player_path = NodePath("../../../Player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Fuyumi" index="1"]
+[node name="IOP" parent="Characters/Hoarder" index="2"]
 
+position = Vector2( 0.494743, -0.987806 )
+scale = Vector2( 0.537436, 1.21293 )
 player_path = NodePath("../../../Player")
 
-[node name="Interactive Object" type="Area2D" parent="Characters/Fuyumi" index="2"]
+[node name="Idle" parent="Characters/Hoarder" index="3"]
 
-position = Vector2( -0.590179, -0.427468 )
-scale = Vector2( 0.35586, 0.811289 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 6 )
-_sections_unfolded = [ "Material", "Pause", "Pickable", "Visibility" ]
-player_path = NodePath("../../Player")
+visible = true
+offset = Vector2( 0, 1 )
+region_rect = Rect2( 52, 201, 16, 63 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/Fuyumi/Interactive Object" index="0"]
+[node name="NPCSprite" parent="Characters/Hoarder" index="4"]
 
-position = Vector2( 4.86374e-05, 0.522267 )
-scale = Vector2( 3.32315, 1.28636 )
-shape = SubResource( 1 )
+visible = false
 
-[node name="JonDoe" type="KinematicBody2D" parent="Characters" index="3"]
-
-editor/display_folded = true
-position = Vector2( 319.386, 494.018 )
-z_index = 1
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Material", "Visibility", "Z Index", "collision" ]
-
-[node name="NPCSprite" type="Sprite" parent="Characters/JonDoe" index="0"]
+[node name="CatLady" parent="Characters" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 438.723, 337.968 )
 z_index = -3
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index" ]
 mini_game = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/JonDoe" index="1"]
+[node name="IO" parent="Characters/CatLady" index="1"]
 
 player_path = NodePath("../../../Player")
 
-[node name="Interactive Object" type="Area2D" parent="Characters/JonDoe" index="2"]
+[node name="IOP" parent="Characters/CatLady" index="2"]
 
-position = Vector2( -0.0719926, -0.857753 )
-scale = Vector2( 0.413209, 0.797747 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 6 )
-player_path = NodePath("../../Player")
+position = Vector2( 1.53615, 0.810411 )
+scale = Vector2( 0.497984, 1.15661 )
+player_path = NodePath("../../../Player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/JonDoe/Interactive Object" index="0"]
-
-position = Vector2( 4.86374e-05, 0.522267 )
-scale = Vector2( 3.32315, 1.28636 )
-shape = SubResource( 1 )
-
-[node name="JoeJones" type="KinematicBody2D" parent="Characters" index="4"]
-
-position = Vector2( 609.671, 258.511 )
-z_index = 1
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 0.08
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
-
-[node name="NPCSprite" type="Sprite" parent="Characters/JoeJones" index="0"]
+[node name="Idle" parent="Characters/CatLady" index="3"]
 
 visible = true
-region_rect = Rect2( 92, 136, 23, 60 )
+region_rect = Rect2( 78, 202, 16, 62 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/JoeJones" index="1"]
+[node name="NPCSprite" parent="Characters/CatLady" index="4"]
 
 visible = false
 region_rect = Rect2( 123, 8, 23, 61 )
 
-[node name="Interactive Object" type="Area2D" parent="Characters/JoeJones" index="2"]
-
-position = Vector2( 0.123535, 0.19195 )
-scale = Vector2( 0.334476, 0.814705 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 6 )
-player_path = NodePath("../../Player")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/JoeJones/Interactive Object" index="0"]
-
-position = Vector2( 4.86374e-05, 0.522267 )
-scale = Vector2( 3.32315, 1.28636 )
-shape = SubResource( 1 )
-
-[node name="Apartment" type="Node" parent="." index="1"]
+[node name="Artist" parent="Characters" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 251.481, 410.574 )
 z_index = -3
+
+[node name="IOP" parent="Characters/Artist" index="2"]
+
+position = Vector2( -1.41412, -0.121091 )
+scale = Vector2( 0.63252, 1.23492 )
 
 [node name="Idle" parent="Characters/Artist" index="3"]
 
@@ -295,10 +249,11 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
-editor/display_folded = true
 position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
-texture = ExtResource( 7 )
+z_index = -5
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -444,8 +399,6 @@ shape = SubResource( 5 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
-editor/display_folded = true
-
 [node name="HoarderDoor" type="Sprite" parent="Apartment/ApartmentMain/Doors" index="0"]
 
 position = Vector2( 608.792, 256.201 )
@@ -506,9 +459,7 @@ _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
 [node name="Elevators" type="Node" parent="Apartment/ApartmentMain" index="2"]
 
-editor/display_folded = true
-
-[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 8 )]
+[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 11 )]
 
 target_path = NodePath("../Bottom")
 
@@ -516,10 +467,9 @@ target_path = NodePath("../Bottom")
 
 position = Vector2( 471.285, 497.2 )
 scale = Vector2( 0.562213, 0.75753 )
-_sections_unfolded = [ "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
-player_path = NodePath("../../../../../Characters/Player")
+player_path = NodePath("../../../../../Player")
 
-[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 8 )]
+[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 11 )]
 
 target_path = NodePath("../Top")
 
@@ -537,13 +487,11 @@ shape = SubResource( 6 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
-editor/display_folded = true
-script = ExtResource( 9 )
-player_path = NodePath("../../Characters/Player")
+script = ExtResource( 12 )
+player_path = NodePath("../../Player")
 
-[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 8 )]
+[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 11 )]
 
-editor/display_folded = true
 target_path = NodePath("../2nd Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/1st Floor" index="0"]
@@ -551,7 +499,7 @@ target_path = NodePath("../2nd Floor Left")
 position = Vector2( 122.547, 500.032 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 8 )]
+[node name="1st Floor Bedroom" parent="Apartment/Stairs" index="1" instance=ExtResource( 11 )]
 
 target_path = NodePath("../Bedroom")
 
@@ -579,7 +527,7 @@ target_path = NodePath("../1st Floor")
 position = Vector2( 122.372, 420.312 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 8 )]
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../3rd Floor Left")
@@ -589,7 +537,7 @@ target_path = NodePath("../3rd Floor Left")
 position = Vector2( 377.64, 421.282 )
 scale = Vector2( 0.327475, 0.479105 )
 
-[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 8 )]
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../2nd Floor Right")
@@ -599,7 +547,7 @@ target_path = NodePath("../2nd Floor Right")
 position = Vector2( 341.27, 347.517 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 8 )]
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../4th Floor Right")
@@ -609,7 +557,7 @@ target_path = NodePath("../4th Floor Right")
 position = Vector2( 702.251, 348.116 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 8 )]
+[node name="4th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../5th Floor Left")
@@ -619,7 +567,7 @@ target_path = NodePath("../5th Floor Left")
 position = Vector2( 467.801, 269.608 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 8 )]
+[node name="4th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../3rd Floor Right")
@@ -629,7 +577,7 @@ target_path = NodePath("../3rd Floor Right")
 position = Vector2( 742.76, 268.891 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 8 )]
+[node name="5th Floor Left" parent="Apartment/Stairs" index="9" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../4th Floor Left")
@@ -639,7 +587,7 @@ target_path = NodePath("../4th Floor Left")
 position = Vector2( 424.548, 190.108 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 8 )]
+[node name="5th Floor Right" parent="Apartment/Stairs" index="10" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../6th Floor")
@@ -649,7 +597,7 @@ target_path = NodePath("../6th Floor")
 position = Vector2( 654.294, 188.348 )
 scale = Vector2( 0.371902, 0.479105 )
 
-[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 8 )]
+[node name="6th Floor" parent="Apartment/Stairs" index="11" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 target_path = NodePath("../5th Floor Right")
@@ -661,16 +609,33 @@ scale = Vector2( 0.371902, 0.479105 )
 
 [node name="Bedroom" type="Node" parent="Apartment" index="2"]
 
-repeat = false
+editor/display_folded = true
+
+[node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 13 )]
+
+position = Vector2( 540.148, 107.392 )
+scale = Vector2( 0.35674, 0.761792 )
+player_path = NodePath("../../../Player")
+
+[node name="CollisionShape2D" parent="Apartment/Bedroom/Interactive Object" index="0"]
+
+position = Vector2( 0.666704, -1.87317 )
+scale = Vector2( 2.51283, 2.5576 )
+shape = SubResource( 7 )
+
+[node name="Tween" type="Tween" parent="." index="4"]
+
+repeat = true
 playback_process_mode = 1
 playback_speed = 1.0
 playback/active = false
-playback/repeat = false
+playback/repeat = true
 playback/speed = 1.0
 _sections_unfolded = [ "playback" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 434, -106 )
 offset = Vector2( 0, -7 )
 anchor_mode = 1
@@ -700,215 +665,7 @@ _sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
 targetZoomStep = 0.25
 followSpeed = 0.1
 
-[node name="Dialogues" type="Node" parent="Camera2D" index="0"]
-
-editor/display_folded = true
-
-[node name="ElizabethParent" type="Node" parent="Camera2D/Dialogues" index="0"]
-
-[node name="ElizabethScript" type="RichTextLabel" parent="Camera2D/Dialogues/ElizabethParent" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 3.0
-margin_top = -11.0
-margin_right = 1023.0
-margin_bottom = 139.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-script = ExtResource( 10 )
-_sections_unfolded = [ "BBCode" ]
-scriptPath = "res://Dialogues/Elizabeth.json"
-
-[node name="Control" type="Control" parent="Camera2D/Dialogues/ElizabethParent" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 128.0
-margin_top = -115.0
-margin_right = 173.0
-margin_bottom = -70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 11 )
-
-[node name="FuyumiParent" type="Node" parent="Camera2D/Dialogues" index="1"]
-
-[node name="FuyumiScript" type="RichTextLabel" parent="Camera2D/Dialogues/FuyumiParent" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 3.0
-margin_top = -11.0
-margin_right = 1023.0
-margin_bottom = 139.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = 12350
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-script = ExtResource( 10 )
-_sections_unfolded = [ "Rect" ]
-scriptPath = "res://Dialogues/Fuyumi.json"
-
-[node name="Control" type="Control" parent="Camera2D/Dialogues/FuyumiParent" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 125.0
-margin_top = -124.0
-margin_right = 170.0
-margin_bottom = -79.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 11 )
-
-[node name="JonDoeParent" type="Node" parent="Camera2D/Dialogues" index="2"]
-
-[node name="JonDoe" type="RichTextLabel" parent="Camera2D/Dialogues/JonDoeParent" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 3.0
-margin_top = -11.0
-margin_right = 1023.0
-margin_bottom = 139.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = 1000
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-script = ExtResource( 10 )
-_sections_unfolded = [ "Material", "Visibility" ]
-scriptPath = "res://Dialogues/JonDoe.json"
-
-[node name="Control" type="Control" parent="Camera2D/Dialogues/JonDoeParent" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 125.0
-margin_top = -124.0
-margin_right = 170.0
-margin_bottom = -79.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 11 )
-
-[node name="JoeJonesParent" type="Node" parent="Camera2D/Dialogues" index="3"]
-
-[node name="JoeJones" type="RichTextLabel" parent="Camera2D/Dialogues/JoeJonesParent" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 3.0
-margin_top = -11.0
-margin_right = 1023.0
-margin_bottom = 139.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-script = ExtResource( 10 )
-_sections_unfolded = [ "Margin", "custom_fonts" ]
-scriptPath = "res://Dialogues/JoeJones.json"
-
-[node name="Control" type="Control" parent="Camera2D/Dialogues/JoeJonesParent" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 125.0
-margin_top = -124.0
-margin_right = 170.0
-margin_bottom = -79.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 11 )
-
-[node name="Menu" type="Node" parent="." index="4"]
+[node name="Tween" type="Tween" parent="Camera2D" index="0"]
 
 repeat = false
 playback_process_mode = 1
@@ -1074,30 +831,223 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu" index="1"]
+[node name="Dialogues" type="Node" parent="." index="7"]
 
-visible = false
-modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 604.082, 49.4301 )
-scale = Vector2( 499.856, 324.338 )
-z_index = -1
-texture = ExtResource( 13 )
+[node name="Elizabeth" type="Node" parent="Dialogues" index="0"]
 
-[connection signal="activated" from="Characters/Elizabeth/Interactive Object" to="Camera2D/Dialogues/ElizabethParent/ElizabethScript" method="_on_Interactive_Object_activated"]
+[node name="Control" type="Control" parent="Dialogues/Elizabeth" index="0"]
 
-[connection signal="deactivate" from="Characters/Elizabeth/Interactive Object" to="Camera2D/Dialogues/ElizabethParent/ElizabethScript" method="_on_Interactive_Object_deactivate"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[connection signal="activated" from="Characters/Fuyumi/Interactive Object" to="Camera2D/Dialogues/FuyumiParent/FuyumiScript" method="_on_Interactive_Object_activated"]
+[node name="ElizabethScript" type="RichTextLabel" parent="Dialogues/Elizabeth" index="1"]
 
-[connection signal="deactivate" from="Characters/Fuyumi/Interactive Object" to="Camera2D/Dialogues/FuyumiParent/FuyumiScript" method="_on_Interactive_Object_deactivate"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptPath = "res://Dialogues/Elizabeth.json"
 
-[connection signal="activated" from="Characters/JonDoe/Interactive Object" to="Camera2D/Dialogues/JonDoeParent/JonDoe" method="_on_Interactive_Object_activated"]
+[node name="Fuyumi" type="Node" parent="Dialogues" index="1"]
 
-[connection signal="deactivate" from="Characters/JonDoe/Interactive Object" to="Camera2D/Dialogues/JonDoeParent/JonDoe" method="_on_Interactive_Object_deactivate"]
+[node name="Control" type="Control" parent="Dialogues/Fuyumi" index="0"]
 
-[connection signal="activated" from="Characters/JoeJones/Interactive Object" to="Camera2D/Dialogues/JoeJonesParent/JoeJones" method="_on_Interactive_Object_activated"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[connection signal="deactivate" from="Characters/JoeJones/Interactive Object" to="Camera2D/Dialogues/JoeJonesParent/JoeJones" method="_on_Interactive_Object_deactivate"]
+[node name="FuyumiScript" type="RichTextLabel" parent="Dialogues/Fuyumi" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/mono_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptPath = "res://Dialogues/Fuyumi.json"
+
+[node name="JonDoe" type="Node" parent="Dialogues" index="2"]
+
+[node name="Control" type="Control" parent="Dialogues/JonDoe" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="JonDoeScript" type="RichTextLabel" parent="Dialogues/JonDoe" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/mono_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptPath = "res://Dialogues/JonDoe.json"
+
+[node name="JoeJones" type="Node" parent="Dialogues" index="3"]
+
+[node name="Control" type="Control" parent="Dialogues/JoeJones" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="JoeJonesScript" type="RichTextLabel" parent="Dialogues/JoeJones" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/mono_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Hint", "Rect", "custom_fonts" ]
+scriptPath = "res://Dialogues/JoeJones.json"
+
+[connection signal="activated" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/Hoarder/IOP" to="Characters/Hoarder" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/CatLady/IOP" to="Characters/CatLady" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Apartment/Bedroom/Interactive Object" to="." method="_on_Bedroom_Object_activated"]
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 

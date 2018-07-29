@@ -67,17 +67,17 @@ func handle_dialogue(dialogue_choice):
 	var mg = curr_character.mini_game
 
 	match dialogue_choice:
-		DialogueChoices.Worst:
+		DialogueChoices.WORST:
 			pass
-		DialogueChoices.Okay:
-			mg.set_points(DialogueChoices.Okay)
+		DialogueChoices.OKAY:
+			mg.set_points(DialogueChoices.OKAY)
 			mini_game = SceneManager.load_scene(mg)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice
-		DialogueChoices.Better:
-			curr_character.adjust_happiness(DialogueChoices.Better*HAPPINESS_BASE)
-		DialogueChoices.Best:
-			mg.set_points(DialogueChoices.Best)
+		DialogueChoices.BETTER:
+			curr_character.adjust_happiness(DialogueChoices.BETTER*HAPPINESS_BASE)
+		DialogueChoices.BEST:
+			mg.set_points(DialogueChoices.BEST)
 			mini_game = SceneManager.load_scene(mg)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice
