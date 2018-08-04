@@ -19,6 +19,7 @@ enum PositionState {Apartment, Sky, Player}
 enum ScrollState {Max, Min, Custom}
 var currentPositionState
 var currentScrollState
+var scrollingEnabled = true
 
 func _ready():
 	#tween = get_node("../Tween")
@@ -39,57 +40,57 @@ func _input(event):
 	var initPosNode = false
 	var zoomStep = targetZoomStep
 	var zoomDelta = get_zoom()
-	
-	if event is InputEventMouseButton:
+	if scrollingEnabled:
+		if event is InputEventMouseButton:
 #		print("Mouse Click/Unclick at: ", event.position)
-		if(event.button_index == BUTTON_WHEEL_UP):
-#			print("Button_Wheel_Up: ", event.position)
-			
-			if(zoomDelta[0] + zoomStep > maxZoom[0]):
-				zoomStep = clamp(zoomStep, 0, maxZoom[0] - zoomDelta[0])
-			if(zoomDelta[1] + zoomStep > maxZoom[1]):
-				zoomStep = clamp(zoomStep, 0, maxZoom[1] - zoomDelta[1])
-#			print(zoomStep)
+			if(event.button_index == BUTTON_WHEEL_UP):
+	#			print("Button_Wheel_Up: ", event.position)
 				
-			zoomDelta[0] = zoomDelta[0] + zoomStep
-			zoomDelta[1] = zoomDelta[1] + zoomStep
-			
-		if(event.button_index == BUTTON_WHEEL_DOWN):
-#			print("Button_Wheel_Down: ", event.position)
-
-			if(zoomDelta[0] - zoomStep < minZoom[0]):
-				zoomStep = clamp(zoomStep, 0, zoomDelta[0] - minZoom[0])
-			if(zoomDelta[1] - zoomStep < minZoom[1]):
-				zoomStep = clamp(zoomStep, 0, zoomDelta[1] - minZoom[1])
-#			print(zoomStep)
-            
-			zoomDelta[0] = zoomDelta[0] - zoomStep
-			zoomDelta[1] = zoomDelta[1] - zoomStep
-			
+				if(zoomDelta[0] + zoomStep > maxZoom[0]):
+					zoomStep = clamp(zoomStep, 0, maxZoom[0] - zoomDelta[0])
+				if(zoomDelta[1] + zoomStep > maxZoom[1]):
+					zoomStep = clamp(zoomStep, 0, maxZoom[1] - zoomDelta[1])
+	#			print(zoomStep)
+					
+				zoomDelta[0] = zoomDelta[0] + zoomStep
+				zoomDelta[1] = zoomDelta[1] + zoomStep
+				
+			if(event.button_index == BUTTON_WHEEL_DOWN):
+	#			print("Button_Wheel_Down: ", event.position)
 	
-		targetZoom = zoomDelta
-		currentScrollState = ScrollState.Custom
+				if(zoomDelta[0] - zoomStep < minZoom[0]):
+					zoomStep = clamp(zoomStep, 0, zoomDelta[0] - minZoom[0])
+				if(zoomDelta[1] - zoomStep < minZoom[1]):
+					zoomStep = clamp(zoomStep, 0, zoomDelta[1] - minZoom[1])
+	#			print(zoomStep)
+	            
+				zoomDelta[0] = zoomDelta[0] - zoomStep
+				zoomDelta[1] = zoomDelta[1] - zoomStep
+				
 		
-		reset_tween()
-			
-#	elif event is InputEventMouseMotion:
-#		print("Mouse Motion at: ", event.position)
+				targetZoom = zoomDelta
+				currentScrollState = ScrollState.Custom
+				
+				reset_tween()
+				
+	#	elif event is InputEventMouseMotion:
+	#		print("Mouse Motion at: ", event.position)
 
-	if(drag == true):
-	
-	    var mouse_pos = get_global_mouse_pos()
-	
-	    var dist_x = initPosMouse.x - mouse_pos.x
-	    var dist_y = initPosMouse.y - mouse_pos.y
-	
-	    var nx = initPosNode.x - (0 + dist_x)
-	    var ny = initPosNode.y - (0 + dist_y)
-	
-	    get_node("main").set_pos(Vector2(nx,ny))
-	
-	elif(drag == false):
-	    # print("undrag")
-	    pass
+#	if(drag == true):
+#
+#	    var mouse_pos = get_global_mouse_pos()
+#
+#	    var dist_x = initPosMouse.x - mouse_pos.x
+#	    var dist_y = initPosMouse.y - mouse_pos.y
+#
+#	    var nx = initPosNode.x - (0 + dist_x)
+#	    var ny = initPosNode.y - (0 + dist_y)
+#
+#	    get_node("main").set_pos(Vector2(nx,ny))
+#
+#	elif(drag == false):
+#	    # print("undrag")
+#	    pass
 	
 #	if (event.type == InputEvent.MOUSE_BUTTON):
 #	    if (event.button_index == BUTTON_WHEEL_UP):
