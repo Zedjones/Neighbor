@@ -102,7 +102,7 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 [node name="Sky" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 610.753, 57.7379 )
+position = Vector2( 610.356, 84.7484 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -10
 texture = ExtResource( 2 )
@@ -974,7 +974,7 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
-scriptPath = "res://Dialogues/JonDoe.json"
+scriptPath = "res://Dialogues/JoeJones.json"
 
 [node name="JoeJones" type="Node" parent="Dialogues" index="3"]
 
@@ -1023,7 +1023,7 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
 _sections_unfolded = [ "Hint", "Rect", "custom_fonts" ]
-scriptPath = "res://Dialogues/JoeJones.json"
+scriptPath = "res://Dialogues/JonDoe.json"
 
 [connection signal="activated" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_activated"]
 

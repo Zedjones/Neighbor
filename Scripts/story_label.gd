@@ -6,6 +6,7 @@ extends RichTextLabel
 ## I think this is because the paragraphs get formated all at once, and the newParagraph var is consequently 
 ## empty after the first time through the Show_paragraph method. Trying to fix this
 
+var DialogueChoices = preload("res://GlobalData.gd").DialogueChoices
 var TwineScript = preload("res://modules/twine-story/twine_script.gd")
 
 export(String, FILE, "*.json") var scriptPath
@@ -169,19 +170,19 @@ func check_if_end(pid, paragraph):
 	if ('X' in originalPassage.name):
 		print("Has X")
 		isEnd = true
-		dialogue_choice = "WORST"
+		GameManager.handle_dialogue(DialogueChoices.WORST)
 	elif ('P' in originalPassage.name):
 		print("Has P")
 		isEnd = true
-		dialogue_choice = "OKAY"
+		GameManager.handle_dialogue(DialogueChoices.OKAY)
 	elif ('S' in originalPassage.name):
 		print("Has S")
 		isEnd = true
-		dialogue_choice = "BETTER"
+		GameManager.handle_dialogue(DialogueChoices.BETTER)
 	elif ('E' in originalPassage.name):
 		print("Has E")
 		isEnd = true
-		dialogue_choice = "BEST"
+		GameManager.handle_dialogue(DialogueChoices.BEST)
 	else:
 		isEnd = false
 

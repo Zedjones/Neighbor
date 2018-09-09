@@ -59,7 +59,6 @@ func start_mini_game():
 	#else:
 	#	print("No curr_character")
 			
-	
 
 # Handle the dialogue choice made by the player, passed in by the Dialogue Manager
 # @param dialogue_choice - a DialogueChoice enum
