@@ -13,7 +13,7 @@ func _ready():
 	# Initialization here
 	pass
 	
-func load_scene(scene):	
+func load_scene(scene, dialogue_choice):	
 	player.is_paused = true
 	print("player paused")
 	var instance = scene.instance()
@@ -27,6 +27,7 @@ func load_scene(scene):
 	
 	instance.get_node("Sizer").scale = relativeScale
 	instance.get_node("Sizer").position = camera.position
+	instance.set_points(dialogue_choice)
 	world.add_child(instance)
 	currentScene = instance
 	return instance

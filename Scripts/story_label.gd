@@ -9,8 +9,11 @@ extends RichTextLabel
 var DialogueChoices = preload("res://GlobalData.gd").DialogueChoices
 var TwineScript = preload("res://modules/twine-story/twine_script.gd")
 
-export(String, FILE, "*.json") var scriptPath
+export(String, FILE, "*.json") var scriptDayOne
+export(String, FILE, "*.json") var scriptDayTwo
 
+var dayScript = []
+var usingDay
 var script
 var passage
 var originalPassage
@@ -26,7 +29,10 @@ var dialogue_choice = ""
 var activated = false
 
 func _ready():
-	script = TwineScript.new(scriptPath)
+	dayScript.append(scriptDayOne)
+	dayScript.append(scriptDayTwo)
+	script = TwineScript.new(dayScript[TimeManager.currentDay])
+	usingDay = TimeManager.currentDay
 	script.parse()
 	cid = script.get_start_node()
 	set_process_input(true)
@@ -35,6 +41,8 @@ func _ready():
 
 func _input(event):
 	if activated:
+		if (usingDay == TimeManager.currentDay):
+			_on_IOP_activated()
 		# increases to the current selection 
 		if(event.is_action_pressed("ui_accept")):
 			if !isEnd:
@@ -161,28 +169,30 @@ func check_passage(pid, paragraph):
 			return 1
 	else:
 		return -1
-		
+
 # check if we are on the last sentence of the dialogue
 # to check this, we look for either an X - exit, P - play minigame w/o bonuses, 
 # S - start minigame w/ bonuses or E - explain, no minigame
 func check_if_end(pid, paragraph):
 	print(originalPassage.name)
+	if (isEnd):
+		GameManager.handle_dialogue(dialogue_choice)
 	if ('X' in originalPassage.name):
 		print("Has X")
 		isEnd = true
-		GameManager.handle_dialogue(DialogueChoices.WORST)
+		dialogue_choice = DialogueChoices.WORST
 	elif ('P' in originalPassage.name):
 		print("Has P")
 		isEnd = true
-		GameManager.handle_dialogue(DialogueChoices.OKAY)
+		dialogue_choice = DialogueChoices.OKAY
 	elif ('S' in originalPassage.name):
 		print("Has S")
 		isEnd = true
-		GameManager.handle_dialogue(DialogueChoices.BETTER)
+		dialogue_choice = DialogueChoices.BETTER
 	elif ('E' in originalPassage.name):
 		print("Has E")
 		isEnd = true
-		GameManager.handle_dialogue(DialogueChoices.BEST)
+		dialogue_choice = DialogueChoices.BEST
 	else:
 		isEnd = false
 

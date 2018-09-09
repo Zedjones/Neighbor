@@ -13,10 +13,10 @@ func _process(delta):
 	if not is_paused:
 		if Input.is_action_pressed("ui_right"):
 			get_node("PlayerSprite").set_flip_h(false)
-			motion.x = 100
+			motion.x = 500
 		elif Input.is_action_pressed("ui_left"):
 			get_node("PlayerSprite").set_flip_h(true)
-			motion.x = -100
+			motion.x = -500
 		else:
 			motion.x = 0
 		

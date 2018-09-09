@@ -64,19 +64,19 @@ func start_mini_game():
 # @param dialogue_choice - a DialogueChoice enum
 func handle_dialogue(dialogue_choice):
 	var mg = curr_character.mini_game
-
+	
 	match dialogue_choice:
 		DialogueChoices.WORST:
 			pass
 		DialogueChoices.OKAY:
-			mg.set_points(DialogueChoices.OKAY)
-			mini_game = SceneManager.load_scene(mg)
+			#mg.set_points(DialogueChoices.OKAY)
+			mini_game = SceneManager.load_scene(mg, dialogue_choice)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice
 		DialogueChoices.BETTER:
 			curr_character.adjust_happiness(DialogueChoices.BETTER*HAPPINESS_BASE)
 		DialogueChoices.BEST:
-			mg.set_points(DialogueChoices.BEST)
-			mini_game = SceneManager.load_scene(mg)
+			#mg.set_points(DialogueChoices.BEST)
+			mini_game = SceneManager.load_scene(mg, dialogue_choice)
 			in_mini_game = true
 			self.dialogue_choice = dialogue_choice

@@ -244,7 +244,6 @@ visible = false
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
@@ -878,7 +877,8 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
-scriptPath = "res://Dialogues/Elizabeth.json"
+scriptDayOne = "res://Dialogues/Elizabeth.json"
+scriptDayTwo = "res://Dialogues/ElizabethOne.json"
 
 [node name="Fuyumi" type="Node" parent="Dialogues" index="1"]
 
@@ -926,7 +926,8 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
-scriptPath = "res://Dialogues/Fuyumi.json"
+scriptDayOne = "res://Dialogues/Fuyumi.json"
+scriptDayTwo = "res://Dialogues/FuyumiOne.json"
 
 [node name="JonDoe" type="Node" parent="Dialogues" index="2"]
 
@@ -974,7 +975,8 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
-scriptPath = "res://Dialogues/JoeJones.json"
+scriptDayOne = "res://Dialogues/JonDoe.json"
+scriptDayTwo = "res://Dialogues/SantinoRodriguezOne.json"
 
 [node name="JoeJones" type="Node" parent="Dialogues" index="3"]
 
@@ -1023,27 +1025,28 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
 _sections_unfolded = [ "Hint", "Rect", "custom_fonts" ]
-scriptPath = "res://Dialogues/JonDoe.json"
+scriptDayOne = "res://Dialogues/JoeJones.json"
+scriptDayTwo = "res://Dialogues/JoeJonesOne.json"
 
 [connection signal="activated" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_activated"]
 
 [connection signal="exited" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_exited"]
 
-[connection signal="activated" from="Characters/Hoarder/IOP" to="Characters/Hoarder" method="_on_IOP_activated"]
-
 [connection signal="activated" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/Hoarder/IOP" to="Characters/Hoarder" method="_on_IOP_activated"]
 
 [connection signal="exited" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_exited"]
 
-[connection signal="activated" from="Characters/CatLady/IOP" to="Characters/CatLady" method="_on_IOP_activated"]
-
 [connection signal="activated" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/CatLady/IOP" to="Characters/CatLady" method="_on_IOP_activated"]
 
 [connection signal="exited" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_exited"]
 
-[connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
-
 [connection signal="activated" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
 
 [connection signal="exited" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_exited"]
 

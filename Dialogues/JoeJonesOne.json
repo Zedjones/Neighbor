@@ -1,0 +1,145 @@
+{
+    "ifid": "B55122F2-7C21-45F3-86A8-D490DE6CC117",
+    "name": "JoeJonesOne",
+    "startNode": 1,
+    "creator": "Twine",
+    "creatorVersion": "2.2.1",
+    "format": "Harlowe",
+    "time": "2018-09-09T20:39:44.949Z",
+    "passages": [
+        {
+            "pid": 1,
+            "name": "0N1",
+            "text": "<p>{Hey there, have you seen the latest volume of Super Beaver Man?}\n<%= links['503d333ad613286c61b75f997d0d88c83e225e05'] %>\n<%= links['6d663166ae201f2ffab88029683f873a2ae3662b'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "503d333ad613286c61b75f997d0d88c83e225e05",
+                    "label": "1P1",
+                    "passageId": 2
+                },
+                {
+                    "id": "6d663166ae201f2ffab88029683f873a2ae3662b",
+                    "label": "1P2",
+                    "passageId": 3
+                }
+            ]
+        },
+        {
+            "pid": 2,
+            "name": "1P1",
+            "text": "<p>{No...what is Super Beaver Man?}\n<%= links['2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b",
+                    "label": "2N1",
+                    "passageId": 4
+                }
+            ]
+        },
+        {
+            "pid": 3,
+            "name": "1P2",
+            "text": "<p>{I'm not interested in that, sorry}\n<%= links['e656f2523168b9fa033f9226b5de38be3b8fe213'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "e656f2523168b9fa033f9226b5de38be3b8fe213",
+                    "label": "2N2X",
+                    "passageId": 5
+                }
+            ]
+        },
+        {
+            "pid": 4,
+            "name": "2N1",
+            "text": "<p>{<em>GAAASSSPPP</em> You don't know about Super Beaver Man? He is only the greatest super hero EVER!}\n<%= links['ec23157ccb0b8e7f2d15a6dd43c07115668793d5'] %>\n<%= links['e9f2d93f939667fb8655f829688be22ac1d56f07'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "ec23157ccb0b8e7f2d15a6dd43c07115668793d5",
+                    "label": "3P1",
+                    "passageId": 6
+                },
+                {
+                    "id": "e9f2d93f939667fb8655f829688be22ac1d56f07",
+                    "label": "3P2",
+                    "passageId": 7
+                }
+            ]
+        },
+        {
+            "pid": 5,
+            "name": "2N2X",
+            "text": "<p>{Oh yeah, I totally understand, see ya!}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 6,
+            "name": "3P1",
+            "text": "<p>{Sounds interesting, tell me more.}}\n<%= links['c0c2885b2867914774d791b63ef700c6cfae9a28'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "c0c2885b2867914774d791b63ef700c6cfae9a28",
+                    "label": "4N1",
+                    "passageId": 8
+                }
+            ]
+        },
+        {
+            "pid": 7,
+            "name": "3P2",
+            "text": "<p>{That's not quite my cup of tea, sorry bud}}\n<%= links['95b30fe3f5a54779640cb9e6319381726322dce4'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "95b30fe3f5a54779640cb9e6319381726322dce4",
+                    "label": "4N2X",
+                    "passageId": 9
+                }
+            ]
+        },
+        {
+            "pid": 8,
+            "name": "4N1",
+            "text": "<p>{Well, he has the ability to call the aid of his platypus friends, and he has super strength, and he can chew through anything! He's amazing, the comic book writers are making such an awesome universe, you should totally read it.}\n<%= links['cebcf271bd999831a9dc339153edcf5bd9d589d4'] %>\n<%= links['bd2396e6911f219db5c69920a3404ee91fa04177'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "cebcf271bd999831a9dc339153edcf5bd9d589d4",
+                    "label": "5P1",
+                    "passageId": 10
+                },
+                {
+                    "id": "bd2396e6911f219db5c69920a3404ee91fa04177",
+                    "label": "5P2",
+                    "passageId": 11
+                }
+            ]
+        },
+        {
+            "pid": 9,
+            "name": "4N2X",
+            "text": "<p>{Oh I get it man, it's not for everyone.}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 10,
+            "name": "5P1X",
+            "text": "<p>{I will, thanks for telling me about it}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 11,
+            "name": "5P2X",
+            "text": "<p>{I'll think about it, not sure about that}</p>\n",
+            "tags": [],
+            "links": []
+        }
+    ]
+}

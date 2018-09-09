@@ -19,7 +19,7 @@ func _ready():
 	distanceTimer = randi()%51+1
 	connect("player_entered", GameManager, "set_curr_character")
 	connect("player_exited", GameManager, "set_curr_character")
-	connect("player_pressed", GameManager,"start_mini_game")
+	#connect("player_pressed", GameManager,"start_mini_game")
 	startingXPos = position.x
 	pass
 

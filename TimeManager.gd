@@ -5,6 +5,7 @@ extends Node
 # var b = "textvar"
 
 enum Day { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
+var storyManager = preload("res://Scripts/story_label.gd")
 
 var currentDay = Day.Monday
 var currentTime
@@ -16,7 +17,8 @@ func _ready():
 	time = get_node("/root/World/Camera2D/Time")
 
 func next_day():
-	currentDay = currentDay + 1; 
+	currentDay = currentDay + 1
+	storyManager._on_IOP_exited()
 	day.text = String(Day.Tuesday)
 	pass
 
