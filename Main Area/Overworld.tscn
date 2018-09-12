@@ -334,7 +334,7 @@ player_path = NodePath("../../../Player")
 
 region_rect = Rect2( 92, 136, 23, 60 )
 
-[node name="NPCSprite" parent="Characters/CatLady" index="4"]
+[node name="NPCSprite" parent="Characters/CatLady" index="5"]
 
 region_rect = Rect2( 123, 8, 23, 61 )
 

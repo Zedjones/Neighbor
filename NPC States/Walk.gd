@@ -19,6 +19,8 @@ func update(delta):
 
 func switched(from_state):
 	print("Entering walk")
+	$"../../Idle".hide()
+	$"../../Walking".show()
 	curr_direction = null
 	$"../../NPCSprite/Animations".queue(animation)
 	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, int(step))
@@ -34,8 +36,10 @@ func _on_MovementTimer_timeout():
 			curr_direction = Vector2(-5, 0)
 			get_node("../../NPCSprite").set_flip_h(true)
 			get_node("../../Idle").set_flip_h(true)
+			get_node("../../Walking").set_flip_h(true)
 		1:
 			curr_direction = Vector2(5, 0)
 			get_node("../../NPCSprite").set_flip_h(false)
 			get_node("../../Idle").set_flip_h(false)
+			get_node("../../Walking").set_flip_h(false)
 	$"../../MovementTimer".start()

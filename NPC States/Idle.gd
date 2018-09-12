@@ -17,5 +17,8 @@ func update(delta):
 
 func switched(from_state):
 	print("Entering idle")
+	if from_state == $"..".states.Walk: 
+		$"../../Idle".show()
+		$"../../Walking".hide()
 	$"../../NPCSprite/Animations".queue(animation)
 	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, int(step))
