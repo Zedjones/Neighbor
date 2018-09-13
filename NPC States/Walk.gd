@@ -19,8 +19,6 @@ func update(delta):
 
 func switched(from_state):
 	print("Entering walk")
-	$"../../Idle".hide()
-	$"../../Walking".show()
 	curr_direction = null
 	$"../../NPCSprite/Animations".queue(animation)
 	$"../StateTimer".start_timer(MIN_TIME, MAX_TIME, int(step))

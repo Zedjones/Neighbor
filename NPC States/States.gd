@@ -21,6 +21,12 @@ func handle_anim():
 	$"../NPCSprite/Animations".play(state_map[curr_state].animation)
 
 func change_state(new_state):
+	if new_state == states.Walk:
+		$"../Walking".show()
+		$"../Idle".hide()
+	else:
+		$"../Walking".hide()
+		$"../Idle".show()
 	var state_node = state_map[new_state]
 	state_node.switched(curr_state)
 	curr_state = new_state

@@ -94,8 +94,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Rect2( 0, 68, 15, 63 ), Rect2( 24, 68, 18, 62 ), Rect2( 48, 68, 16, 61 ), Rect2( 72, 68, 14, 62 ), Rect2( 96, 68, 16, 63 ), Rect2( 120, 68, 24, 62 ), Rect2( 144, 68, 20, 61 ), Rect2( 168, 68, 14, 62 ) ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("../States")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
 
-[node name="NPC" type="KinematicBody2D"]
+[node name="NPC" type="KinematicBody2D" index="0"]
 
 position = Vector2( 274.249, 164.128 )
 z_index = 1
