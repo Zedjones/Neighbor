@@ -28,7 +28,7 @@ func parse():
 				label = link.label,
 				passageId = link.passageId
 			}
-
+			
 		newPassage.text = parse_text(passage.text, links)
 		newPassage.paragraphs = parse_paragraphs(newPassage.text)
 		newPassage.links = links

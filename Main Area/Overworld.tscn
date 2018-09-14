@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -76,6 +76,22 @@ use_filter = false
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="DynamicFont" id=11]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=12]
+
+size = 0
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 15 )
+_sections_unfolded = [ "Font" ]
+
 [node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
@@ -86,7 +102,7 @@ nightTime = Color( 0.319205, 0.161972, 0.753906, 1 )
 [node name="Sky" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.254902, 0.686275, 0.898039, 1 )
-position = Vector2( 610.753, 57.7379 )
+position = Vector2( 610.356, 84.7484 )
 scale = Vector2( 499.856, 324.338 )
 z_index = -10
 texture = ExtResource( 2 )
@@ -120,7 +136,6 @@ shape = SubResource( 1 )
 
 [node name="Characters" type="Node" parent="." index="2"]
 
-editor/display_folded = true
 script = ExtResource( 5 )
 _sections_unfolded = [ "Pause" ]
 player_path = NodePath("../Player")
@@ -130,16 +145,23 @@ player_path = NodePath("../Player")
 position = Vector2( 320.294, 497.251 )
 z_index = -3
 
+[node name="CollisionShape2D" parent="Characters/Student" index="0"]
+
+position = Vector2( -1.15109, -5.94718 )
+scale = Vector2( 1.80197, 1.1032 )
+
 [node name="IOP" parent="Characters/Student" index="2"]
 
-position = Vector2( 5.29251, -2.7374 )
-scale = Vector2( 2.41527, 0.914456 )
+position = Vector2( -0.0147384, -7.43322 )
+scale = Vector2( 0.906901, 1.35489 )
+player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Student" index="3"]
 
 visible = true
 position = Vector2( -0.0231934, -5.16441 )
 region_rect = Rect2( 9, 69, 26, 63 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="NPCSprite" parent="Characters/Student" index="4"]
 
@@ -147,7 +169,6 @@ visible = false
 
 [node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 608.646, 258.106 )
 z_index = -3
 mini_game = ExtResource( 7 )
@@ -158,6 +179,8 @@ player_path = NodePath("../../../Player")
 
 [node name="IOP" parent="Characters/Hoarder" index="2"]
 
+position = Vector2( 0.494743, -0.987806 )
+scale = Vector2( 0.537436, 1.21293 )
 player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Hoarder" index="3"]
@@ -165,6 +188,11 @@ player_path = NodePath("../../../Player")
 visible = true
 offset = Vector2( 0, 1 )
 region_rect = Rect2( 52, 201, 16, 63 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="NPCSprite" parent="Characters/Hoarder" index="4"]
+
+visible = false
 
 [node name="CatLady" parent="Characters" index="2" instance=ExtResource( 6 )]
 
@@ -179,12 +207,15 @@ player_path = NodePath("../../../Player")
 
 [node name="IOP" parent="Characters/CatLady" index="2"]
 
+position = Vector2( 1.53615, 0.810411 )
+scale = Vector2( 0.497984, 1.15661 )
 player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/CatLady" index="3"]
 
 visible = true
-region_rect = Rect2( 92, 136, 23, 60 )
+region_rect = Rect2( 78, 202, 16, 62 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="NPCSprite" parent="Characters/CatLady" index="4"]
 
@@ -195,6 +226,11 @@ region_rect = Rect2( 123, 8, 23, 61 )
 
 position = Vector2( 251.481, 410.574 )
 z_index = -3
+
+[node name="IOP" parent="Characters/Artist" index="2"]
+
+position = Vector2( -1.41412, -0.121091 )
+scale = Vector2( 0.63252, 1.23492 )
 
 [node name="Idle" parent="Characters/Artist" index="3"]
 
@@ -208,12 +244,10 @@ visible = false
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
-editor/display_folded = true
 position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
@@ -457,7 +491,6 @@ player_path = NodePath("../../Player")
 
 [node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 11 )]
 
-editor/display_folded = true
 target_path = NodePath("../2nd Floor Left")
 
 [node name="Interactive Object" parent="Apartment/Stairs/1st Floor" index="0"]
@@ -575,6 +608,8 @@ scale = Vector2( 0.371902, 0.479105 )
 
 [node name="Bedroom" type="Node" parent="Apartment" index="2"]
 
+editor/display_folded = true
+
 [node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 13 )]
 
 position = Vector2( 540.148, 107.392 )
@@ -599,6 +634,7 @@ _sections_unfolded = [ "playback" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 434, -106 )
 offset = Vector2( 0, -7 )
 anchor_mode = 1
@@ -794,23 +830,40 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu" index="1"]
+[node name="Dialogues" type="Node" parent="." index="7"]
 
-visible = false
+[node name="Elizabeth" type="Node" parent="Dialogues" index="0"]
+
+[node name="Control" type="Control" parent="Dialogues/Elizabeth" index="0"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 62.0
-margin_top = -8.0
-margin_right = 325.0
-margin_bottom = 91.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ElizabethScript" type="RichTextLabel" parent="Dialogues/Elizabeth" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 11 )
 bbcode_enabled = false
 bbcode_text = ""
 visible_characters = -1
@@ -823,15 +876,179 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 16 )
-scriptPath = "res://Dialogues/NeighborTest.json"
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/Elizabeth.json"
+scriptDayTwo = "res://Dialogues/ElizabethOne.json"
 
-[connection signal="activated" from="Characters/Student/IOP" to="Characters/Student" method="_on_IOP_activated"]
+[node name="Fuyumi" type="Node" parent="Dialogues" index="1"]
+
+[node name="Control" type="Control" parent="Dialogues/Fuyumi" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="FuyumiScript" type="RichTextLabel" parent="Dialogues/Fuyumi" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/mono_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/Fuyumi.json"
+scriptDayTwo = "res://Dialogues/FuyumiOne.json"
+
+[node name="JonDoe" type="Node" parent="Dialogues" index="2"]
+
+[node name="Control" type="Control" parent="Dialogues/JonDoe" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="JonDoeScript" type="RichTextLabel" parent="Dialogues/JonDoe" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/mono_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/JonDoe.json"
+scriptDayTwo = "res://Dialogues/SantinoRodriguezOne.json"
+
+[node name="JoeJones" type="Node" parent="Dialogues" index="3"]
+
+[node name="Control" type="Control" parent="Dialogues/JoeJones" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="JoeJonesScript" type="RichTextLabel" parent="Dialogues/JoeJones" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/mono_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 16 )
+_sections_unfolded = [ "Hint", "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/JoeJones.json"
+scriptDayTwo = "res://Dialogues/JoeJonesOne.json"
+
+[connection signal="activated" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_exited"]
 
 [connection signal="activated" from="Characters/Hoarder/IOP" to="Characters/Hoarder" method="_on_IOP_activated"]
 
+[connection signal="activated" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_exited"]
+
 [connection signal="activated" from="Characters/CatLady/IOP" to="Characters/CatLady" method="_on_IOP_activated"]
 
+[connection signal="activated" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_exited"]
+
 [connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
+
+[connection signal="activated" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_exited"]
 
 [connection signal="activated" from="Apartment/Bedroom/Interactive Object" to="." method="_on_Bedroom_Object_activated"]
 

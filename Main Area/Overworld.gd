@@ -25,14 +25,14 @@ func _process(delta):
 
 
 func _on_PlayButton_pressed():
-	print($Camera2D.position)
+	#print($Camera2D.position)
 	$Tween.connect("tween_completed", self, "on_tween_completed")
 	$Camera2D.scroll_to_apartment()
 	day_to_night()
 	$Tween.start()
 
 func night_to_day():
-	print("night_to_day")
+	#print("night_to_day")
 	$Tween.interpolate_property($Sky, "modulate", nightTime, dayTime, tweenDuration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	currentSkyState = SkyState.Day
 	$Tween.start()

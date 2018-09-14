@@ -1,0 +1,120 @@
+{
+    "ifid": "57FCB8D3-93F5-4B70-A2F4-F9629505608F",
+    "name": "FuyumiOne",
+    "startNode": 1,
+    "creator": "Twine",
+    "creatorVersion": "2.2.1",
+    "format": "Harlowe",
+    "time": "2018-09-09T20:39:40.918Z",
+    "passages": [
+        {
+            "pid": 1,
+            "name": "0N1",
+            "text": "<p>{...You just gave me the greatest idea for a painting!}\n<%= links['503d333ad613286c61b75f997d0d88c83e225e05'] %>\n<%= links['6d663166ae201f2ffab88029683f873a2ae3662b'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "503d333ad613286c61b75f997d0d88c83e225e05",
+                    "label": "1P1",
+                    "passageId": 2
+                },
+                {
+                    "id": "6d663166ae201f2ffab88029683f873a2ae3662b",
+                    "label": "1P2",
+                    "passageId": 3
+                }
+            ]
+        },
+        {
+            "pid": 2,
+            "name": "1P1",
+            "text": "<p>{By just standing here?}\n<%= links['2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b",
+                    "label": "2N1",
+                    "passageId": 4
+                }
+            ]
+        },
+        {
+            "pid": 3,
+            "name": "1P2",
+            "text": "<p>{I always knew I was destined to be a model}\n<%= links['5ccb490d122dface3f7adc04825671cb23a5d75a'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "5ccb490d122dface3f7adc04825671cb23a5d75a",
+                    "label": "2N2",
+                    "passageId": 5
+                }
+            ]
+        },
+        {
+            "pid": 4,
+            "name": "2N1",
+            "text": "<p>{You had a certain 'thoughtful' gaze on you that hit me with this great thinker pose sculpture I want to make!}\n<%= links['ec23157ccb0b8e7f2d15a6dd43c07115668793d5'] %>\n<%= links['e9f2d93f939667fb8655f829688be22ac1d56f07'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "ec23157ccb0b8e7f2d15a6dd43c07115668793d5",
+                    "label": "3P1",
+                    "passageId": 6
+                },
+                {
+                    "id": "e9f2d93f939667fb8655f829688be22ac1d56f07",
+                    "label": "3P2",
+                    "passageId": 7
+                }
+            ]
+        },
+        {
+            "pid": 5,
+            "name": "2N2X",
+            "text": "<p>{Yes! You truely are model material. come by some other time and I shall paint you!}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 6,
+            "name": "3P1",
+            "text": "<p>{Oh so I will be ther star of the artpiece?!}\n<%= links['2aee6e709a006a7090692405368cbccd51d790af'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "2aee6e709a006a7090692405368cbccd51d790af",
+                    "label": "4N1",
+                    "passageId": 9
+                }
+            ]
+        },
+        {
+            "pid": 7,
+            "name": "3P3",
+            "text": "<p>{I see, good luck with that.]\n<%= links['61f0214beb09284a3061fc74ecd0bd1e88b1072f'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "61f0214beb09284a3061fc74ecd0bd1e88b1072f",
+                    "label": "4N2",
+                    "passageId": 8
+                }
+            ]
+        },
+        {
+            "pid": 8,
+            "name": "4N2X",
+            "text": "<p>{Thank you stranger.}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 9,
+            "name": "4N1X",
+            "text": "<p>{That you will, now if you'll excuse me, I must get right on this.}</p>\n",
+            "tags": [],
+            "links": []
+        }
+    ]
+}

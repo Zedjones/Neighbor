@@ -3,8 +3,8 @@ extends KinematicBody2D
 # class member variables go here, for example:
 
 var distanceTimer
-var rightSpeed = 0.1
-var leftSpeed = -0.1
+var rightSpeed = 0# 0.1
+var leftSpeed = 0#-0.1
 var currentSpeed = rightSpeed
 var motion = Vector2()
 var startingXPos
@@ -19,7 +19,7 @@ func _ready():
 	distanceTimer = randi()%51+1
 	connect("player_entered", GameManager, "set_curr_character")
 	connect("player_exited", GameManager, "set_curr_character")
-	connect("player_pressed", GameManager,"start_mini_game")
+	#connect("player_pressed", GameManager,"start_mini_game")
 	startingXPos = position.x
 	pass
 

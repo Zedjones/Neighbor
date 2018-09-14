@@ -13,20 +13,21 @@ func _ready():
 	# Initialization here
 	pass
 	
-func load_scene(scene):	
+func load_scene(scene, dialogue_choice):	
 	player.is_paused = true
 	print("player paused")
 	var instance = scene.instance()
 	var world = get_node("/root/World")
 	#world.get_tree().paused = true
 	var camera = world.get_node("Camera2D")
-#
-#	var relativeScale = Vector2((camera.zoom.x / camera.maxZoom.x) * AspectRatio.x, 
-#	(camera.zoom.y / camera.maxZoom.y) * AspectRatio.y)
-#	print ("relativeScale: ", relativeScale)
-#
-#	instance.get_node("Sizer").scale = relativeScale
-#	instance.get_node("Sizer").position = camera.position
+	
+	var relativeScale = Vector2((camera.zoom.x / camera.maxZoom.x) * AspectRatio.x, 
+	(camera.zoom.y / camera.maxZoom.y) * AspectRatio.y)
+	print ("relativeScale: ", relativeScale)
+	
+	instance.get_node("Sizer").scale = relativeScale
+	instance.get_node("Sizer").position = camera.position
+	instance.set_points(dialogue_choice)
 	world.add_child(instance)
 	currentScene = instance
 	return instance
