@@ -27,6 +27,7 @@ var depth = 0
 var currentDialogue = ""  # 
 var dialogue_choice = ""
 var activated = false
+var connectedToDayChange = false
 
 func _ready():
 	dayScript.append(scriptDayOne)
@@ -38,6 +39,9 @@ func _ready():
 	set_process_input(true)
 	print("Story: ", script.get_story_name())
 	print("Passage names: ", script.get_passage_names())
+	if(!connectedToDayChange):
+		TimeManager.connect("on_day_changed", self, "_on_IOP_exited")
+		connectedToDayChange = true
 
 func _input(event):
 	if activated:

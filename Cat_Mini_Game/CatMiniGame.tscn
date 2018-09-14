@@ -11,11 +11,11 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 30, 60, 0, 0, 0, 0, -40, 60, 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 10, 70 )
 }
 
-[node name="CatMiniGame" type="Node2D" index="0"]
+[node name="CatMiniGame" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 Cat = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
