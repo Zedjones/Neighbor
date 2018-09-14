@@ -12,7 +12,7 @@ export (float) var happiness = 0
 func _ready():
 	connect("player_entered", GameManager, "set_curr_character")
 	connect("player_exited", GameManager, "set_curr_character")
-	connect("player_pressed", GameManager,"start_mini_game")
+	#connect("player_pressed", GameManager,"start_mini_game")
 
 # Set GameManager current character to the character and 
 # call the dialogue blip if it hasn't already been called
