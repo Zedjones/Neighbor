@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -7,14 +7,18 @@
 [ext_resource path="res://Art_Assets/walkcyclesformatting.png" type="Texture" id=5]
 [ext_resource path="res://Main Area/Characters.gd" type="Script" id=6]
 [ext_resource path="res://NPC.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=8]
-[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=9]
-[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=11]
-[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=13]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://Scripts/story_label.gd" type="Script" id=15]
+[ext_resource path="res://Cooking_MG/CookingMiniGame.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hoarding Mini Game/HoarderManager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Cat_Mini_Game/CatMiniGame.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Painting_Poetry/PaintingPoetry.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=12]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=13]
+[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=15]
+[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=17]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Scripts/story_label.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
 
@@ -359,23 +363,39 @@ extents = Vector2( 10, 10 )
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 14 )
+font_data = ExtResource( 18 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=20]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 14 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=19]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 14 )
+font_data = ExtResource( 18 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=20]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 18 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=21]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 18 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=22]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 18 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="World" type="Node" index="0"]
@@ -461,6 +481,7 @@ player_path = NodePath("../Player")
 
 position = Vector2( 320.294, 498.251 )
 z_index = -3
+mini_game = ExtResource( 8 )
 
 [node name="CollisionShape2D" parent="Characters/Student" index="0"]
 
@@ -496,6 +517,7 @@ region_rect = Rect2( 0, 274, 17, 64 )
 
 position = Vector2( 608.646, 261.106 )
 z_index = -3
+mini_game = ExtResource( 9 )
 
 [node name="IO" parent="Characters/Hoarder" index="1"]
 
@@ -517,6 +539,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 position = Vector2( 438.723, 339.968 )
 z_index = -3
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index" ]
+mini_game = ExtResource( 10 )
 
 [node name="IO" parent="Characters/CatLady" index="1"]
 
@@ -551,6 +574,7 @@ region_rect = Rect2( 123, 8, 23, 61 )
 
 position = Vector2( 251.481, 412.574 )
 z_index = -3
+mini_game = ExtResource( 11 )
 
 [node name="IO" parent="Characters/Artist" index="1"]
 
@@ -587,7 +611,7 @@ _sections_unfolded = [ "Pause" ]
 position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
-texture = ExtResource( 8 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
@@ -739,7 +763,7 @@ shape = SubResource( 16 )
 position = Vector2( 608.792, 256.201 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 235, 8, 50, 73 )
 _sections_unfolded = [ "Region", "Transform", "Z Index" ]
@@ -749,7 +773,7 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 position = Vector2( 437.615, 336.207 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 161, 3, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -759,7 +783,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 250.629, 408.891 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 37, 70, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -769,7 +793,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 319.007, 492.032 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 38, 144, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -777,7 +801,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="Food" type="Sprite" parent="Apartment/ApartmentMain/Doors/StudentDoor" index="0"]
 
 position = Vector2( -38.8651, 27.4968 )
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 71, 199, 42, 12 )
 _sections_unfolded = [ "Region" ]
@@ -787,14 +811,14 @@ _sections_unfolded = [ "Region" ]
 position = Vector2( 540.575, 108.748 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 41, 1, 29, 67 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
 [node name="Elevators" type="Node" parent="Apartment/ApartmentMain" index="2"]
 
-[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 10 )]
+[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 14 )]
 
 target_path = NodePath("../Bottom")
 
@@ -804,7 +828,7 @@ position = Vector2( 471.285, 497.2 )
 scale = Vector2( 0.562213, 0.75753 )
 player_path = NodePath("../../../../../Player")
 
-[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 10 )]
+[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 14 )]
 
 target_path = NodePath("../Top")
 
@@ -822,10 +846,10 @@ shape = SubResource( 17 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
-script = ExtResource( 11 )
+script = ExtResource( 15 )
 player_path = NodePath("../../Player")
 
-[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 10 )]
+[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 14 )]
 
 target_path = NodePath("../2nd Floor Left")
 
@@ -835,7 +859,7 @@ position = Vector2( 122.547, 500.032 )
 scale = Vector2( 0.327475, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="1st Floor Bedroom" parent="Apartment/Stairs" index="1" instance=ExtResource( 10 )]
+[node name="1st Floor Bedroom" parent="Apartment/Stairs" index="1" instance=ExtResource( 14 )]
 
 target_path = NodePath("../Bedroom")
 
@@ -845,7 +869,7 @@ position = Vector2( 262.274, 567.133 )
 scale = Vector2( 0.327475, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="Bedroom" parent="Apartment/Stairs" index="2" instance=ExtResource( 10 )]
+[node name="Bedroom" parent="Apartment/Stairs" index="2" instance=ExtResource( 14 )]
 
 target_path = NodePath("../1st Floor Bedroom")
 
@@ -855,7 +879,7 @@ position = Vector2( 483.069, 118.642 )
 scale = Vector2( 0.327475, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="2nd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 10 )]
+[node name="2nd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 14 )]
 
 target_path = NodePath("../1st Floor")
 
@@ -865,7 +889,7 @@ position = Vector2( 122.372, 420.312 )
 scale = Vector2( 0.327475, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="2nd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 10 )]
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 14 )]
 
 target_path = NodePath("../3rd Floor Left")
 
@@ -875,7 +899,7 @@ position = Vector2( 377.64, 421.282 )
 scale = Vector2( 0.327475, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="3rd Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 10 )]
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 14 )]
 
 target_path = NodePath("../2nd Floor Right")
 
@@ -885,7 +909,7 @@ position = Vector2( 341.27, 347.517 )
 scale = Vector2( 0.371902, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="3rd Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 10 )]
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 14 )]
 
 target_path = NodePath("../4th Floor Right")
 
@@ -895,7 +919,7 @@ position = Vector2( 702.251, 348.116 )
 scale = Vector2( 0.371902, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="4th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 10 )]
+[node name="4th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 14 )]
 
 target_path = NodePath("../5th Floor Left")
 
@@ -905,7 +929,7 @@ position = Vector2( 467.801, 269.608 )
 scale = Vector2( 0.371902, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="4th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 10 )]
+[node name="4th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 14 )]
 
 target_path = NodePath("../3rd Floor Right")
 
@@ -915,7 +939,7 @@ position = Vector2( 742.76, 268.891 )
 scale = Vector2( 0.371902, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="5th Floor Left" parent="Apartment/Stairs" index="9" instance=ExtResource( 10 )]
+[node name="5th Floor Left" parent="Apartment/Stairs" index="9" instance=ExtResource( 14 )]
 
 target_path = NodePath("../4th Floor Left")
 
@@ -925,7 +949,7 @@ position = Vector2( 424.548, 190.108 )
 scale = Vector2( 0.371902, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="5th Floor Right" parent="Apartment/Stairs" index="10" instance=ExtResource( 10 )]
+[node name="5th Floor Right" parent="Apartment/Stairs" index="10" instance=ExtResource( 14 )]
 
 target_path = NodePath("../6th Floor")
 
@@ -935,7 +959,7 @@ position = Vector2( 654.294, 188.348 )
 scale = Vector2( 0.371902, 0.479105 )
 player_path = NodePath("../../../../Player")
 
-[node name="6th Floor" parent="Apartment/Stairs" index="11" instance=ExtResource( 10 )]
+[node name="6th Floor" parent="Apartment/Stairs" index="11" instance=ExtResource( 14 )]
 
 target_path = NodePath("../5th Floor Right")
 
@@ -947,7 +971,7 @@ player_path = NodePath("../../../../Player")
 
 [node name="Bedroom" type="Node" parent="Apartment" index="2"]
 
-[node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 12 )]
+[node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 16 )]
 
 position = Vector2( 540.148, 107.392 )
 scale = Vector2( 0.35674, 0.761792 )
@@ -994,7 +1018,7 @@ drag_margin_bottom = 1.0
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 13 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
 targetZoomStep = 0.25
 followSpeed = 0.1
@@ -1082,7 +1106,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 19 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -1108,7 +1132,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
@@ -1163,7 +1187,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 15 )
+script = ExtResource( 19 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 scriptDayOne = "res://Dialogues/Elizabeth.json"
 scriptDayTwo = "res://Dialogues/ElizabethOne.json"
@@ -1210,7 +1234,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 15 )
+script = ExtResource( 19 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 scriptDayOne = "res://Dialogues/Fuyumi.json"
 scriptDayTwo = "res://Dialogues/FuyumiOne.json"
@@ -1257,7 +1281,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 15 )
+script = ExtResource( 19 )
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 scriptDayOne = "res://Dialogues/JonDoe.json"
 scriptDayTwo = "res://Dialogues/SantinoRodriguezOne.json"
@@ -1305,7 +1329,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 15 )
+script = ExtResource( 19 )
 _sections_unfolded = [ "Hint", "Rect", "custom_fonts" ]
 scriptDayOne = "res://Dialogues/JoeJones.json"
 scriptDayTwo = "res://Dialogues/JoeJonesOne.json"
@@ -1333,11 +1357,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 21 )
 text = "Monday"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Margin", "custom_fonts" ]
 
 [node name="Time" type="Label" parent="CanvasLayer" index="1"]
 
@@ -1355,11 +1380,28 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 22 )
 text = "6:00 pm"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="activated" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_exited"]
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
