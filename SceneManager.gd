@@ -25,8 +25,8 @@ func load_scene(scene, dialogue_choice):
 	(camera.zoom.y / camera.maxZoom.y) * AspectRatio.y)
 	print ("relativeScale: ", relativeScale)
 	
-	instance.get_node("Sizer").scale = relativeScale
-	instance.get_node("Sizer").position = camera.position
+#	instance.get_node("Sizer").scale = relativeScale
+#	instance.get_node("Sizer").position = camera.position
 	instance.set_points(dialogue_choice)
 	world.add_child(instance)
 	currentScene = instance
