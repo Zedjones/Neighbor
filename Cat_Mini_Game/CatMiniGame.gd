@@ -2,7 +2,7 @@ extends "res://MiniGame.gd"
 var CatColors = preload("res://GlobalData.gd").CatColor
 export (PackedScene) var Cat
 
-var targetColor = CatColors.Orange
+var targetColor = CatColors.White
 var gameOver = false
 var catFound = false
 
@@ -16,12 +16,12 @@ func _on_CatSpawnTimer_timeout():
 	cat.color = getColor()
 	randomize()
 	if(randf() > 0.5):
-		$Sizer/LeftSide/LeftPathFollow.set_offset(randi())
-		position = $Sizer/LeftSide/LeftPathFollow.global_position
+		$LeftSide/LeftPathFollow.set_offset(randi())
+		position = $LeftSide/LeftPathFollow.global_position
 		cat.flip()		
 	else:
-		$Sizer/RightSide/RightPathFollow.set_offset(randi())
-		position = $Sizer/RightSide/RightPathFollow.global_position
+		$RightSide/RightPathFollow.set_offset(randi())
+		position = $RightSide/RightPathFollow.global_position
 		
 	#print("position: ", position)
 	
@@ -29,7 +29,7 @@ func _on_CatSpawnTimer_timeout():
 	cat.connect("on_cat_hit", self, "checkCat")
 	cat.position = position
 	
-	$Sizer.add_child(cat)
+	add_child(cat)
 
 
 func checkCat(cat):
@@ -68,8 +68,8 @@ func get_score():
 	
 func endGame():
 	print("ending game")
-	$Sizer/CatSpawnTimer.stop()
-	$Sizer/EndGameTimer.start()
+	$CatSpawnTimer.stop()
+	$EndGameTimer.start()
 	
 
 
