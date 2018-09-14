@@ -2,7 +2,7 @@ extends "res://MiniGame.gd"
 var CatColors = preload("res://GlobalData.gd").CatColor
 export (PackedScene) var Cat
 
-var targetColor = CatColors.Orange
+var targetColor = CatColors.White
 var gameOver = false
 var catFound = false
 
@@ -23,7 +23,7 @@ func _on_CatSpawnTimer_timeout():
 		$RightSide/RightPathFollow.set_offset(randi())
 		position = $RightSide/RightPathFollow.global_position
 		
-	print("position: ", position)
+	#print("position: ", position)
 	
 	cat.run()
 	cat.connect("on_cat_hit", self, "checkCat")
@@ -80,6 +80,3 @@ func _on_GameTimer_timeout():
 func _on_EndGameTimer_timeout():
 	print("return to overworld")
 	gameOver = true
-	
-func set_camera(current):
-	$Background.get_node("Camera2D").current = current

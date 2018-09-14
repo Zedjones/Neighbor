@@ -7,7 +7,10 @@ path="res://.import/paintingSprites.png-edf988a9b558dd53c7097d5daf88000a.stex"
 [deps]
 
 source_file="res://Art_Assets/paintingSprites.png"
+source_md5="b982e29bdf680569ac6ee34a4298ccbe"
+
 dest_files=[ "res://.import/paintingSprites.png-edf988a9b558dd53c7097d5daf88000a.stex" ]
+dest_md5="afaa34cb802d13b18be37a75f349a1f9"
 
 [params]
 

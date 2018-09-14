@@ -3,6 +3,8 @@ extends Node
 var DialogueChoices = preload("res://GlobalData.gd").DialogueChoices
 var GameOutcomes = preload("res://GlobalData.gd").GameOutcomes
 
+var testInt
+
 # GameManager or Character will call this to talk to mini-game
 # @param dialogue_choices - a DialogueChoices enum item 
 func set_points(dialogue_choices):
