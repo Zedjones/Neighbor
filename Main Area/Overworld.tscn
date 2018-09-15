@@ -528,6 +528,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Tr
 [node name="Walking" parent="Characters/Student" index="4"]
 
 region_rect = Rect2( 0, 274, 17, 64 )
+_sections_unfolded = [ "Material", "Offset", "Pause", "Region", "Transform" ]
 
 [node name="Animations" parent="Characters/Student/NPCSprite" index="0"]
 
@@ -612,6 +613,7 @@ player_path = NodePath("../../../Player")
 
 offset = Vector2( 0, 2 )
 region_rect = Rect2( 92, 4, 23, 63 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
 [node name="Walking" parent="Characters/Artist" index="4"]
 
