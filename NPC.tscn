@@ -1,16 +1,19 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://NPC.gd" type="Script" id=1]
 [ext_resource path="res://Interactive_Object.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Art_Assets/EveryoneIdle.png" type="Texture" id=4]
-[ext_resource path="res://Art_Assets/walkcyclesformatting.png" type="Texture" id=5]
-[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=6]
-[ext_resource path="res://NPC States/States.gd" type="Script" id=7]
-[ext_resource path="res://NPC States/Idle.gd" type="Script" id=8]
-[ext_resource path="res://NPC States/Walk.gd" type="Script" id=9]
-[ext_resource path="res://NPC States/Special.gd" type="Script" id=10]
-[ext_resource path="res://NPC States/StateTimer.gd" type="Script" id=11]
+[ext_resource path="res://NPC States/NPC_Shaders.tres" type="Material" id=4]
+[ext_resource path="res://Art_Assets/EveryoneIdle.png" type="Texture" id=5]
+[ext_resource path="res://NPC States/Idle_Sprite.gd" type="Script" id=6]
+[ext_resource path="res://Art_Assets/walkcyclesformatting.png" type="Texture" id=7]
+[ext_resource path="res://NPC States/Walking_Sprite.gd" type="Script" id=8]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=9]
+[ext_resource path="res://NPC States/States.gd" type="Script" id=10]
+[ext_resource path="res://NPC States/Idle.gd" type="Script" id=11]
+[ext_resource path="res://NPC States/Walk.gd" type="Script" id=12]
+[ext_resource path="res://NPC States/Special.gd" type="Script" id=13]
+[ext_resource path="res://NPC States/StateTimer.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,6 +29,25 @@ extents = Vector2( 26.4498, 10 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
+
+[sub_resource type="Shader" id=7]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+uniform float happiness_scale;
+ 
+void fragment() {
+COLOR = texture(TEXTURE, UV);//setup the default image
+float lum = dot(COLOR.rgb, vec3(.3, .59, .11));//get the average
+vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale);
+COLOR.xyz = vec3(test);//set the average to get grayscale
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = SubResource( 7 )
+shader_param/happiness_scale = null
 
 [sub_resource type="Animation" id=4]
 
@@ -109,7 +131,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="NPC" type="KinematicBody2D"]
+[node name="NPC" type="KinematicBody2D" index="0"]
 
 position = Vector2( 274.249, 164.128 )
 z_index = 1
@@ -157,30 +179,34 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Idle" type="Sprite" parent="." index="3"]
 
-position = Vector2( -0.0231934, -1.16441 )
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 4 )
-offset = Vector2( 0, 1 )
-region_enabled = true
-region_rect = Rect2( 78, 202, 16, 62 )
-_sections_unfolded = [ "Offset", "Region", "Transform" ]
-
-[node name="Walking" type="Sprite" parent="." index="4"]
-
-visible = false
+material = ExtResource( 4 )
 position = Vector2( -0.0231934, -1.16441 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 5 )
 offset = Vector2( 0, 1 )
 region_enabled = true
+region_rect = Rect2( 78, 202, 16, 62 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform" ]
+
+[node name="Walking" type="Sprite" parent="." index="4"]
+
+visible = false
+material = SubResource( 8 )
+position = Vector2( -0.0231934, -1.16441 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, 1 )
+region_enabled = true
 region_rect = Rect2( 168, 68, 14, 62 )
-_sections_unfolded = [ "Offset", "Region", "Transform" ]
+script = ExtResource( 8 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="NPCSprite" type="Sprite" parent="." index="5"]
 
 visible = false
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 216, 7.5, 16, 63 )
 _sections_unfolded = [ "Material", "Region", "Transform", "Visibility", "Z Index" ]
@@ -203,23 +229,23 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="States" type="Node" parent="." index="6"]
 
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 
 [node name="Idle" type="Node" parent="States" index="0"]
 
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 MIN_TIME = 4
 MAX_TIME = 12
 
 [node name="Walk" type="Node" parent="States" index="1"]
 
-script = ExtResource( 9 )
+script = ExtResource( 12 )
 MIN_TIME = 4
 MAX_TIME = 12
 
 [node name="Special" type="Node" parent="States" index="2"]
 
-script = ExtResource( 10 )
+script = ExtResource( 13 )
 MIN_TIME = 4
 MAX_TIME = 12
 
@@ -229,7 +255,7 @@ process_mode = 1
 wait_time = 1.5
 one_shot = true
 autostart = false
-script = ExtResource( 11 )
+script = ExtResource( 14 )
 
 [node name="MovementTimer" type="Timer" parent="." index="7"]
 

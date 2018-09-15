@@ -3,6 +3,7 @@ extends KinematicBody2D
 var motion = Vector2()
 const UP = Vector2(0,-1)
 var is_paused
+export (float) var happiness = 0
 
 func _ready():
 	$"PlayerSprite/AnimationPlayer".play("Idle Animation")
