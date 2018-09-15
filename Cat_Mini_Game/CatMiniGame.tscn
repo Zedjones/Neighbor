@@ -11,17 +11,17 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 30, 60, 0, 0, 0, 0, -40, 60, 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 10, 70 )
 }
 
-[node name="CatMiniGame" type="Node"]
+[node name="CatMiniGame" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 Cat = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-position = Vector2( 510, 280 )
-scale = Vector2( 4.50862, 4.50862 )
+position = Vector2( 509.984, 281.311 )
+scale = Vector2( 4.54413, 4.32107 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 232, 150 )
@@ -30,7 +30,8 @@ _sections_unfolded = [ "Region" ]
 [node name="OrangeCat" parent="." index="1" instance=ExtResource( 2 )]
 
 visible = false
-position = Vector2( 190, 510 )
+position = Vector2( 187.464, 501.744 )
+scale = Vector2( 3.02362, 2.87521 )
 
 [node name="CatSpawnTimer" type="Timer" parent="." index="2"]
 
@@ -53,10 +54,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -20.0
-margin_top = -70.0
-margin_right = 20.0
-margin_bottom = -20.0
+margin_left = -32.0
+margin_top = -60.0
+margin_right = 8.0
+margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -79,7 +80,9 @@ autostart = false
 
 [node name="LeftSide" type="Path2D" parent="." index="6"]
 
-position = Vector2( -50, 450 )
+editor/display_folded = true
+position = Vector2( -54.4256, 444.239 )
+scale = Vector2( 1.00787, 0.958401 )
 curve = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -97,7 +100,9 @@ lookahead = 4.0
 
 [node name="RightSide" type="Path2D" parent="." index="7"]
 
-position = Vector2( 1100, 450 )
+editor/display_folded = true
+position = Vector2( 1104.63, 444.239 )
+scale = Vector2( 1.00787, 0.958401 )
 curve = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

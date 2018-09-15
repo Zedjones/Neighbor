@@ -1,44 +1,80 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Art_Assets/MainCharacterAnimation.png" type="Texture" id=4]
-[ext_resource path="res://Main Area/Characters.gd" type="Script" id=5]
-[ext_resource path="res://NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Hoarding Mini Game/HoarderManager.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Cat_Mini_Game/CatMiniGame.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=9]
-[ext_resource path="res://Main Area/ApartmentMain.gd" type="Script" id=10]
-[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=11]
-[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=13]
-[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Art_Assets/walkcyclesformatting.png" type="Texture" id=5]
+[ext_resource path="res://Main Area/Characters.gd" type="Script" id=6]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Cooking_MG/CookingMiniGame.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hoarding Mini Game/HoarderManager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Cat_Mini_Game/CatMiniGame.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Painting_Poetry/PaintingPoetry.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Art_Assets/ApartmentMain.png" type="Texture" id=12]
+[ext_resource path="res://Main Area/ApartmentMain.gd" type="Script" id=13]
+[ext_resource path="res://Art_Assets/CharacterSprites.png" type="Texture" id=14]
+[ext_resource path="res://Main Area/Elevator.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Main Area/Stairs.gd" type="Script" id=16]
+[ext_resource path="res://Interactive_Object_Press.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Main Area/Camera2D.gd" type="Script" id=18]
+[ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://Scripts/story_label.gd" type="Script" id=20]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+
+resource_name = "Idle Animation"
+length = 4.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Idle:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 1, 1, 16, 63 ), Rect2( 20, 0, 16, 64 ), Rect2( 39, 1, 16, 63 ), Rect2( 58, 2, 16, 62 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Idle:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Walk Cycle"
+length = 4.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Walking:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 16, 65 ), Rect2( 24, 0, 20, 64 ), Rect2( 48, 0, 21, 63 ), Rect2( 72, 0, 16, 64 ), Rect2( 96, 0, 17, 65 ), Rect2( 120, 0, 24, 64 ), Rect2( 168, 0, 12, 64 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8.85156, 24.7474 )
-
-[sub_resource type="Shader" id=2]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-uniform float happiness_scale;
-
-void fragment() {
-COLOR = texture(TEXTURE, UV);//setup the default image 
-float lum = dot(COLOR.rgb, vec3(.3, .59, .11));//get the average
-vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale); 
-COLOR.xyz = vec3(test);//set the average to get grayscale 
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-
-render_priority = 0
-shader = SubResource( 2 )
-shader_param/happiness_scale = 0.0
-_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="Animation" id=4]
 
@@ -64,10 +100,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+"values": [ Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("../States")
@@ -92,31 +128,49 @@ step = 0.1
 
 [sub_resource type="Animation" id=6]
 
-length = 1.0
+length = 4.0
 loop = false
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Walking:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 274, 17, 64 ), Rect2( 24, 274, 18, 63 ), Rect2( 48, 274, 21, 62 ), Rect2( 72, 274, 20, 63 ), Rect2( 96, 274, 22, 64 ), Rect2( 120, 274, 30, 63 ), Rect2( 150, 274, 26, 62 ), Rect2( 176, 274, 20, 63 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../States")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Walking:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ) ]
+}
 
-[sub_resource type="Shader" id=7]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-uniform float happiness_scale;
-
-void fragment() {
-COLOR = texture(TEXTURE, UV);//setup the default image 
-float lum = dot(COLOR.rgb, vec3(.3, .59, .11));//get the average
-vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale); 
-COLOR.xyz = vec3(test);//set the average to get grayscale 
-}"
-
-[sub_resource type="ShaderMaterial" id=8]
-
-render_priority = 0
-shader = SubResource( 7 )
-shader_param/happiness_scale = 0.0
-_sections_unfolded = [ "shader_param" ]
-
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 
 length = 4.0
 loop = true
@@ -140,10 +194,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+"values": [ Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("../States")
@@ -160,19 +214,45 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=8]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=9]
+
+length = 4.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Walking:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 140, 19, 58 ), Rect2( 24, 140, 21, 58 ), Rect2( 48, 140, 18, 58 ), Rect2( 72, 140, 17, 58 ), Rect2( 96, 140, 19, 58 ), Rect2( 120, 140, 21, 58 ), Rect2( 144, 140, 18, 58 ), Rect2( 168, 140, 17, 58 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../States")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
+
 [sub_resource type="Animation" id=10]
-
-length = 1.0
-loop = false
-step = 0.1
-
-[sub_resource type="Animation" id=11]
-
-length = 1.0
-loop = false
-step = 0.1
-
-[sub_resource type="Animation" id=12]
 
 length = 4.0
 loop = true
@@ -196,10 +276,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+"values": [ Vector2( 0, 1 ), Vector2( 0, 2 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("../States")
@@ -216,76 +296,107 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=11]
 
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 
-length = 1.0
+length = 4.0
 loop = false
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Walking:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 205, 15, 63 ), Rect2( 23, 205, 20, 62 ), Rect2( 48, 205, 15, 61 ), Rect2( 72, 205, 18, 62 ), Rect2( 96, 205, 22, 63 ), Rect2( 120, 205, 26, 62 ), Rect2( 146, 205, 22, 61 ), Rect2( 168, 205, 18, 62 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../States")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "handle_anim"
+} ]
+}
 
-[sub_resource type="Shader" id=15]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-uniform float happiness_scale;
-
-void fragment() {
-COLOR = texture(TEXTURE, UV);//setup the default image 
-float lum = dot(COLOR.rgb, vec3(.3, .59, .11));//get the average
-vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale); 
-COLOR.xyz = vec3(test);//set the average to get grayscale 
-}"
-
-[sub_resource type="ShaderMaterial" id=16]
-
-render_priority = 0
-shader = SubResource( 15 )
-shader_param/happiness_scale = null
-
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 446.204, 1.80487 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 316.922, 1.9989 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.49487, 11.5475 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.0675, 10.9508 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=17]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=18]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=19]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=20]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=21]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=22]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 14 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=23]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 14 )
+font_data = ExtResource( 19 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="World" type="Node" index="0"]
@@ -306,7 +417,6 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 297.744, 556.439 )
 z_index = -1
 input_pickable = false
@@ -314,45 +424,91 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 3 )
-_sections_unfolded = [ "Collision", "Pause", "Z Index", "collision" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform", "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="PlayerSprite" type="Sprite" parent="Player" index="0"]
 
+visible = false
 scale = Vector2( 0.752976, 0.752976 )
 texture = ExtResource( 4 )
 vframes = 3
 hframes = 4
 _sections_unfolded = [ "Animation", "Transform" ]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/PlayerSprite" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 2.0
+"anims/Idle Animation" = SubResource( 1 )
+"anims/Walk Cycle" = SubResource( 2 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
 
-shape = SubResource( 1 )
+shape = SubResource( 3 )
+
+[node name="Idle" type="Sprite" parent="Player" index="2"]
+
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -1 )
+region_enabled = true
+region_rect = Rect2( 20, 0, 16, 64 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="Walking" type="Sprite" parent="Player" index="3"]
+
+visible = false
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 65 )
+_sections_unfolded = [ "Region", "Transform" ]
 
 [node name="Characters" type="Node" parent="." index="2"]
 
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Pause" ]
 player_path = NodePath("../Player")
 
-[node name="Student" parent="Characters" index="0" instance=ExtResource( 6 )]
+[node name="Student" parent="Characters" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( 320.294, 497.251 )
+position = Vector2( 320.294, 498.251 )
 z_index = -3
+mini_game = ExtResource( 8 )
 happiness = 50.0
+
+[node name="CollisionShape2D" parent="Characters/Student" index="0"]
+
+position = Vector2( -1.15109, -5.94718 )
+scale = Vector2( 1.80197, 1.1032 )
+
+[node name="IO" parent="Characters/Student" index="1"]
+
+player_path = NodePath("../../../Player")
 
 [node name="IOP" parent="Characters/Student" index="2"]
 
-position = Vector2( 5.29251, -2.7374 )
-scale = Vector2( 2.41527, 0.914456 )
+position = Vector2( -0.0147384, -7.43322 )
+scale = Vector2( 0.906901, 1.35489 )
+player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Student" index="3"]
 
-material = SubResource( 3 )
+material = null
 position = Vector2( -0.0231934, -5.16441 )
-region_rect = Rect2( 102, 70, 26, 62 )
+region_rect = Rect2( 9, 69, 26, 63 )
+
+[node name="Walking" parent="Characters/Student" index="4"]
+
+region_rect = Rect2( 0, 274, 17, 64 )
 
 [node name="Animations" parent="Characters/Student/NPCSprite" index="0"]
 
@@ -360,11 +516,11 @@ region_rect = Rect2( 102, 70, 26, 62 )
 "anims/Special Animation" = SubResource( 5 )
 "anims/Walk Cycle" = SubResource( 6 )
 
-[node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 6 )]
+[node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 608.646, 258.106 )
+position = Vector2( 608.646, 261.106 )
 z_index = -3
-mini_game = ExtResource( 7 )
+mini_game = ExtResource( 9 )
 
 [node name="IO" parent="Characters/Hoarder" index="1"]
 
@@ -372,18 +528,21 @@ player_path = NodePath("../../../Player")
 
 [node name="IOP" parent="Characters/Hoarder" index="2"]
 
+position = Vector2( 0.494743, -0.987806 )
+scale = Vector2( 0.537436, 1.21293 )
 player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Hoarder" index="3"]
 
-material = SubResource( 8 )
+material = null
 region_rect = Rect2( 52, 201, 16, 63 )
 
-[node name="CatLady" parent="Characters" index="2" instance=ExtResource( 6 )]
+[node name="CatLady" parent="Characters" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 438.723, 337.968 )
+position = Vector2( 438.723, 339.968 )
 z_index = -3
-mini_game = ExtResource( 8 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Z Index" ]
+mini_game = ExtResource( 10 )
 happiness = 100.0
 
 [node name="IO" parent="Characters/CatLady" index="1"]
@@ -392,37 +551,59 @@ player_path = NodePath("../../../Player")
 
 [node name="IOP" parent="Characters/CatLady" index="2"]
 
+position = Vector2( 1.53615, 0.810411 )
+scale = Vector2( 0.497984, 1.15661 )
 player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/CatLady" index="3"]
 
-region_rect = Rect2( 92, 136, 23, 60 )
+region_rect = Rect2( 64, 135, 23, 61 )
 
-[node name="NPCSprite" parent="Characters/CatLady" index="4"]
+[node name="Walking" parent="Characters/CatLady" index="4"]
+
+region_rect = Rect2( 24, 140, 21, 58 )
+
+[node name="NPCSprite" parent="Characters/CatLady" index="5"]
 
 region_rect = Rect2( 123, 8, 23, 61 )
 
 [node name="Animations" parent="Characters/CatLady/NPCSprite" index="0"]
 
-"anims/Idle Animation" = SubResource( 9 )
-"anims/Special Animation" = SubResource( 10 )
-"anims/Walk Cycle" = SubResource( 11 )
+"anims/Idle Animation" = SubResource( 7 )
+"anims/Special Animation" = SubResource( 8 )
+"anims/Walk Cycle" = SubResource( 9 )
 
-[node name="Artist" parent="Characters" index="3" instance=ExtResource( 6 )]
+[node name="Artist" parent="Characters" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( 251.481, 410.574 )
+position = Vector2( 251.481, 412.574 )
 z_index = -3
+mini_game = ExtResource( 11 )
 happiness = 100.0
+
+[node name="IO" parent="Characters/Artist" index="1"]
+
+player_path = NodePath("../../../Player")
+
+[node name="IOP" parent="Characters/Artist" index="2"]
+
+position = Vector2( -1.41412, -0.121091 )
+scale = Vector2( 0.63252, 1.23492 )
+player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Artist" index="3"]
 
+offset = Vector2( 0, 2 )
 region_rect = Rect2( 92, 4, 23, 63 )
+
+[node name="Walking" parent="Characters/Artist" index="4"]
+
+region_rect = Rect2( 168, 205, 18, 62 )
 
 [node name="Animations" parent="Characters/Artist/NPCSprite" index="0"]
 
-"anims/Idle Animation" = SubResource( 12 )
-"anims/Special Animation" = SubResource( 13 )
-"anims/Walk Cycle" = SubResource( 14 )
+"anims/Idle Animation" = SubResource( 10 )
+"anims/Special Animation" = SubResource( 11 )
+"anims/Walk Cycle" = SubResource( 12 )
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
@@ -430,18 +611,19 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
-material = SubResource( 16 )
 position = Vector2( 433.621, 299.73 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
-texture = ExtResource( 9 )
-script = ExtResource( 10 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
 _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ApartmentBoxes" type="Node" parent="Apartment/ApartmentMain" index="0"]
+
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Apartment/ApartmentMain/ApartmentBoxes" index="0"]
 
@@ -456,127 +638,121 @@ bounce = 0.0
 [node name="FirstFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="0"]
 
 position = Vector2( 441.442, 583.372 )
-shape = SubResource( 17 )
+shape = SubResource( 13 )
 
 [node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
 
 position = Vector2( 415.659, 520.879 )
 scale = Vector2( 0.992494, 1 )
-shape = SubResource( 18 )
+shape = SubResource( 14 )
 
 [node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
 
 position = Vector2( 310.491, 438.254 )
 scale = Vector2( 0.650208, 1 )
-shape = SubResource( 18 )
+shape = SubResource( 14 )
 
 [node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
 
 position = Vector2( 549.065, 364.967 )
 scale = Vector2( 0.772993, 1 )
-shape = SubResource( 18 )
+shape = SubResource( 14 )
 
 [node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
 
 position = Vector2( 548.104, 286.769 )
 scale = Vector2( 0.776376, 1 )
-shape = SubResource( 18 )
+shape = SubResource( 14 )
 
 [node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
 
 position = Vector2( 584.404, 208.524 )
 scale = Vector2( 0.632934, 1 )
-shape = SubResource( 18 )
+shape = SubResource( 14 )
 
 [node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
 
 position = Vector2( 523.595, 137.616 )
 scale = Vector2( 0.447307, 1 )
-shape = SubResource( 18 )
+shape = SubResource( 14 )
 
 [node name="FirstRight" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="7"]
 
 position = Vector2( 865.145, 530.18 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 19 )
+shape = SubResource( 15 )
 
 [node name="FirstLeft" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="8"]
 
 position = Vector2( 3.14917, 527.698 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 19 )
+shape = SubResource( 15 )
 
 [node name="SecondRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="9"]
 
 position = Vector2( 726.173, 481.827 )
 scale = Vector2( 1, 1.17283 )
-shape = SubResource( 19 )
+shape = SubResource( 15 )
 
 [node name="SecondLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="10"]
 
 position = Vector2( 102.528, 493.632 )
 scale = Vector2( 1, 2.22634 )
-shape = SubResource( 19 )
+shape = SubResource( 15 )
 
 [node name="ThirdLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="11"]
 
 position = Vector2( 107.865, 405.721 )
 scale = Vector2( 1, 2.84255 )
-shape = SubResource( 19 )
+shape = SubResource( 15 )
 
-[node name="ThirdRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="12"]
-
-position = Vector2( 517.638, 401.916 )
-scale = Vector2( 1, 1.80683 )
-shape = SubResource( 20 )
-
-[node name="FourthLeftWalll" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="13"]
+[node name="FourthLeftWalll" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="12"]
 
 position = Vector2( 304.749, 328.014 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="FourthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="14"]
+[node name="FourthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="13"]
 
 position = Vector2( 791.22, 328.161 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="FifthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="15"]
+[node name="FifthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="14"]
 
 position = Vector2( 458.351, 258.796 )
 scale = Vector2( 1, 1.40755 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="FifthRightWall2" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="16"]
+[node name="FifthRightWall2" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="15"]
 
 position = Vector2( 784.766, 249.575 )
 scale = Vector2( 1, 1.76165 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="SixthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="17"]
+[node name="SixthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="16"]
 
 position = Vector2( 674.8, 181.555 )
 scale = Vector2( 1, 2.20163 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="SixthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="18"]
+[node name="SixthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="17"]
 
 position = Vector2( 385.559, 174.631 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="SeventhLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="19"]
+[node name="SeventhLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="18"]
 
 position = Vector2( 454.833, 106.6 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
-[node name="SeventhRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="20"]
+[node name="SeventhRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="19"]
 
 position = Vector2( 663.833, 107.097 )
 scale = Vector2( 1, 2.61034 )
-shape = SubResource( 20 )
+shape = SubResource( 16 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
@@ -585,7 +761,7 @@ shape = SubResource( 20 )
 position = Vector2( 608.792, 256.201 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 235, 8, 50, 73 )
 _sections_unfolded = [ "Region", "Transform", "Z Index" ]
@@ -595,7 +771,7 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 position = Vector2( 437.615, 336.207 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 161, 3, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -605,7 +781,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 250.629, 408.891 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 37, 70, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -615,7 +791,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 319.007, 492.032 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 38, 144, 29, 67 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -623,7 +799,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="Food" type="Sprite" parent="Apartment/ApartmentMain/Doors/StudentDoor" index="0"]
 
 position = Vector2( -38.8651, 27.4968 )
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 71, 199, 42, 12 )
 _sections_unfolded = [ "Region" ]
@@ -633,14 +809,14 @@ _sections_unfolded = [ "Region" ]
 position = Vector2( 540.575, 108.748 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -4
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 region_enabled = true
 region_rect = Rect2( 41, 1, 29, 67 )
 _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
 [node name="Elevators" type="Node" parent="Apartment/ApartmentMain" index="2"]
 
-[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 12 )]
+[node name="Top" parent="Apartment/ApartmentMain/Elevators" index="0" instance=ExtResource( 15 )]
 
 target_path = NodePath("../Bottom")
 
@@ -650,7 +826,7 @@ position = Vector2( 471.285, 497.2 )
 scale = Vector2( 0.562213, 0.75753 )
 player_path = NodePath("../../../../../Player")
 
-[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 12 )]
+[node name="Bottom" parent="Apartment/ApartmentMain/Elevators" index="1" instance=ExtResource( 15 )]
 
 target_path = NodePath("../Top")
 
@@ -664,14 +840,14 @@ player_path = NodePath("../../../../../Player")
 
 position = Vector2( -0.237854, -0.177368 )
 scale = Vector2( 3.31895, 3.21797 )
-shape = SubResource( 21 )
+shape = SubResource( 17 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
-script = ExtResource( 13 )
+script = ExtResource( 16 )
 player_path = NodePath("../../Player")
 
-[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 12 )]
+[node name="1st Floor" parent="Apartment/Stairs" index="0" instance=ExtResource( 15 )]
 
 target_path = NodePath("../2nd Floor Left")
 
@@ -679,8 +855,29 @@ target_path = NodePath("../2nd Floor Left")
 
 position = Vector2( 122.547, 500.032 )
 scale = Vector2( 0.327475, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="2nd Floor Left" parent="Apartment/Stairs" index="1" instance=ExtResource( 12 )]
+[node name="1st Floor Bedroom" parent="Apartment/Stairs" index="1" instance=ExtResource( 15 )]
+
+target_path = NodePath("../Bedroom")
+
+[node name="Interactive Object" parent="Apartment/Stairs/1st Floor Bedroom" index="0"]
+
+position = Vector2( 262.274, 567.133 )
+scale = Vector2( 0.327475, 0.479105 )
+player_path = NodePath("../../../../Player")
+
+[node name="Bedroom" parent="Apartment/Stairs" index="2" instance=ExtResource( 15 )]
+
+target_path = NodePath("../1st Floor Bedroom")
+
+[node name="Interactive Object" parent="Apartment/Stairs/Bedroom" index="0"]
+
+position = Vector2( 483.069, 118.642 )
+scale = Vector2( 0.327475, 0.479105 )
+player_path = NodePath("../../../../Player")
+
+[node name="2nd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 15 )]
 
 target_path = NodePath("../1st Floor")
 
@@ -688,8 +885,9 @@ target_path = NodePath("../1st Floor")
 
 position = Vector2( 122.372, 420.312 )
 scale = Vector2( 0.327475, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="2nd Floor Right" parent="Apartment/Stairs" index="2" instance=ExtResource( 12 )]
+[node name="2nd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 15 )]
 
 target_path = NodePath("../3rd Floor Left")
 
@@ -697,8 +895,9 @@ target_path = NodePath("../3rd Floor Left")
 
 position = Vector2( 377.64, 421.282 )
 scale = Vector2( 0.327475, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="3rd Floor Left" parent="Apartment/Stairs" index="3" instance=ExtResource( 12 )]
+[node name="3rd Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 15 )]
 
 target_path = NodePath("../2nd Floor Right")
 
@@ -706,8 +905,9 @@ target_path = NodePath("../2nd Floor Right")
 
 position = Vector2( 341.27, 347.517 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="3rd Floor Right" parent="Apartment/Stairs" index="4" instance=ExtResource( 12 )]
+[node name="3rd Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 15 )]
 
 target_path = NodePath("../4th Floor Right")
 
@@ -715,8 +915,9 @@ target_path = NodePath("../4th Floor Right")
 
 position = Vector2( 702.251, 348.116 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="4th Floor Left" parent="Apartment/Stairs" index="5" instance=ExtResource( 12 )]
+[node name="4th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 15 )]
 
 target_path = NodePath("../5th Floor Left")
 
@@ -724,8 +925,9 @@ target_path = NodePath("../5th Floor Left")
 
 position = Vector2( 467.801, 269.608 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="4th Floor Right" parent="Apartment/Stairs" index="6" instance=ExtResource( 12 )]
+[node name="4th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 15 )]
 
 target_path = NodePath("../3rd Floor Right")
 
@@ -733,8 +935,9 @@ target_path = NodePath("../3rd Floor Right")
 
 position = Vector2( 742.76, 268.891 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="5th Floor Left" parent="Apartment/Stairs" index="7" instance=ExtResource( 12 )]
+[node name="5th Floor Left" parent="Apartment/Stairs" index="9" instance=ExtResource( 15 )]
 
 target_path = NodePath("../4th Floor Left")
 
@@ -742,8 +945,9 @@ target_path = NodePath("../4th Floor Left")
 
 position = Vector2( 424.548, 190.108 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="5th Floor Right" parent="Apartment/Stairs" index="8" instance=ExtResource( 12 )]
+[node name="5th Floor Right" parent="Apartment/Stairs" index="10" instance=ExtResource( 15 )]
 
 target_path = NodePath("../6th Floor")
 
@@ -751,8 +955,9 @@ target_path = NodePath("../6th Floor")
 
 position = Vector2( 654.294, 188.348 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
 
-[node name="6th Floor" parent="Apartment/Stairs" index="9" instance=ExtResource( 12 )]
+[node name="6th Floor" parent="Apartment/Stairs" index="11" instance=ExtResource( 15 )]
 
 target_path = NodePath("../5th Floor Right")
 
@@ -760,8 +965,63 @@ target_path = NodePath("../5th Floor Right")
 
 position = Vector2( 654.532, 119.567 )
 scale = Vector2( 0.371902, 0.479105 )
+player_path = NodePath("../../../../Player")
+
+[node name="Bedroom" type="Node" parent="Apartment" index="2"]
+
+[node name="Interactive Object" parent="Apartment/Bedroom" index="0" instance=ExtResource( 17 )]
+
+position = Vector2( 540.148, 107.392 )
+scale = Vector2( 0.35674, 0.761792 )
+player_path = NodePath("../../../Player")
+
+[node name="CollisionShape2D" parent="Apartment/Bedroom/Interactive Object" index="0"]
+
+position = Vector2( 0.666704, -1.87317 )
+scale = Vector2( 2.51283, 2.5576 )
 
 [node name="Tween" type="Tween" parent="." index="4"]
+
+repeat = true
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = true
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
+
+position = Vector2( 434, -106 )
+offset = Vector2( 0, -7 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.84, 0.84 )
+limit_left = 0
+limit_top = -370
+limit_right = 866
+limit_bottom = 598
+limit_smoothed = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.7
+drag_margin_top = 1.0
+drag_margin_right = 0.7
+drag_margin_bottom = 1.0
+editor_draw_screen = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 18 )
+_sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
+targetZoomStep = 0.25
+followSpeed = 0.1
+
+[node name="Tween" type="Tween" parent="Camera2D" index="0"]
 
 repeat = false
 playback_process_mode = 1
@@ -769,33 +1029,6 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
-
-position = Vector2( 512, -161 )
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Editor", "Transform" ]
 
 [node name="Menu" type="Node" parent="." index="6"]
 
@@ -805,7 +1038,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -461.0
+margin_top = -364.0
+margin_right = -158.0
 margin_bottom = -461.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -821,8 +1055,8 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -128.5
-margin_right = 128.5
+margin_left = -129.0
+margin_right = 128.0
 margin_bottom = 94.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -830,7 +1064,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 18 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -870,7 +1104,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 19 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -896,7 +1130,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 20 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
@@ -907,13 +1141,265 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[connection signal="activated" from="Characters/Student/IOP" to="Characters/Student" method="_on_IOP_activated"]
+[node name="Dialogues" type="Node" parent="." index="7"]
 
-[connection signal="activated" from="Characters/Hoarder/IOP" to="Characters/Hoarder" method="_on_IOP_activated"]
+[node name="Elizabeth" type="Node" parent="Dialogues" index="0"]
 
-[connection signal="activated" from="Characters/CatLady/IOP" to="Characters/CatLady" method="_on_IOP_activated"]
+[node name="Control" type="Control" parent="Dialogues/Elizabeth" index="0"]
 
-[connection signal="activated" from="Characters/Artist/IOP" to="Characters/Artist" method="_on_IOP_activated"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ElizabethScript" type="RichTextLabel" parent="Dialogues/Elizabeth" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 20 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/Elizabeth.json"
+scriptDayTwo = "res://Dialogues/ElizabethOne.json"
+
+[node name="Fuyumi" type="Node" parent="Dialogues" index="1"]
+
+[node name="Control" type="Control" parent="Dialogues/Fuyumi" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="FuyumiScript" type="RichTextLabel" parent="Dialogues/Fuyumi" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 20 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/Fuyumi.json"
+scriptDayTwo = "res://Dialogues/FuyumiOne.json"
+
+[node name="JonDoe" type="Node" parent="Dialogues" index="2"]
+
+[node name="Control" type="Control" parent="Dialogues/JonDoe" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="JonDoeScript" type="RichTextLabel" parent="Dialogues/JonDoe" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 20 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/JonDoe.json"
+scriptDayTwo = "res://Dialogues/SantinoRodriguezOne.json"
+
+[node name="JoeJones" type="Node" parent="Dialogues" index="3"]
+
+[node name="Control" type="Control" parent="Dialogues/JoeJones" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="JoeJonesScript" type="RichTextLabel" parent="Dialogues/JoeJones" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 865.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 20 )
+_sections_unfolded = [ "Hint", "Rect", "custom_fonts" ]
+scriptDayOne = "res://Dialogues/JoeJones.json"
+scriptDayTwo = "res://Dialogues/JoeJonesOne.json"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="Day" type="Label" parent="CanvasLayer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 99.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 21 )
+text = "Monday"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "custom_fonts" ]
+
+[node name="Time" type="Label" parent="CanvasLayer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 34.0
+margin_right = 106.0
+margin_bottom = 65.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 22 )
+text = "6:00 pm"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="activated" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Student/IOP" to="Dialogues/JonDoe/JonDoeScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Hoarder/IOP" to="Dialogues/JoeJones/JoeJonesScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/CatLady/IOP" to="Dialogues/Elizabeth/ElizabethScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_activated"]
+
+[connection signal="exited" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_exited"]
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 
@@ -927,6 +1413,8 @@ _sections_unfolded = [ "custom_fonts" ]
 [editable path="Apartment/ApartmentMain/Elevators/Bottom/Interactive Object"]
 [editable path="Apartment/Stairs/1st Floor"]
 [editable path="Apartment/Stairs/1st Floor/Interactive Object"]
+[editable path="Apartment/Stairs/1st Floor Bedroom"]
+[editable path="Apartment/Stairs/Bedroom"]
 [editable path="Apartment/Stairs/2nd Floor Left"]
 [editable path="Apartment/Stairs/2nd Floor Right"]
 [editable path="Apartment/Stairs/3rd Floor Left"]
@@ -936,3 +1424,4 @@ _sections_unfolded = [ "custom_fonts" ]
 [editable path="Apartment/Stairs/5th Floor Left"]
 [editable path="Apartment/Stairs/5th Floor Right"]
 [editable path="Apartment/Stairs/6th Floor"]
+[editable path="Apartment/Bedroom/Interactive Object"]

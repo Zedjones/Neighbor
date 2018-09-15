@@ -34,8 +34,10 @@ func _on_MovementTimer_timeout():
 			curr_direction = Vector2(-5, 0)
 			get_node("../../NPCSprite").set_flip_h(true)
 			get_node("../../Idle").set_flip_h(true)
+			get_node("../../Walking").set_flip_h(true)
 		1:
 			curr_direction = Vector2(5, 0)
 			get_node("../../NPCSprite").set_flip_h(false)
 			get_node("../../Idle").set_flip_h(false)
+			get_node("../../Walking").set_flip_h(false)
 	$"../../MovementTimer".start()

@@ -1,0 +1,69 @@
+{
+    "ifid": "8B6876A5-6C11-446E-9A85-B50633A0E806",
+    "name": "NeighborTest",
+    "startNode": 1,
+    "creator": "Twine",
+    "creatorVersion": "2.2.1",
+    "format": "Snowman",
+    "time": "2018-07-05T21:57:10.649Z",
+    "passages": [
+        {
+            "pid": 1,
+            "name": "0N1",
+            "text": "<p>{Zeroeth; NPC; Option 2}\n<%= links['503d333ad613286c61b75f997d0d88c83e225e05'] %>\n<%= links['6d663166ae201f2ffab88029683f873a2ae3662b'] %></p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "503d333ad613286c61b75f997d0d88c83e225e05",
+                    "label": "1P1",
+                    "passageId": 2
+                },
+                {
+                    "id": "6d663166ae201f2ffab88029683f873a2ae3662b",
+                    "label": "1P2",
+                    "passageId": 3
+                }
+            ]
+        },
+        {
+            "pid": 2,
+            "name": "1P1",
+            "text": "<p>{First; Player; Option 1}\n<%= links['2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "2b3210f0e163fb28b0e60d2985acd5f59a8e9a4b",
+                    "label": "2N1",
+                    "passageId": 4
+                }
+            ]
+        },
+        {
+            "pid": 3,
+            "name": "1P2",
+            "text": "<p>{First; Player; Option 2}\n<%= links['5ccb490d122dface3f7adc04825671cb23a5d75a'] %> </p>\n",
+            "tags": [],
+            "links": [
+                {
+                    "id": "5ccb490d122dface3f7adc04825671cb23a5d75a",
+                    "label": "2N2",
+                    "passageId": 5
+                }
+            ]
+        },
+        {
+            "pid": 4,
+            "name": "2N1",
+            "text": "<p>{Second; NPC; Option 1}</p>\n",
+            "tags": [],
+            "links": []
+        },
+        {
+            "pid": 5,
+            "name": "2N2",
+            "text": "<p>{First; NPC; Option 2}</p>\n",
+            "tags": [],
+            "links": []
+        }
+    ]
+}
