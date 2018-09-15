@@ -7,7 +7,10 @@ path="res://.import/walkcyclesformatting.png-aeecd10bd080fe9810da702f380001c5.st
 [deps]
 
 source_file="res://Art_Assets/walkcyclesformatting.png"
+source_md5="b3bfa8ff680ea51c066cf113436353b1"
+
 dest_files=[ "res://.import/walkcyclesformatting.png-aeecd10bd080fe9810da702f380001c5.stex" ]
+dest_md5="3161ef91401a00772fd077b23044f091"
 
 [params]
 

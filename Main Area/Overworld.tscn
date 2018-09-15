@@ -23,7 +23,7 @@
 [ext_resource path="res://Fonts/munro/Munro.ttf" type="DynamicFontData" id=21]
 [ext_resource path="res://Scripts/story_label.gd" type="Script" id=22]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 
 resource_name = "Idle Animation"
 length = 4.0
@@ -54,7 +54,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -1 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
 
 resource_name = "Walk Cycle"
 length = 4.0
@@ -73,12 +73,12 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 0, 16, 65 ), Rect2( 24, 0, 20, 64 ), Rect2( 48, 0, 21, 63 ), Rect2( 72, 0, 16, 64 ), Rect2( 96, 0, 17, 65 ), Rect2( 120, 0, 24, 64 ), Rect2( 168, 0, 12, 64 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8.85156, 24.7474 )
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=4]
 
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -91,31 +91,31 @@ vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale);
 COLOR.xyz = vec3(test);//set the average to get grayscale
 }"
 
-[sub_resource type="ShaderMaterial" id=40]
+[sub_resource type="ShaderMaterial" id=5]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=41]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=8]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=9]
 
 length = 4.0
 loop = true
@@ -159,13 +159,13 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=10]
 
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=11]
 
 length = 4.0
 loop = false
@@ -209,31 +209,31 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -2 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=16]
+[sub_resource type="ShaderMaterial" id=12]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id=13]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=14]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=19]
+[sub_resource type="ShaderMaterial" id=15]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=16]
 
 length = 4.0
 loop = true
@@ -277,13 +277,13 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=17]
 
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=18]
 
 length = 4.0
 loop = false
@@ -315,19 +315,19 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="ShaderMaterial" id=37]
+[sub_resource type="ShaderMaterial" id=19]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="ShaderMaterial" id=38]
+[sub_resource type="ShaderMaterial" id=20]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=21]
 
 length = 4.0
 loop = true
@@ -371,13 +371,13 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=22]
 
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=23]
 
 length = 4.0
 loop = false
@@ -409,41 +409,49 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="ShaderMaterial" id=39]
+[sub_resource type="ShaderMaterial" id=24]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 4 )
 shader_param/happiness_scale = null
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=25]
 
 custom_solver_bias = 0.0
 extents = Vector2( 446.204, 1.80487 )
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=26]
 
 custom_solver_bias = 0.0
 extents = Vector2( 316.922, 1.9989 )
 
-[sub_resource type="RectangleShape2D" id=28]
+[sub_resource type="RectangleShape2D" id=27]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.49487, 11.5475 )
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=28]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.0675, 10.9508 )
+
+[sub_resource type="RectangleShape2D" id=29]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="RectangleShape2D" id=30]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="DynamicFont" id=31]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 21 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=32]
 
@@ -451,7 +459,7 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 21 )
-_sections_unfolded = [ "Font", "Settings" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=33]
 
@@ -459,7 +467,7 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 21 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=34]
 
@@ -467,17 +475,9 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 21 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=35]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 21 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=36]
+[sub_resource type="DynamicFont" id=35]
 
 size = 32
 use_mipmaps = false
@@ -532,18 +532,18 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 2.0
-"anims/Idle Animation" = SubResource( 8 )
-"anims/Walk Cycle" = SubResource( 9 )
+"anims/Idle Animation" = SubResource( 1 )
+"anims/Walk Cycle" = SubResource( 2 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
 
-shape = SubResource( 10 )
+shape = SubResource( 3 )
 
 [node name="Idle" type="Sprite" parent="Player" index="2"]
 
-material = SubResource( 40 )
+material = SubResource( 5 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -1 )
@@ -555,7 +555,7 @@ _sections_unfolded = [ "Material", "Offset", "Region", "Transform" ]
 [node name="Walking" type="Sprite" parent="Player" index="3"]
 
 visible = false
-material = SubResource( 41 )
+material = SubResource( 6 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 6 )
 region_enabled = true
@@ -593,20 +593,20 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Student" index="3"]
 
-material = SubResource( 11 )
+material = SubResource( 7 )
 position = Vector2( -0.0231934, -5.16441 )
 region_rect = Rect2( 9, 69, 26, 63 )
 
 [node name="Walking" parent="Characters/Student" index="4"]
 
-material = SubResource( 12 )
+material = SubResource( 8 )
 region_rect = Rect2( 0, 274, 17, 64 )
 
 [node name="Animations" parent="Characters/Student/NPCSprite" index="0"]
 
-"anims/Idle Animation" = SubResource( 13 )
-"anims/Special Animation" = SubResource( 14 )
-"anims/Walk Cycle" = SubResource( 15 )
+"anims/Idle Animation" = SubResource( 9 )
+"anims/Special Animation" = SubResource( 10 )
+"anims/Walk Cycle" = SubResource( 11 )
 
 [node name="Hoarder" parent="Characters" index="1" instance=ExtResource( 9 )]
 
@@ -626,13 +626,13 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Hoarder" index="3"]
 
-material = SubResource( 16 )
+material = SubResource( 12 )
 region_rect = Rect2( 52, 201, 16, 63 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform" ]
 
 [node name="Walking" parent="Characters/Hoarder" index="4"]
 
-material = SubResource( 17 )
+material = SubResource( 13 )
 
 [node name="CatLady" parent="Characters" index="2" instance=ExtResource( 9 )]
 
@@ -654,13 +654,13 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/CatLady" index="3"]
 
-material = SubResource( 18 )
+material = SubResource( 14 )
 region_rect = Rect2( 64, 135, 23, 61 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform" ]
 
 [node name="Walking" parent="Characters/CatLady" index="4"]
 
-material = SubResource( 19 )
+material = SubResource( 15 )
 region_rect = Rect2( 24, 140, 21, 58 )
 
 [node name="NPCSprite" parent="Characters/CatLady" index="5"]
@@ -669,9 +669,9 @@ region_rect = Rect2( 123, 8, 23, 61 )
 
 [node name="Animations" parent="Characters/CatLady/NPCSprite" index="0"]
 
-"anims/Idle Animation" = SubResource( 20 )
-"anims/Special Animation" = SubResource( 21 )
-"anims/Walk Cycle" = SubResource( 22 )
+"anims/Idle Animation" = SubResource( 16 )
+"anims/Special Animation" = SubResource( 17 )
+"anims/Walk Cycle" = SubResource( 18 )
 
 [node name="Artist" parent="Characters" index="3" instance=ExtResource( 9 )]
 
@@ -692,21 +692,21 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Artist" index="3"]
 
-material = SubResource( 37 )
+material = SubResource( 19 )
 offset = Vector2( 0, 2 )
 region_rect = Rect2( 92, 4, 23, 63 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform" ]
 
 [node name="Walking" parent="Characters/Artist" index="4"]
 
-material = SubResource( 38 )
+material = SubResource( 20 )
 region_rect = Rect2( 168, 205, 18, 62 )
 
 [node name="Animations" parent="Characters/Artist/NPCSprite" index="0"]
 
-"anims/Idle Animation" = SubResource( 23 )
-"anims/Special Animation" = SubResource( 24 )
-"anims/Walk Cycle" = SubResource( 25 )
+"anims/Idle Animation" = SubResource( 21 )
+"anims/Special Animation" = SubResource( 22 )
+"anims/Walk Cycle" = SubResource( 23 )
 
 [node name="Apartment" type="Node" parent="." index="3"]
 
@@ -714,7 +714,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
-material = SubResource( 39 )
+material = SubResource( 24 )
 position = Vector2( 433.621, 300 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
@@ -742,127 +742,127 @@ bounce = 0.0
 [node name="FirstFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="0"]
 
 position = Vector2( 441.442, 583.372 )
-shape = SubResource( 26 )
+shape = SubResource( 25 )
 
 [node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
 
 position = Vector2( 415.659, 520.879 )
 scale = Vector2( 0.992494, 1 )
-shape = SubResource( 27 )
+shape = SubResource( 26 )
 
 [node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
 
 position = Vector2( 310.491, 438.254 )
 scale = Vector2( 0.650208, 1 )
-shape = SubResource( 27 )
+shape = SubResource( 26 )
 
 [node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
 
 position = Vector2( 549.065, 364.967 )
 scale = Vector2( 0.772993, 1 )
-shape = SubResource( 27 )
+shape = SubResource( 26 )
 
 [node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
 
 position = Vector2( 548.104, 286.769 )
 scale = Vector2( 0.776376, 1 )
-shape = SubResource( 27 )
+shape = SubResource( 26 )
 
 [node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
 
 position = Vector2( 584.404, 208.524 )
 scale = Vector2( 0.632934, 1 )
-shape = SubResource( 27 )
+shape = SubResource( 26 )
 
 [node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
 
 position = Vector2( 523.595, 137.616 )
 scale = Vector2( 0.447307, 1 )
-shape = SubResource( 27 )
+shape = SubResource( 26 )
 
 [node name="FirstRight" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="7"]
 
 position = Vector2( 865.145, 530.18 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 28 )
+shape = SubResource( 27 )
 
 [node name="FirstLeft" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="8"]
 
 position = Vector2( 3.14917, 527.698 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 28 )
+shape = SubResource( 27 )
 
 [node name="SecondRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="9"]
 
 position = Vector2( 726.173, 481.827 )
 scale = Vector2( 1, 1.17283 )
-shape = SubResource( 28 )
+shape = SubResource( 27 )
 
 [node name="SecondLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="10"]
 
 position = Vector2( 102.528, 493.632 )
 scale = Vector2( 1, 2.22634 )
-shape = SubResource( 28 )
+shape = SubResource( 27 )
 
 [node name="ThirdLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="11"]
 
 position = Vector2( 107.865, 405.721 )
 scale = Vector2( 1, 2.84255 )
-shape = SubResource( 28 )
+shape = SubResource( 27 )
 
 [node name="ThirdRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="12"]
 
 position = Vector2( 517.638, 401.916 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="FourthLeftWalll" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="13"]
 
 position = Vector2( 304.749, 328.014 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="FourthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="14"]
 
 position = Vector2( 791.22, 328.161 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="FifthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="15"]
 
 position = Vector2( 458.351, 258.796 )
 scale = Vector2( 1, 1.40755 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="FifthRightWall2" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="16"]
 
 position = Vector2( 784.766, 249.575 )
 scale = Vector2( 1, 1.76165 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="SixthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="17"]
 
 position = Vector2( 674.8, 181.555 )
 scale = Vector2( 1, 2.20163 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="SixthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="18"]
 
 position = Vector2( 385.559, 174.631 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="SeventhLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="19"]
 
 position = Vector2( 454.833, 106.6 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="SeventhRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="20"]
 
 position = Vector2( 663.833, 107.097 )
 scale = Vector2( 1, 2.61034 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
@@ -950,7 +950,7 @@ player_path = NodePath("../../../../../Player")
 
 position = Vector2( -0.237854, -0.177368 )
 scale = Vector2( 3.31895, 3.21797 )
-shape = SubResource( 30 )
+shape = SubResource( 29 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
@@ -1089,7 +1089,7 @@ player_path = NodePath("../../../Player")
 
 position = Vector2( 0.666704, -1.87317 )
 scale = Vector2( 2.51283, 2.5576 )
-shape = SubResource( 31 )
+shape = SubResource( 30 )
 
 [node name="Tween" type="Tween" parent="." index="4"]
 
@@ -1178,7 +1178,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 31 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -1218,7 +1218,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 33 )
+custom_fonts/font = SubResource( 32 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -1244,7 +1244,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 33 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
@@ -1472,7 +1472,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 35 )
+custom_fonts/font = SubResource( 34 )
 text = "Monday"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1495,7 +1495,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 36 )
+custom_fonts/font = SubResource( 35 )
 text = "6:00 pm"
 percent_visible = 1.0
 lines_skipped = 0

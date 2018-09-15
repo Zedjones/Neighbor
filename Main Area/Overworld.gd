@@ -21,7 +21,10 @@ func _ready():
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	pass
+
+	if(Input.is_key_pressed(KEY_R)):
+		get_tree().reload_current_scene()
+	
 
 
 func _on_PlayButton_pressed():
