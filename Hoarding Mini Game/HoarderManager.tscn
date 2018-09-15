@@ -12,11 +12,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 23.7281, 44.2415 )
 
-[node name="HoarderManager" type="Node" index="0"]
+[node name="HoarderManager" type="Node2D" index="0"]
 
 pause_mode = 2
+scale = Vector2( 0.84, 0.84 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 boxes_path = NodePath("Boxes")
 current_items = 30
 
@@ -50,7 +51,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 position = Vector2( 528.284, 541.073 )
 sprites_list = NodePath("../Sprites")
 
-[node name="Boxes" type="Node" parent="." index="4"]
+[node name="Boxes" type="Node2D" parent="." index="4"]
 
 [node name="Trash" parent="Boxes" index="0" instance=ExtResource( 4 )]
 
@@ -140,7 +141,7 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="Anchors" type="Node" parent="." index="6"]
+[node name="Anchors" type="Node2D" parent="." index="6"]
 
 [node name="TrashAnchor" type="Node2D" parent="Anchors" index="0"]
 
@@ -164,11 +165,11 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 855.732, 676.483 )
 
-[node name="Sprites" type="Node" parent="." index="7"]
+[node name="Sprites" type="Node2D" parent="." index="7"]
 
 script = ExtResource( 6 )
 
-[node name="Recycling Sprites" type="Node" parent="Sprites" index="0"]
+[node name="Recycling Sprites" type="Node2D" parent="Sprites" index="0"]
 
 [node name="Bottle" type="Sprite" parent="Sprites/Recycling Sprites" index="0"]
 
@@ -185,7 +186,7 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 59, 163, 24, 12 )
 
-[node name="Trash Sprites" type="Node" parent="Sprites" index="1"]
+[node name="Trash Sprites" type="Node2D" parent="Sprites" index="1"]
 
 [node name="Wrapper" type="Sprite" parent="Sprites/Trash Sprites" index="0"]
 
@@ -203,7 +204,7 @@ region_enabled = true
 region_rect = Rect2( 25, 185, 23, 17 )
 _sections_unfolded = [ "Region", "Visibility" ]
 
-[node name="Paper Sprites" type="Node" parent="Sprites" index="2"]
+[node name="Paper Sprites" type="Node2D" parent="Sprites" index="2"]
 
 [node name="List" type="Sprite" parent="Sprites/Paper Sprites" index="0"]
 
@@ -221,7 +222,7 @@ region_enabled = true
 region_rect = Rect2( 138, 172, 16, 20 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Electronics Sprites" type="Node" parent="Sprites" index="3"]
+[node name="Electronics Sprites" type="Node2D" parent="Sprites" index="3"]
 
 [node name="Controller" type="Sprite" parent="Sprites/Electronics Sprites" index="0"]
 
@@ -239,7 +240,7 @@ region_enabled = true
 region_rect = Rect2( 109, 153, 11, 19 )
 _sections_unfolded = [ "Region", "Visibility" ]
 
-[node name="Clothes Sprites" type="Node" parent="Sprites" index="4"]
+[node name="Clothes Sprites" type="Node2D" parent="Sprites" index="4"]
 
 [node name="Pants" type="Sprite" parent="Sprites/Clothes Sprites" index="0"]
 

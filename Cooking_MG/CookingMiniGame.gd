@@ -9,6 +9,7 @@ var chopped = false
 var gameTimerRunning = false
 var temp1 = "Background/Board/Ingredients/%s"
 var temp2 = "Background/Board/CookPot/%s"
+var gameover = false
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -64,6 +65,7 @@ func _game_over():
 	gameTimerRunning = false
 	score *= 100/(4 * (int($Background/GameTimer.wait_time) - 10))
 	print(score)
+	gameover = true
 
 func _check_food_count():
 	foodCount -= 1
@@ -121,3 +123,15 @@ func _on_Chili_input_event(viewport, event, shape_idx):
 		foodItems.append("Chili")
 		$Background/FoodSelect/AssortedFood/Chili.hide()
 		_check_food_count()
+		
+func set_points(dialogue_choices):
+	pass
+	
+# Whether or not the game is complete 
+func is_game_over():
+	return gameover
+	
+# GameManager will call this to get the outcome from the mini-game
+# @return - a GameOutcomes enum item
+func get_score():
+	return GameOutcomes.BETTER

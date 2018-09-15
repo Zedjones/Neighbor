@@ -9,7 +9,7 @@
 [ext_resource path="res://Cooking_MG/AssortedFood.gd" type="Script" id=7]
 [ext_resource path="res://Cooking_MG/RecipeBook.gd" type="Script" id=8]
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=1]
 
 size = 20
 use_mipmaps = false
@@ -17,72 +17,72 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.33336, 60 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 26.6666, 26.6666 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40, 20 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 11.3043, 13 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 50, 50 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 130, 70 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 30 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.8889, 25.5556 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 44.4444, 25.5556 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 37.7778, 34.4444 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
 extents = Vector2( 33.3333, 31.4815 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 48.8889, 27.7778 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 33.3334, 16.6667 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=15]
 
 size = 30
 use_mipmaps = false
@@ -90,9 +90,12 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="CookingMiniGame" type="Node" index="0"]
+[node name="CookingMiniGame" type="Node2D"]
 
+position = Vector2( 0, 90 )
+scale = Vector2( 0.84, 0.84 )
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
@@ -127,7 +130,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.0196078, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.464706, 0.464706, 1 )
 text = "30"
@@ -172,7 +175,7 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Knife" index="1"]
 
 position = Vector2( 2, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Ingredients" type="Node" parent="Background/Board" index="1"]
@@ -203,7 +206,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Ingredients/Tomato" index="1"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Salmon" type="Area2D" parent="Background/Board/Ingredients" index="1"]
@@ -231,7 +234,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Ingredients/Salmon" index="1"]
 
 position = Vector2( 2, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Broccoli" type="Area2D" parent="Background/Board/Ingredients" index="2"]
@@ -259,7 +262,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Ingredients/Broccoli" index="1"]
 
 scale = Vector2( 8.84615, 6.15385 )
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Garlic" type="Area2D" parent="Background/Board/Ingredients" index="3"]
@@ -286,7 +289,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Ingredients/Garlic" index="1"]
 
-shape = SubResource( 12 )
+shape = SubResource( 6 )
 
 [node name="Potato" type="Area2D" parent="Background/Board/Ingredients" index="4"]
 
@@ -312,7 +315,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Ingredients/Potato" index="1"]
 
-shape = SubResource( 13 )
+shape = SubResource( 7 )
 
 [node name="Chili" type="Area2D" parent="Background/Board/Ingredients" index="5"]
 
@@ -338,7 +341,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Board/Ingredients/Chili" index="1"]
 
-shape = SubResource( 14 )
+shape = SubResource( 8 )
 
 [node name="CookPot" type="Sprite" parent="Background/Board" index="2"]
 
@@ -441,7 +444,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FoodSelect/AssortedFood/Tomato" index="1"]
 
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="Salmon" type="Area2D" parent="Background/FoodSelect/AssortedFood" index="1"]
 
@@ -466,7 +469,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FoodSelect/AssortedFood/Salmon" index="1"]
 
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 
 [node name="Broccoli" type="Area2D" parent="Background/FoodSelect/AssortedFood" index="2"]
 
@@ -491,7 +494,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FoodSelect/AssortedFood/Broccoli" index="1"]
 
-shape = SubResource( 6 )
+shape = SubResource( 11 )
 
 [node name="Garlic" type="Area2D" parent="Background/FoodSelect/AssortedFood" index="3"]
 
@@ -516,7 +519,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FoodSelect/AssortedFood/Garlic" index="1"]
 
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 
 [node name="Potato" type="Area2D" parent="Background/FoodSelect/AssortedFood" index="4"]
 
@@ -540,7 +543,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FoodSelect/AssortedFood/Potato" index="1"]
 
-shape = SubResource( 8 )
+shape = SubResource( 13 )
 
 [node name="Chili" type="Area2D" parent="Background/FoodSelect/AssortedFood" index="5"]
 
@@ -565,7 +568,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FoodSelect/AssortedFood/Chili" index="1"]
 
-shape = SubResource( 9 )
+shape = SubResource( 14 )
 
 [node name="RecipeBook" type="Sprite" parent="Background/FoodSelect" index="1"]
 
@@ -654,7 +657,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.464844, 0.464844, 1 )
 text = "3"

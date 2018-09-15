@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -358,13 +358,10 @@ extents = Vector2( 2.0675, 10.9508 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="RectangleShape2D" id=18]
 
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 18 )
-_sections_unfolded = [ "Font", "Settings" ]
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="DynamicFont" id=19]
 
@@ -372,7 +369,7 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 18 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=20]
 
@@ -380,7 +377,7 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 18 )
-_sections_unfolded = [ "Font", "Settings" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=21]
 
@@ -388,9 +385,17 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 18 )
-_sections_unfolded = [ "Font", "Resource", "Settings" ]
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=22]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 18 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=23]
 
 size = 32
 use_mipmaps = false
@@ -473,6 +478,7 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="Characters" type="Node" parent="." index="2"]
 
+editor/display_folded = true
 script = ExtResource( 6 )
 _sections_unfolded = [ "Pause" ]
 player_path = NodePath("../Player")
@@ -981,6 +987,7 @@ player_path = NodePath("../../../Player")
 
 position = Vector2( 0.666704, -1.87317 )
 scale = Vector2( 2.51283, 2.5576 )
+shape = SubResource( 18 )
 
 [node name="Tween" type="Tween" parent="." index="4"]
 
@@ -994,6 +1001,7 @@ _sections_unfolded = [ "playback" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 434, -106 )
 offset = Vector2( 0, -7 )
 anchor_mode = 1
@@ -1034,6 +1042,8 @@ playback/speed = 1.0
 
 [node name="Menu" type="Node" parent="." index="6"]
 
+editor/display_folded = true
+
 [node name="Container" type="Container" parent="Menu" index="0"]
 
 anchor_left = 0.0
@@ -1066,7 +1076,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 19 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -1106,7 +1116,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -1132,7 +1142,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
@@ -1144,6 +1154,8 @@ align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="Dialogues" type="Node" parent="." index="7"]
+
+editor/display_folded = true
 
 [node name="Elizabeth" type="Node" parent="Dialogues" index="0"]
 
@@ -1336,6 +1348,7 @@ scriptDayTwo = "res://Dialogues/JoeJonesOne.json"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1357,7 +1370,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 22 )
 text = "Monday"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1380,7 +1393,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 23 )
 text = "6:00 pm"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1402,6 +1415,8 @@ _sections_unfolded = [ "custom_fonts" ]
 [connection signal="activated" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_activated"]
 
 [connection signal="exited" from="Characters/Artist/IOP" to="Dialogues/Fuyumi/FuyumiScript" method="_on_IOP_exited"]
+
+[connection signal="activated" from="Apartment/Bedroom/Interactive Object" to="." method="_on_Bedroom_Object_activated"]
 
 [connection signal="pressed" from="Menu/Container/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 

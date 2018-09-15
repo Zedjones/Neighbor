@@ -14,6 +14,8 @@ _data = {
 [node name="CatMiniGame" type="Node2D"]
 
 pause_mode = 2
+position = Vector2( 0, 90 )
+scale = Vector2( 0.84, 0.84 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
 Cat = ExtResource( 2 )
