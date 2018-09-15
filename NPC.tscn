@@ -130,7 +130,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="NPC" type="KinematicBody2D" index="0"]
+[node name="NPC" type="KinematicBody2D"]
 
 position = Vector2( 274.249, 164.128 )
 z_index = 1

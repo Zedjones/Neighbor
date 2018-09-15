@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Main Area/Overworld.gd" type="Script" id=1]
 [ext_resource path="res://Art_Assets/Square.png" type="Texture" id=2]
@@ -334,46 +334,49 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="Shader" id=13]
 
-custom_solver_bias = 0.0
-extents = Vector2( 446.204, 1.80487 )
+code = "shader_type canvas_item;
+render_mode unshaded;
+uniform float happiness_scale;
 
-[sub_resource type="RectangleShape2D" id=14]
+void fragment() {
+COLOR = texture(TEXTURE, UV);//setup the default image 
+float lum = dot(COLOR.rgb, vec3(.3, .59, .11));//get the average
+vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale); 
+COLOR.xyz = vec3(test);//set the average to get grayscale 
+}"
 
-custom_solver_bias = 0.0
-extents = Vector2( 316.922, 1.9989 )
+[sub_resource type="ShaderMaterial" id=14]
+
+render_priority = 0
+shader = SubResource( 13 )
+shader_param/happiness_scale = null
 
 [sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
-extents = Vector2( 1.49487, 11.5475 )
+extents = Vector2( 446.204, 1.80487 )
 
 [sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
-extents = Vector2( 2.0675, 10.9508 )
+extents = Vector2( 316.922, 1.9989 )
 
 [sub_resource type="RectangleShape2D" id=17]
 
 custom_solver_bias = 0.0
+extents = Vector2( 1.49487, 11.5475 )
+
+[sub_resource type="RectangleShape2D" id=18]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.0675, 10.9508 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
-
-[sub_resource type="DynamicFont" id=18]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=19]
-
-size = 32
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=20]
 
@@ -389,9 +392,25 @@ size = 32
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Resource", "Settings" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=22]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=23]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=24]
 
 size = 32
 use_mipmaps = false
@@ -502,9 +521,9 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Student" index="3"]
 
-material = null
 position = Vector2( -0.0231934, -5.16441 )
 region_rect = Rect2( 9, 69, 26, 63 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
 [node name="Walking" parent="Characters/Student" index="4"]
 
@@ -534,7 +553,6 @@ player_path = NodePath("../../../Player")
 
 [node name="Idle" parent="Characters/Hoarder" index="3"]
 
-material = null
 region_rect = Rect2( 52, 201, 16, 63 )
 
 [node name="CatLady" parent="Characters" index="2" instance=ExtResource( 7 )]
@@ -611,6 +629,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="ApartmentMain" type="Sprite" parent="Apartment" index="0"]
 
+material = SubResource( 14 )
 position = Vector2( 433.621, 299.73 )
 scale = Vector2( 0.752976, 0.752976 )
 z_index = -5
@@ -638,121 +657,121 @@ bounce = 0.0
 [node name="FirstFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="0"]
 
 position = Vector2( 441.442, 583.372 )
-shape = SubResource( 13 )
+shape = SubResource( 15 )
 
 [node name="SecondFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="1"]
 
 position = Vector2( 415.659, 520.879 )
 scale = Vector2( 0.992494, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="ThirdFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="2"]
 
 position = Vector2( 310.491, 438.254 )
 scale = Vector2( 0.650208, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="FourthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="3"]
 
 position = Vector2( 549.065, 364.967 )
 scale = Vector2( 0.772993, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="FifthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="4"]
 
 position = Vector2( 548.104, 286.769 )
 scale = Vector2( 0.776376, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="SixthFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="5"]
 
 position = Vector2( 584.404, 208.524 )
 scale = Vector2( 0.632934, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="SeventhFloor" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="6"]
 
 position = Vector2( 523.595, 137.616 )
 scale = Vector2( 0.447307, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="FirstRight" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="7"]
 
 position = Vector2( 865.145, 530.18 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="FirstLeft" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="8"]
 
 position = Vector2( 3.14917, 527.698 )
 scale = Vector2( 1, 4.35852 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="SecondRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="9"]
 
 position = Vector2( 726.173, 481.827 )
 scale = Vector2( 1, 1.17283 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="SecondLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="10"]
 
 position = Vector2( 102.528, 493.632 )
 scale = Vector2( 1, 2.22634 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="ThirdLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="11"]
 
 position = Vector2( 107.865, 405.721 )
 scale = Vector2( 1, 2.84255 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="FourthLeftWalll" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="12"]
 
 position = Vector2( 304.749, 328.014 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="FourthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="13"]
 
 position = Vector2( 791.22, 328.161 )
 scale = Vector2( 1, 1.80683 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="FifthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="14"]
 
 position = Vector2( 458.351, 258.796 )
 scale = Vector2( 1, 1.40755 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="FifthRightWall2" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="15"]
 
 position = Vector2( 784.766, 249.575 )
 scale = Vector2( 1, 1.76165 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="SixthRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="16"]
 
 position = Vector2( 674.8, 181.555 )
 scale = Vector2( 1, 2.20163 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="SixthLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="17"]
 
 position = Vector2( 385.559, 174.631 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="SeventhLeftWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="18"]
 
 position = Vector2( 454.833, 106.6 )
 scale = Vector2( 1, 2.86099 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="SeventhRightWall" type="CollisionShape2D" parent="Apartment/ApartmentMain/ApartmentBoxes/StaticBody2D" index="19"]
 
 position = Vector2( 663.833, 107.097 )
 scale = Vector2( 1, 2.61034 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="Doors" type="Node" parent="Apartment/ApartmentMain" index="1"]
 
@@ -840,7 +859,7 @@ player_path = NodePath("../../../../../Player")
 
 position = Vector2( -0.237854, -0.177368 )
 scale = Vector2( 3.31895, 3.21797 )
-shape = SubResource( 17 )
+shape = SubResource( 19 )
 
 [node name="Stairs" type="Node" parent="Apartment" index="1"]
 
@@ -1064,7 +1083,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Neighbor"
 valign = 2
 percent_visible = 1.0
@@ -1104,7 +1123,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 toggle_mode = false
 enabled_focus_mode = 0
 shortcut = null
@@ -1130,7 +1149,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 22 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 0
@@ -1355,7 +1374,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 23 )
 text = "Monday"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1378,7 +1397,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 24 )
 text = "6:00 pm"
 percent_visible = 1.0
 lines_skipped = 0
