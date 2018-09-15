@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var motion = Vector2()
 const UP = Vector2(0,-1)
+export (float) var happiness = 0
 var is_paused
 
 func _ready():
