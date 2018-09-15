@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=25]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+uniform float happiness_scale;
+
+void fragment() {
+COLOR = texture(TEXTURE, UV);//setup the default image 
+float lum = dot(COLOR.rgb, vec3(.3, .59, .11));//get the average
+vec3 test = mix(COLOR.rgb, vec3(lum), happiness_scale); 
+COLOR.xyz = vec3(test);//set the average to get grayscale 
+}"
+
+[resource]
+
+render_priority = 0
+shader = SubResource( 25 )
+shader_param/happiness_scale = null
+_sections_unfolded = [ "shader_param" ]
+
