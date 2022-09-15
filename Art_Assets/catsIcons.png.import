@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/catsIcons.png-50d7c70eb2d6a3a42433cb56853f7d2f.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Art_Assets/catsIcons.png"
-source_md5="1729bf6348962ce3e94f0b740da9c595"
-
 dest_files=[ "res://.import/catsIcons.png-50d7c70eb2d6a3a42433cb56853f7d2f.stex" ]
-dest_md5="fd82435cf6b2eca2b9ddb4694075d076"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,8 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

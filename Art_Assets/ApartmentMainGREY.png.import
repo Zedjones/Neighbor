@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/ApartmentMainGREY.png-60094b508b745050ab34bee4e4aa1d17.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Art_Assets/ApartmentMainGREY.png"
-source_md5="4cc2f2add0ac1c21c5ba9b6ab4d0c5f9"
-
 dest_files=[ "res://.import/ApartmentMainGREY.png-60094b508b745050ab34bee4e4aa1d17.stex" ]
-dest_md5="c1dcf31dad053dbd746c5cd009a04048"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,8 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

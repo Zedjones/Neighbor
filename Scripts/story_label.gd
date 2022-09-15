@@ -14,7 +14,7 @@ export(String, FILE, "*.json") var scriptDayTwo
 
 var dayScript = []
 var usingDay
-var script
+var _script
 var passage
 var originalPassage
 var isPlayer = false
@@ -32,13 +32,13 @@ var connectedToDayChange = false
 func _ready():
 	dayScript.append(scriptDayOne)
 	dayScript.append(scriptDayTwo)
-	script = TwineScript.new(dayScript[TimeManager.currentDay])
+	_script = TwineScript.new(dayScript[TimeManager.currentDay])
 	usingDay = TimeManager.currentDay
-	script.parse()
-	cid = script.get_start_node()
+	_script.parse()
+	cid = _script.get_start_node()
 	set_process_input(true)
-	print("Story: ", script.get_story_name())
-	print("Passage names: ", script.get_passage_names())
+	print("Story: ", _script.get_story_name())
+	print("Passage names: ", _script.get_passage_names())
 	if(!connectedToDayChange):
 		TimeManager.connect("on_day_changed", self, "_on_IOP_exited")
 		connectedToDayChange = true
@@ -81,12 +81,12 @@ func _input(event):
 func show_paragraph(pid, paragraph):
 	pid = int(pid)
 	print(nextDialogueName)
-	for i in script.get_passages().size():
+	for i in _script.get_passages().size():
 		var val = int(i+1)
-		if nextDialogueName in script.get_passage(val).name:
+		if nextDialogueName in _script.get_passage(val).name:
 			print("Found the nextDialogueName: ",nextDialogueName)
-			passage = script.get_passage(val)
-			originalPassage = script.get_passage(val)
+			passage = _script.get_passage(val)
+			originalPassage = _script.get_passage(val)
 			# creates new paragraph to display, and sets the current dialogue.
 			# currentDialogue is so that when we try and print it a second time, we can reset the text, 
 			# and not get infinite repeating text
@@ -129,7 +129,7 @@ func show_options(pid, paragraph):
 		return
 	# this will get the passages that the current passage links to
 	for keyNum in temp.size():
-		var option = script.get_passage(int(passage.links[temp[keyNum]].passageId))
+		var option = _script.get_passage(int(passage.links[temp[keyNum]].passageId))
 		var newParagraph = ""
 		var removeText = true
 		if currentSelection == 1 && keyNum == 0:
@@ -220,7 +220,7 @@ func _on_IOP_activated():
 
 func _on_IOP_exited():
 	print("Got Here")
-	script = null
+	_script = null
 	passage = null
 	originalPassage = null
 	isPlayer = false

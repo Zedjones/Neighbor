@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/CatGameSprites.png-0e21bc02d968fa6a9fc9e4b01af310bd.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Art_Assets/CatGameSprites.png"
-source_md5="cf3212c667e1e94c278967f52485bbf4"
-
 dest_files=[ "res://.import/CatGameSprites.png-0e21bc02d968fa6a9fc9e4b01af310bd.stex" ]
-dest_md5="b191a9efe93aeb677eac8df2900d6ee3"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,8 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

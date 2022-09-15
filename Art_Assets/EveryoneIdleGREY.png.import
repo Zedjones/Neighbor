@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/EveryoneIdleGREY.png-c74b25f35ba7a159e36b4bb638bd16cc.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Art_Assets/EveryoneIdleGREY.png"
-source_md5="b09663cc2a1d2c675041107f884ca850"
-
 dest_files=[ "res://.import/EveryoneIdleGREY.png-c74b25f35ba7a159e36b4bb638bd16cc.stex" ]
-dest_md5="043bca663e633e10c129348b39a17dc9"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,8 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

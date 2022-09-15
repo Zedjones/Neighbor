@@ -62,7 +62,7 @@ func _input(event):
 			if(zoomDelta[1] - zoomStep < minZoom[1]):
 				zoomStep = clamp(zoomStep, 0, zoomDelta[1] - minZoom[1])
 #			print(zoomStep)
-            
+			
 			zoomDelta[0] = zoomDelta[0] - zoomStep
 			zoomDelta[1] = zoomDelta[1] - zoomStep
 			
@@ -77,19 +77,19 @@ func _input(event):
 
 	if(drag == true):
 	
-	    var mouse_pos = get_global_mouse_pos()
+		var mouse_pos = get_viewport().get_global_mouse_pos()
 	
-	    var dist_x = initPosMouse.x - mouse_pos.x
-	    var dist_y = initPosMouse.y - mouse_pos.y
+		var dist_x = initPosMouse.x - mouse_pos.x
+		var dist_y = initPosMouse.y - mouse_pos.y
 	
-	    var nx = initPosNode.x - (0 + dist_x)
-	    var ny = initPosNode.y - (0 + dist_y)
+		var nx = initPosNode.x - (0 + dist_x)
+		var ny = initPosNode.y - (0 + dist_y)
 	
-	    get_node("main").set_pos(Vector2(nx,ny))
+		get_node("main").set_pos(Vector2(nx,ny))
 	
 	elif(drag == false):
-	    # print("undrag")
-	    pass
+		# print("undrag")
+		pass
 	
 #	if (event.type == InputEvent.MOUSE_BUTTON):
 #	    if (event.button_index == BUTTON_WHEEL_UP):
